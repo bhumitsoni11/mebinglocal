@@ -1,7 +1,8 @@
 import { useRouter } from 'next/navigation';
 
 import { Search, Utensils, Map, Camera, ShoppingBag, Star, Sparkles, Heart, Users, ArrowRight, TrendingUp } from "lucide-react";
-import { LOCAL_FRIENDS, EVENTS } from "@/constants";
+import { useLocalFriends } from "@/hooks/useLocalFriends";
+import { useEvents } from "@/hooks/useEvents";
 
 const CATEGORIES = [
   { icon: Utensils, label: "Food Tours", color: "#C96F52", bg: "#FCFAF53EE" },
@@ -14,6 +15,8 @@ const CATEGORIES = [
 
 export function Home() {
   const router = useRouter();
+  const { data: localFriends = [], isLoading: friendsLoading } = useLocalFriends({ limit: 3 });
+  const { data: events = [], isLoading: eventsLoading } = useEvents({ limit: 3 });
 
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -121,7 +124,7 @@ export function Home() {
               </button>
             </div>
             <div className="grid gap-4" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
-              {LOCAL_FRIENDS.slice(0, 3).map((lf) => (
+              {friendsLoading ? <p>Loading...</p> : localFriends.slice(0, 3).map((lf) => (
                 <button
                   key={lf.id}
                   onClick={() => router.push(`/app/profile/${lf.id}`)}
@@ -212,7 +215,7 @@ export function Home() {
               </button>
             </div>
             <div className="flex flex-col gap-3">
-              {EVENTS.slice(0, 3).map((ev) => (
+              {eventsLoading ? <p>Loading...</p> : events.slice(0, 3).map((ev) => (
                 <div key={ev.id} className="flex gap-3 rounded-2xl p-3" style={{ background: "#FCFAF5", border: "1px solid var(--border)" }}>
                   <img src={ev.image} alt={ev.title} className="rounded-xl object-cover flex-shrink-0" style={{ width: 52, height: 52 }} />
                   <div className="flex-1 min-w-0">

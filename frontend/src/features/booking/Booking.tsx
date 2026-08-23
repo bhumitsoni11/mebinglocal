@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation';
 
 
 import { ArrowLeft, CheckCircle, CreditCard, Clock, Shield, Star } from "lucide-react";
-import { LOCAL_FRIENDS } from "@/constants";
+import { useLocalFriend } from "@/hooks/useLocalFriends";
 
 const JUNE_DATES = [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 const AVAILABLE = [18, 20, 21, 23, 24, 26, 27, 28, 30];
@@ -15,12 +15,16 @@ const TIMES = ["9:00 AM", "10:00 AM", "11:00 AM", "2:00 PM", "3:00 PM", "4:00 PM
 export function Booking() {
   const { id } = useParams();
   const router = useRouter();
-  const lf = LOCAL_FRIENDS.find((l) => l.id === id) ?? LOCAL_FRIENDS[0];
+
+  const { data: lf, isLoading: lfLoading } = useLocalFriend(id as string);
 
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [duration, setDuration] = useState(2);
   const [confirmed, setConfirmed] = useState(false);
+
+  if (lfLoading) return <div className="p-10">Loading booking...</div>;
+  if (!lf) return <div className="p-10">Companion not found</div>;
 
   const subtotal = lf.hourlyRate * duration;
   const serviceFee = Math.round(subtotal * 0.12);
@@ -60,7 +64,7 @@ export function Booking() {
       {/* ── Left: Date & Time picker ── */}
       <div className="flex-1 overflow-y-auto px-10 py-8" style={{ scrollbarWidth: "none" }}>
         <div className="flex items-center gap-3 mb-8">
-          <button onClick={() => router.push(-1)} className="rounded-xl p-2.5 flex items-center gap-2" style={{ background: "#F4E9D8", fontSize: 14, fontWeight: 600, color: "#2C4F3E" }}>
+          <button onClick={() => router.back()} className="rounded-xl p-2.5 flex items-center gap-2" style={{ background: "#F4E9D8", fontSize: 14, fontWeight: 600, color: "#2C4F3E" }}>
             <ArrowLeft size={16} />
           </button>
           <div>

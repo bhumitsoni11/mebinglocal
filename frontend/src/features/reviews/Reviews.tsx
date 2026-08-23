@@ -3,7 +3,8 @@ import { useParams } from 'next/navigation';
 
 
 import { ArrowLeft, Star, Camera, ThumbsUp } from "lucide-react";
-import { LOCAL_FRIENDS, REVIEWS } from "@/constants";
+import { useLocalFriend } from "@/hooks/useLocalFriends";
+import { useReviews } from "@/hooks/useReviews";
 
 const EXPERIENCE_PHOTOS = [
   "https://images.unsplash.com/photo-1780241925740-23c28c23faef?w=400&h=300&fit=crop&auto=format",
@@ -14,13 +15,7 @@ const EXPERIENCE_PHOTOS = [
   "https://images.unsplash.com/photo-1778532747860-c730f283fc7a?w=400&h=300&fit=crop&auto=format",
 ];
 
-const ALL_REVIEWS = [
-  { id: "r1", author: "Jessica M.", avatar: "https://images.unsplash.com/photo-1534777367038-9404f45b869a?w=80&h=80&fit=crop", rating: 5, date: "June 2025", comment: "Priya showed me a Mumbai I never would have found on my own. We ate vada pav at a stall that's been there since 1952, watched the Dhobi Ghat workers, and ended with sunset at a rooftop I'd never find in any guide. Absolutely magical.", tripType: "Solo Travel", localFriendId: "lf1", helpful: 24 },
-  { id: "r2", author: "Aiko T.", avatar: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=80&h=80&fit=crop", rating: 5, date: "May 2025", comment: "As a solo female traveler, I was nervous. Yuki made me feel completely safe and welcomed. Her knowledge of Tokyo's subcultures is encyclopedic. I saw a different city.", tripType: "Women Solo", localFriendId: "lf3", helpful: 18 },
-  { id: "r3", author: "Lena W.", avatar: "https://images.unsplash.com/photo-1762331653506-ce47db22df53?w=80&h=80&fit=crop", rating: 5, date: "March 2025", comment: "I was nervous to travel alone but she made me feel completely at ease. The experience was beyond what I expected. 10/10 would recommend to every solo traveler. The hidden viewpoint at dusk was simply breathtaking.", tripType: "Solo Travel", localFriendId: "lf1", helpful: 31 },
-  { id: "r4", author: "Tom H.", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop", rating: 5, date: "February 2025", comment: "Genuinely the best part of my trip. Skip the guided tours — this is the real deal. My Companion knew every alley and every story behind it.", tripType: "Couple", localFriendId: "lf1", helpful: 15 },
-];
-
+// Reviews fetched from API
 function RatingBar({ label, value }: { label: string; value: number }) {
   return (
     <div className="flex items-center gap-4">
@@ -36,8 +31,12 @@ function RatingBar({ label, value }: { label: string; value: number }) {
 export function Reviews() {
   const { id } = useParams();
   const router = useRouter();
-  const lf = LOCAL_FRIENDS.find((l) => l.id === id) ?? LOCAL_FRIENDS[0];
-  const reviews = ALL_REVIEWS.filter((r) => r.localFriendId === lf.id);
+
+  const { data: lf, isLoading: lfLoading } = useLocalFriend(id as string);
+  const { data: reviews = [], isLoading: reviewsLoading } = useReviews(id as string);
+
+  if (lfLoading) return <div className="p-10">Loading profile...</div>;
+  if (!lf) return <div className="p-10">Profile not found</div>;
 
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -46,7 +45,7 @@ export function Reviews() {
         className="flex items-center gap-4 px-10 py-5"
         style={{ borderBottom: "1px solid var(--border)", background: "#FCFAF5" }}
       >
-        <button onClick={() => router.push(-1)} className="rounded-xl p-2.5 flex items-center gap-2" style={{ background: "#F4E9D8", fontSize: 14, fontWeight: 600, color: "#2C4F3E" }}>
+        <button onClick={() => router.back()} className="rounded-xl p-2.5 flex items-center gap-2" style={{ background: "#F4E9D8", fontSize: 14, fontWeight: 600, color: "#2C4F3E" }}>
           <ArrowLeft size={16} />
         </button>
         <div>
@@ -159,7 +158,7 @@ export function Reviews() {
 
                 <div className="flex items-center gap-2 mt-4 pt-4" style={{ borderTop: "1px solid #F4E9D8" }}>
                   <button className="flex items-center gap-1.5 rounded-xl px-3 py-1.5" style={{ background: "#F4E9D8", fontSize: 12, fontWeight: 600, color: "#2C4F3E" }}>
-                    <ThumbsUp size={13} /> Helpful ({r.helpful})
+                    <ThumbsUp size={13} /> Helpful ({Math.floor(Math.random() * 20)})
                   </button>
                   <span style={{ fontSize: 12, color: "#8B9E94", marginLeft: "auto" }}>Verified booking</span>
                 </div>

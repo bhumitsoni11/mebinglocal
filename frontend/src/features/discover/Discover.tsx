@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from 'next/navigation';
 
 import { Search, Star, SlidersHorizontal, MapPin } from "lucide-react";
-import { LOCAL_FRIENDS } from "@/constants";
+import { useLocalFriends } from "@/hooks/useLocalFriends";
 
 const LANGUAGES = ["All", "English", "Spanish", "Japanese", "Hindi", "French", "Arabic"];
 const INTERESTS = ["All", "Food Tours", "Cultural Walks", "Photography", "Hidden Gems", "Shopping", "History"];
@@ -17,6 +17,8 @@ export function Discover() {
   const [selectedLang, setSelectedLang] = useState("All");
   const [selectedInterest, setSelectedInterest] = useState("All");
   const [sort, setSort] = useState("Top Rated");
+
+  const { data: LOCAL_FRIENDS = [], isLoading } = useLocalFriends();
 
   const filtered = LOCAL_FRIENDS.filter((lf) => {
     if (womenOnly && !lf.womenOnly) return false;
@@ -183,8 +185,11 @@ export function Discover() {
 
         {/* Grid */}
         <div className="flex-1 overflow-y-auto px-8 py-6" style={{ scrollbarWidth: "none" }}>
-          <div className="grid gap-5" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
-            {filtered.map((lf) => (
+          {isLoading ? (
+            <p className="text-center mt-10">Loading companions...</p>
+          ) : (
+            <div className="grid gap-5" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+              {filtered.map((lf) => (
               <div
                 key={lf.id}
                 onClick={() => router.push(`/app/profile/${lf.id}`)}
@@ -265,9 +270,10 @@ export function Discover() {
                 </div>
               </div>
             ))}
-          </div>
+            </div>
+          )}
 
-          {filtered.length === 0 && (
+          {!isLoading && filtered.length === 0 && (
             <div className="flex flex-col items-center justify-center py-20">
               <div className="text-5xl mb-4">🔍</div>
               <div style={{ fontSize: 18, fontWeight: 700, color: "#1A3B2B" }}>No Companions found</div>

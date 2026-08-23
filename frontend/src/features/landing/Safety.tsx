@@ -34,7 +34,7 @@ export function Safety() {
         className="flex items-center gap-4 px-10 py-5"
         style={{ borderBottom: "1px solid var(--border)", background: "#FCFAF5" }}
       >
-        <button onClick={() => router.push(-1)} className="rounded-xl p-2" style={{ background: "#F4E9D8" }}>
+        <button onClick={() => router.back()} className="rounded-xl p-2" style={{ background: "#F4E9D8" }}>
           <ArrowLeft size={16} color="#2C4F3E" />
         </button>
         <div>

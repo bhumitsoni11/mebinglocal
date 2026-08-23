@@ -24,7 +24,7 @@ export default async function RootLayout({
           <Providers>
             {userId && (
               <div className="fixed top-4 right-4 z-50 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-md border border-gray-200">
-                <UserButton afterSignOutUrl="/sign-in" />
+                <UserButton />
               </div>
             )}
             {children}

@@ -3,7 +3,8 @@ import { useParams } from 'next/navigation';
 
 
 import { ArrowLeft, Star, Shield, Globe, Heart, ChevronLeft, ChevronRight, MessageCircle, MapPin, Clock } from "lucide-react";
-import { LOCAL_FRIENDS, REVIEWS } from "@/constants";
+import { useLocalFriend } from "@/hooks/useLocalFriends";
+import { useReviews } from "@/hooks/useReviews";
 
 const JUNE_DATES = [
   { day: 18, avail: true }, { day: 19, avail: false }, { day: 20, avail: true },
@@ -17,8 +18,12 @@ const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 export function Profile() {
   const { id } = useParams();
   const router = useRouter();
-  const lf = LOCAL_FRIENDS.find((l) => l.id === id) ?? LOCAL_FRIENDS[0];
-  const reviews = REVIEWS.filter((r) => r.localFriendId === lf.id);
+  
+  const { data: lf, isLoading: lfLoading } = useLocalFriend(id as string);
+  const { data: reviews = [], isLoading: reviewsLoading } = useReviews(id as string);
+
+  if (lfLoading) return <div className="p-10">Loading profile...</div>;
+  if (!lf) return <div className="p-10">Profile not found</div>;
 
   return (
     <div className="flex h-full" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -31,7 +36,7 @@ export function Profile() {
           <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.6))" }} />
 
           <button
-            onClick={() => router.push(-1)}
+            onClick={() => router.back()}
             className="absolute top-6 left-6 rounded-full flex items-center justify-center gap-2 px-4 py-2"
             style={{ background: "rgba(255,255,255,0.9)", fontSize: 13, fontWeight: 600, color: "#2C4F3E" }}
           >

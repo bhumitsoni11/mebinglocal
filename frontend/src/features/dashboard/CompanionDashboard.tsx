@@ -1,7 +1,8 @@
 import { useRouter } from 'next/navigation';
 
 import { TrendingUp, Star, Calendar, Bell, Plus, Edit, MessageCircle, ArrowRight } from "lucide-react";
-import { LOCAL_FRIENDS, REVIEWS } from "@/constants";
+import { useLocalFriends } from "@/hooks/useLocalFriends";
+import { useReviews } from "@/hooks/useReviews";
 
 const BOOKINGS = [
   { id: 1, traveler: "Jessica M.", avatar: "https://images.unsplash.com/photo-1534777367038-9404f45b869a?w=80&h=80&fit=crop", date: "Jun 20, 2025", time: "10:00 AM", duration: 3, status: "upcoming", amount: 36, type: "Food Tour" },
@@ -12,8 +13,12 @@ const BOOKINGS = [
 
 export function CompanionDashboard() {
   const router = useRouter();
-  const me = LOCAL_FRIENDS[0];
-  const myReviews = REVIEWS.filter((r) => r.localFriendId === me.id);
+  const { data: localFriends = [], isLoading: lfLoading } = useLocalFriends();
+  const me = localFriends[0];
+  const { data: myReviews = [] } = useReviews(me?.id);
+
+  if (lfLoading) return <div className="p-10">Loading dashboard...</div>;
+  if (!me) return <div className="p-10">Companion profile not found</div>;
 
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from 'next/navigation';
 
 import { Search, Users, MapPin, Calendar, Plus } from "lucide-react";
-import { EVENTS } from "@/constants";
+import { useEvents } from "@/hooks/useEvents";
 
 const TABS = ["All", "Festival", "Market", "Cultural", "Food", "Art & Music"];
 
@@ -10,6 +10,8 @@ export function Events() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("All");
   const [search, setSearch] = useState("");
+
+  const { data: EVENTS = [], isLoading } = useEvents();
 
   const filtered = EVENTS.filter((e) => {
     if (activeTab !== "All" && e.category !== activeTab) return false;
@@ -71,35 +73,41 @@ export function Events() {
       </div>
 
       <div className="px-10 py-8">
-        {/* Featured event */}
-        <div className="rounded-3xl overflow-hidden mb-8 relative" style={{ height: 280 }}>
-          <img src={EVENTS[0].image} alt={EVENTS[0].title} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 flex" style={{ background: "linear-gradient(90deg, rgba(0,0,0,0.75) 40%, transparent 100%)" }}>
-            <div className="flex flex-col justify-center p-10" style={{ maxWidth: 500 }}>
-              <span className="inline-block rounded-full px-4 py-1.5 self-start mb-4" style={{ fontSize: 12, fontWeight: 700, background: "#C96F52", color: "#FCFAF5" }}>
-                ⭐ Featured Event
-              </span>
-              <h2 style={{ fontSize: 30, fontWeight: 800, color: "#FCFAF5", lineHeight: 1.2, marginBottom: 10 }}>{EVENTS[0].title}</h2>
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: 16 }}>{EVENTS[0].description}</p>
-              <div className="flex items-center gap-6 mb-6">
-                <span style={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>📍 {EVENTS[0].city}</span>
-                <span style={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>📅 {EVENTS[0].date}</span>
-                <div className="flex items-center gap-1.5">
-                  <Users size={14} color="rgba(255,255,255,0.8)" />
-                  <span style={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>{EVENTS[0].attendees} going</span>
+        {isLoading ? (
+          <p className="text-center">Loading events...</p>
+        ) : (
+          <>
+            {/* Featured event */}
+            {EVENTS.length > 0 && (
+              <div className="rounded-3xl overflow-hidden mb-8 relative" style={{ height: 280 }}>
+                <img src={EVENTS[0].image} alt={EVENTS[0].title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 flex" style={{ background: "linear-gradient(90deg, rgba(0,0,0,0.75) 40%, transparent 100%)" }}>
+                  <div className="flex flex-col justify-center p-10" style={{ maxWidth: 500 }}>
+                    <span className="inline-block rounded-full px-4 py-1.5 self-start mb-4" style={{ fontSize: 12, fontWeight: 700, background: "#C96F52", color: "#FCFAF5" }}>
+                      ⭐ Featured Event
+                    </span>
+                    <h2 style={{ fontSize: 30, fontWeight: 800, color: "#FCFAF5", lineHeight: 1.2, marginBottom: 10 }}>{EVENTS[0].title}</h2>
+                    <p style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: 16 }}>{EVENTS[0].description}</p>
+                    <div className="flex items-center gap-6 mb-6">
+                      <span style={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>📍 {EVENTS[0].city}</span>
+                      <span style={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>📅 {EVENTS[0].date}</span>
+                      <div className="flex items-center gap-1.5">
+                        <Users size={14} color="rgba(255,255,255,0.8)" />
+                        <span style={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>{EVENTS[0].attendees} going</span>
+                      </div>
+                    </div>
+                    <button className="self-start rounded-2xl px-6 py-3" style={{ background: "#FCFAF5", color: "#1A3B2B", fontSize: 14, fontWeight: 700 }}>
+                      I'm Going 🎊
+                    </button>
+                  </div>
                 </div>
               </div>
-              <button className="self-start rounded-2xl px-6 py-3" style={{ background: "#FCFAF5", color: "#1A3B2B", fontSize: 14, fontWeight: 700 }}>
-                I'm Going 🎊
-              </button>
-            </div>
-          </div>
-        </div>
+            )}
 
-        {/* Grid */}
-        <h2 style={{ fontSize: 18, fontWeight: 800, color: "#1A3B2B", marginBottom: 16 }}>
-          {activeTab === "All" ? "All Events" : activeTab} ({filtered.length})
-        </h2>
+            {/* Grid */}
+            <h2 style={{ fontSize: 18, fontWeight: 800, color: "#1A3B2B", marginBottom: 16 }}>
+              {activeTab === "All" ? "All Events" : activeTab} ({filtered.length})
+            </h2>
         <div className="grid gap-5" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
           {filtered.map((event) => (
             <div
@@ -153,6 +161,8 @@ export function Events() {
             </div>
           ))}
         </div>
+          </>
+        )}
       </div>
     </div>
   );
