@@ -3,19 +3,27 @@ import { useRouter } from 'next/navigation';
 import { TrendingUp, Star, Calendar, Bell, Plus, Edit, MessageCircle, ArrowRight } from "lucide-react";
 import { useLocalFriends } from "@/hooks/useLocalFriends";
 import { useReviews } from "@/hooks/useReviews";
-
-const BOOKINGS = [
-  { id: 1, traveler: "Jessica M.", avatar: "https://images.unsplash.com/photo-1534777367038-9404f45b869a?w=80&h=80&fit=crop", date: "Jun 20, 2025", time: "10:00 AM", duration: 3, status: "upcoming", amount: 36, type: "Food Tour" },
-  { id: 2, traveler: "Marc B.", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop", date: "Jun 23, 2025", time: "2:00 PM", duration: 2, status: "upcoming", amount: 24, type: "Hidden Gems" },
-  { id: 3, traveler: "Aiko T.", avatar: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=80&h=80&fit=crop", date: "Jun 14, 2025", time: "9:00 AM", duration: 4, status: "completed", amount: 48, type: "Cultural Walk" },
-  { id: 4, traveler: "Lena W.", avatar: "https://images.unsplash.com/photo-1762331653506-ce47db22df53?w=80&h=80&fit=crop", date: "Jun 10, 2025", time: "11:00 AM", duration: 3, status: "completed", amount: 36, type: "Food Tour" },
-];
+import { useLocalFriendBookings, useUpdateBookingStatus } from "@/hooks/useBooking";
+import { toast } from "sonner";
 
 export function CompanionDashboard() {
   const router = useRouter();
   const { data: localFriends = [], isLoading: lfLoading } = useLocalFriends();
   const me = localFriends[0];
   const { data: myReviews = [] } = useReviews(me?.id);
+  
+  const { data: realBookings = [], isLoading: bookingsLoading } = useLocalFriendBookings();
+  const updateStatus = useUpdateBookingStatus();
+
+  const upcomingCount = realBookings.filter((b: any) => b.status === 'ACCEPTED' || b.status === 'PENDING').length;
+  const completedCount = realBookings.filter((b: any) => b.status === 'COMPLETED').length;
+
+  const handleUpdateStatus = (id: string, status: string) => {
+    updateStatus.mutate({ id, status }, {
+      onSuccess: () => toast.success(`Booking ${status.toLowerCase()}`),
+      onError: (err) => toast.error("Failed to update status")
+    });
+  };
 
   if (lfLoading) return <div className="p-10">Loading dashboard...</div>;
   if (!me) return <div className="p-10">Companion profile not found</div>;
@@ -113,10 +121,10 @@ export function CompanionDashboard() {
               <h2 style={{ fontSize: 16, fontWeight: 800, color: "#1A3B2B" }}>Bookings</h2>
               <div className="flex gap-2">
                 <span className="rounded-full px-3 py-1" style={{ fontSize: 12, fontWeight: 700, background: "#FCFAF53EE", color: "#C96F52" }}>
-                  {BOOKINGS.filter((b) => b.status === "upcoming").length} Upcoming
+                  {upcomingCount} Upcoming
                 </span>
                 <span className="rounded-full px-3 py-1" style={{ fontSize: 12, fontWeight: 700, background: "#ECFDF5", color: "#059669" }}>
-                  {BOOKINGS.filter((b) => b.status === "completed").length} Completed
+                  {completedCount} Completed
                 </span>
               </div>
             </div>
@@ -130,42 +138,53 @@ export function CompanionDashboard() {
                 <span>Amount</span>
                 <span>Status</span>
               </div>
-              {BOOKINGS.map((b, i) => (
-                <div
-                  key={b.id}
-                  className="grid items-center px-5 py-4"
-                  style={{
-                    gridTemplateColumns: "2fr 1.5fr 1fr 1fr 1fr",
-                    borderTop: i === 0 ? "none" : "1px solid #F4E9D8",
-                    background: "#FCFAF5",
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <img src={b.avatar} alt={b.traveler} className="rounded-xl object-cover" style={{ width: 38, height: 38 }} />
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: "#1A3B2B" }}>{b.traveler}</div>
-                      <div style={{ fontSize: 11, color: "#8B9E94" }}>{b.duration}h session</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div style={{ fontSize: 13, fontWeight: 600, color: "#2C4F3E" }}>{b.date}</div>
-                    <div style={{ fontSize: 12, color: "#8B9E94" }}>{b.time}</div>
-                  </div>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "#2C4F3E" }}>{b.type}</span>
-                  <span style={{ fontSize: 15, fontWeight: 800, color: "#1A3B2B" }}>${b.amount}</span>
-                  <span
-                    className="inline-block rounded-full px-3 py-1 self-start"
+              {realBookings.map((b: any, i: number) => {
+                const isPending = b.status === 'PENDING';
+                return (
+                  <div
+                    key={b.id}
+                    className="grid items-center px-5 py-4"
                     style={{
-                      fontSize: 11,
-                      fontWeight: 700,
-                      background: b.status === "upcoming" ? "#FCFAF53EE" : "#ECFDF5",
-                      color: b.status === "upcoming" ? "#C96F52" : "#059669",
+                      gridTemplateColumns: "2fr 1.5fr 1fr 1fr 1.5fr",
+                      borderTop: i === 0 ? "none" : "1px solid #F4E9D8",
+                      background: "#FCFAF5",
                     }}
                   >
-                    {b.status === "upcoming" ? "Upcoming" : "Done"}
-                  </span>
-                </div>
-              ))}
+                    <div className="flex items-center gap-3">
+                      <img src={b.traveler?.avatarUrl || "https://via.placeholder.com/80"} alt="Traveler" className="rounded-xl object-cover" style={{ width: 38, height: 38 }} />
+                      <div>
+                        <div style={{ fontSize: 14, fontWeight: 700, color: "#1A3B2B" }}>{b.traveler?.firstName} {b.traveler?.lastName}</div>
+                        <div style={{ fontSize: 11, color: "#8B9E94" }}>{(new Date(b.endTime).getTime() - new Date(b.startTime).getTime()) / 3600000}h session</div>
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: "#2C4F3E" }}>{new Date(b.startTime).toLocaleDateString()}</div>
+                      <div style={{ fontSize: 12, color: "#8B9E94" }}>{new Date(b.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                    </div>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: "#2C4F3E" }}>Booking</span>
+                    <span style={{ fontSize: 15, fontWeight: 800, color: "#1A3B2B" }}>${b.totalAmount / 100}</span>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="inline-block rounded-full px-3 py-1 self-start"
+                        style={{
+                          fontSize: 11,
+                          fontWeight: 700,
+                          background: b.status === "ACCEPTED" ? "#FCFAF53EE" : b.status === "COMPLETED" ? "#ECFDF5" : "#F3F4F6",
+                          color: b.status === "ACCEPTED" ? "#C96F52" : b.status === "COMPLETED" ? "#059669" : "#374151",
+                        }}
+                      >
+                        {b.status}
+                      </span>
+                      {isPending && (
+                        <div className="flex gap-1">
+                          <button onClick={() => handleUpdateStatus(b.id, 'ACCEPTED')} className="bg-green-500 text-white rounded px-2 py-1 text-xs">Accept</button>
+                          <button onClick={() => handleUpdateStatus(b.id, 'REJECTED')} className="bg-red-500 text-white rounded px-2 py-1 text-xs">Reject</button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

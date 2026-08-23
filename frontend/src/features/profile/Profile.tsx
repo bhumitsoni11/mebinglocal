@@ -6,13 +6,8 @@ import { ArrowLeft, Star, Shield, Globe, Heart, ChevronLeft, ChevronRight, Messa
 import { useLocalFriend } from "@/hooks/useLocalFriends";
 import { useReviews } from "@/hooks/useReviews";
 
-const JUNE_DATES = [
-  { day: 18, avail: true }, { day: 19, avail: false }, { day: 20, avail: true },
-  { day: 21, avail: true }, { day: 22, avail: false }, { day: 23, avail: true },
-  { day: 24, avail: true }, { day: 25, avail: false }, { day: 26, avail: true },
-  { day: 27, avail: true }, { day: 28, avail: true }, { day: 29, avail: false },
-  { day: 30, avail: true },
-];
+import { useAvailability } from "@/hooks/useAvailability";
+
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 export function Profile() {
@@ -21,6 +16,7 @@ export function Profile() {
   
   const { data: lf, isLoading: lfLoading } = useLocalFriend(id as string);
   const { data: reviews = [], isLoading: reviewsLoading } = useReviews(id as string);
+  const { data: availabilities = [] } = useAvailability(id as string);
 
   if (lfLoading) return <div className="p-10">Loading profile...</div>;
   if (!lf) return <div className="p-10">Profile not found</div>;
@@ -192,21 +188,27 @@ export function Profile() {
                 <div key={d} className="text-center" style={{ fontSize: 10, fontWeight: 600, color: "#8B9E94", paddingBottom: 4 }}>{d}</div>
               ))}
               {[null, null, null].map((_, i) => <div key={`e${i}`} />)}
-              {JUNE_DATES.map(({ day, avail }) => (
-                <button
-                  key={day}
-                  disabled={!avail}
-                  className="rounded-xl py-1.5 text-center transition-all"
-                  style={{
-                    fontSize: 12, fontWeight: 600,
-                    background: avail ? "#FCFAF53EE" : "transparent",
-                    color: avail ? "#C96F52" : "#8B9E94",
-                    border: avail ? "1px solid #FFD6C2" : "1px solid transparent",
-                  }}
-                >
-                  {day}
-                </button>
-              ))}
+              {availabilities.length > 0 ? availabilities.map((a: any, index: number) => {
+                const day = new Date(a.date).getDate();
+                const avail = a.isAvailable;
+                return (
+                  <button
+                    key={`${day}-${index}`}
+                    disabled={!avail}
+                    className="rounded-xl py-1.5 text-center transition-all"
+                    style={{
+                      fontSize: 12, fontWeight: 600,
+                      background: avail ? "#FCFAF53EE" : "transparent",
+                      color: avail ? "#C96F52" : "#8B9E94",
+                      border: avail ? "1px solid #FFD6C2" : "1px solid transparent",
+                    }}
+                  >
+                    {day}
+                  </button>
+                );
+              }) : (
+                <div className="col-span-7 text-center text-xs text-gray-500 py-4">No availability data</div>
+              )}
             </div>
           </div>
 

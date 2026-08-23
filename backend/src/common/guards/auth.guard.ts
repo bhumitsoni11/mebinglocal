@@ -51,6 +51,13 @@ export class AuthGuard implements CanActivate {
 
         const isAdmin = ['sonibhumit196@gmail.com', 'ramtakenamrata632@gmail.com'].includes(primaryEmail.toLowerCase());
 
+        if (isAdmin) {
+          const isGoogle = clerkUser.externalAccounts?.some((acc: any) => acc.provider === 'oauth_google');
+          if (!isGoogle) {
+            throw new UnauthorizedException('Admins must sign in with Google');
+          }
+        }
+
         dbUser = await this.prisma.user.create({
           data: {
             clerkId: verifiedToken.sub,

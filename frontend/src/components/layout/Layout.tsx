@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { useAuthStore } from '@/store/auth';
+import { useUser } from '@/hooks/useUser';
 
 import {
   Compass,
@@ -23,12 +26,20 @@ const NAV_ITEMS = [
 
 const BOTTOM_NAV = [
   { icon: User, label: "My Profile", path: "/app/local-dashboard" },
-  { icon: Settings, label: "Settings", path: "/app" },
+  { icon: Settings, label: "Settings", path: "/app/settings" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const { userRole, setRole } = useAuthStore();
+  const { data: user } = useUser();
+
+  useEffect(() => {
+    if (user?.role && user.role !== userRole) {
+      setRole(user.role);
+    }
+  }, [user, userRole, setRole]);
 
   const isActive = (path: string) =>
     path === "/app"
@@ -125,7 +136,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           {[
             { icon: User, label: "My Profile", path: "/app/local-dashboard" },
             { icon: Users, label: "Become a Local", path: "/app/become-local" },
-            { icon: MessageCircle, label: "Messages", path: "/app" },
+            { icon: MessageCircle, label: "Messages (AI)", path: "/app/messages" },
           ].map(({ icon: Icon, label, path }) => {
             const active = isActive(path) && path !== "/app";
             return (
@@ -145,6 +156,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </button>
             );
           })}
+
+          {userRole === 'ADMIN' && (
+            <>
+              <p style={{ fontSize: 10, fontWeight: 700, color: "#8B9E94", letterSpacing: "0.08em", textTransform: "uppercase", padding: "16px 12px 4px" }}>
+                Admin
+              </p>
+              <button
+                onClick={() => router.push("/app/admin")}
+                className="flex items-center gap-3 px-4 py-3 rounded-2xl text-left w-full transition-all"
+                style={{
+                  background: isActive("/app/admin") ? "#FCFAF53EE" : "transparent",
+                  color: isActive("/app/admin") ? "#C96F52" : "#2C4F3E",
+                  fontWeight: isActive("/app/admin") ? 700 : 500,
+                  fontSize: 14,
+                }}
+              >
+                <Shield size={18} strokeWidth={1.8} color={isActive("/app/admin") ? "#C96F52" : "#8B9E94"} />
+                Admin Dashboard
+              </button>
+            </>
+          )}
         </nav>
 
         {/* Bottom: Safety CTA */}

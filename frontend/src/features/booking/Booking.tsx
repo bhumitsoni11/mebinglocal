@@ -5,6 +5,9 @@ import { useParams } from 'next/navigation';
 
 import { ArrowLeft, CheckCircle, CreditCard, Clock, Shield, Star } from "lucide-react";
 import { useLocalFriend } from "@/hooks/useLocalFriends";
+import { useCreateBooking, useCreatePaymentOrder } from "@/hooks/useBooking";
+import { loadRazorpay } from "@/utils/razorpay";
+import { toast } from "sonner";
 
 const JUNE_DATES = [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 const AVAILABLE = [18, 20, 21, 23, 24, 26, 27, 28, 30];
@@ -22,6 +25,60 @@ export function Booking() {
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [duration, setDuration] = useState(2);
   const [confirmed, setConfirmed] = useState(false);
+  const createBooking = useCreateBooking();
+  const createPaymentOrder = useCreatePaymentOrder();
+
+  const handleBooking = async () => {
+    if (!selectedDate || !selectedTime) return;
+    
+    const startTimeStr = `2025-06-${selectedDate.toString().padStart(2, '0')}T${selectedTime.replace(' AM', ':00').replace(' PM', ':00')}:00.000Z`;
+    const endTimeStr = `2025-06-${selectedDate.toString().padStart(2, '0')}T23:59:00.000Z`;
+    
+    createBooking.mutate({
+      localFriendId: id as string,
+      startTime: startTimeStr,
+      endTime: endTimeStr,
+      totalAmount: Math.round((lf?.hourlyRate || 0) * duration * 100),
+    }, {
+      onSuccess: async (bookingData) => {
+        const res = await loadRazorpay();
+        if (!res) {
+          toast.error("Razorpay SDK failed to load. Are you online?");
+          return;
+        }
+        
+        createPaymentOrder.mutate({ bookingId: bookingData.id }, {
+          onSuccess: (orderData) => {
+            const options = {
+              key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_placeholder",
+              amount: orderData.amount,
+              currency: orderData.currency,
+              name: "MebingLocal",
+              description: `Booking with ${lf?.name}`,
+              order_id: orderData.id,
+              handler: function (response: any) {
+                // We mock verify on frontend since backend webhook handles real fulfillment
+                toast.success(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+                setConfirmed(true);
+              },
+              prefill: {
+                name: "Traveler",
+                email: "traveler@example.com",
+              },
+              theme: { color: "#C96F52" },
+            };
+            const rzp = new (window as any).Razorpay(options);
+            rzp.on("payment.failed", function (response: any) {
+              toast.error(response.error.description);
+            });
+            rzp.open();
+          },
+          onError: (err) => toast.error("Failed to create payment order: " + err.message)
+        });
+      },
+      onError: (err) => toast.error("Failed to create booking: " + err.message)
+    });
+  };
 
   if (lfLoading) return <div className="p-10">Loading booking...</div>;
   if (!lf) return <div className="p-10">Companion not found</div>;
@@ -230,7 +287,8 @@ export function Booking() {
         {/* CTA */}
         <div className="p-6" style={{ borderTop: "1px solid var(--border)" }}>
           <button
-            onClick={() => selectedDate && selectedTime && setConfirmed(true)}
+            onClick={handleBooking}
+            disabled={(!selectedDate || !selectedTime) || createBooking.isPending}
             className="w-full rounded-2xl py-4 transition-all"
             style={{
               background: selectedDate && selectedTime ? "#C96F52" : "#8B9E94",
@@ -238,9 +296,10 @@ export function Booking() {
               fontSize: 16,
               fontWeight: 700,
               boxShadow: selectedDate && selectedTime ? "0 4px 20px rgba(255,107,53,0.3)" : "none",
+              opacity: createBooking.isPending ? 0.7 : 1
             }}
           >
-            {selectedDate && selectedTime ? `Confirm Booking · $${total}` : "Select date & time to continue"}
+            {createBooking.isPending ? "Confirming..." : (selectedDate && selectedTime ? `Confirm Booking · $${total}` : "Select date & time to continue")}
           </button>
         </div>
       </div>

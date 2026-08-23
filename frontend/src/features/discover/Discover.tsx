@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 
 import { Search, Star, SlidersHorizontal, MapPin } from "lucide-react";
 import { useLocalFriends } from "@/hooks/useLocalFriends";
+import { useDebounce } from "@/hooks/useDebounce";
 
 const LANGUAGES = ["All", "English", "Spanish", "Japanese", "Hindi", "French", "Arabic"];
 const INTERESTS = ["All", "Food Tours", "Cultural Walks", "Photography", "Hidden Gems", "Shopping", "History"];
@@ -17,18 +18,22 @@ export function Discover() {
   const [selectedLang, setSelectedLang] = useState("All");
   const [selectedInterest, setSelectedInterest] = useState("All");
   const [sort, setSort] = useState("Top Rated");
+  const debouncedSearch = useDebounce(search, 500);
 
-  const { data: LOCAL_FRIENDS = [], isLoading } = useLocalFriends();
+  const filters = {
+    search: debouncedSearch || undefined,
+    womenOnly: womenOnly ? "true" : undefined,
+    maxHourlyRate: maxRate,
+    minRating: minRating,
+    language: selectedLang !== "All" ? selectedLang : undefined,
+    interest: selectedInterest !== "All" ? selectedInterest : undefined,
+    sortBy: sort,
+  };
 
-  const filtered = LOCAL_FRIENDS.filter((lf) => {
-    if (womenOnly && !lf.womenOnly) return false;
-    if (lf.hourlyRate > maxRate) return false;
-    if (lf.rating < minRating) return false;
-    if (selectedLang !== "All" && !lf.languages.includes(selectedLang)) return false;
-    if (selectedInterest !== "All" && !lf.interests.some((i) => i.includes(selectedInterest))) return false;
-    if (search && !lf.name.toLowerCase().includes(search.toLowerCase()) && !lf.city.toLowerCase().includes(search.toLowerCase())) return false;
-    return true;
-  });
+  const { data: LOCAL_FRIENDS = [], isLoading } = useLocalFriends(filters);
+
+  // Results are already filtered by the backend
+  const filtered = LOCAL_FRIENDS;
 
   return (
     <div className="flex h-full" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>

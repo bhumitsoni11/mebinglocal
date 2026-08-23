@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '../services/api';
 import { Review } from '../types';
 
@@ -20,5 +20,19 @@ export const useReviews = (localFriendId?: string) => {
         localFriendId: item.revieweeId,
       }));
     }
+  });
+};
+
+export const useCreateReview = () => {
+  const queryClient = useQueryClient();
+  
+  return useMutation({
+    mutationFn: async (data: { bookingId: string; rating: number; comment: string }) => {
+      const response = await api.post('/reviews', data);
+      return response.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['reviews'] });
+    },
   });
 };

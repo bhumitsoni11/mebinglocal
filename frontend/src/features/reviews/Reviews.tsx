@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useParams } from 'next/navigation';
-
-
-import { ArrowLeft, Star, Camera, ThumbsUp } from "lucide-react";
+import { ArrowLeft, Star, Camera, ThumbsUp, X } from "lucide-react";
 import { useLocalFriend } from "@/hooks/useLocalFriends";
-import { useReviews } from "@/hooks/useReviews";
+import { useReviews, useCreateReview } from "@/hooks/useReviews";
+import { useTravelerBookings } from "@/hooks/useBooking";
+import { toast } from "sonner";
 
 const EXPERIENCE_PHOTOS = [
   "https://images.unsplash.com/photo-1780241925740-23c28c23faef?w=400&h=300&fit=crop&auto=format",
@@ -34,9 +35,43 @@ export function Reviews() {
 
   const { data: lf, isLoading: lfLoading } = useLocalFriend(id as string);
   const { data: reviews = [], isLoading: reviewsLoading } = useReviews(id as string);
+  const { data: bookings = [] } = useTravelerBookings();
+  const createReview = useCreateReview();
+  
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [rating, setRating] = useState(5);
+  const [comment, setComment] = useState("");
 
   if (lfLoading) return <div className="p-10">Loading profile...</div>;
   if (!lf) return <div className="p-10">Profile not found</div>;
+
+  const handleReviewSubmit = () => {
+    // Find a completed booking for this local friend
+    const eligibleBooking = bookings.find((b: any) => 
+      b.localFriendId === id && b.status === "COMPLETED"
+    );
+
+    if (!eligibleBooking) {
+      toast.error("You can only review a companion after completing a booking with them.");
+      return;
+    }
+
+    createReview.mutate({
+      bookingId: eligibleBooking.id,
+      rating,
+      comment
+    }, {
+      onSuccess: () => {
+        toast.success("Review submitted!");
+        setShowReviewForm(false);
+        setComment("");
+        setRating(5);
+      },
+      onError: (err: any) => {
+        toast.error(err?.response?.data?.message || "Failed to submit review");
+      }
+    });
+  };
 
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -52,10 +87,52 @@ export function Reviews() {
           <h1 style={{ fontSize: 22, fontWeight: 800, color: "#1A3B2B" }}>Reviews for {lf.name}</h1>
           <p style={{ fontSize: 13, color: "#8B9E94" }}>{lf.reviewCount} verified reviews · {lf.city}</p>
         </div>
-        <button className="ml-auto rounded-2xl px-5 py-3" style={{ background: "#C96F52", color: "#FCFAF5", fontSize: 14, fontWeight: 700 }}>
+        <button onClick={() => setShowReviewForm(true)} className="ml-auto rounded-2xl px-5 py-3" style={{ background: "#C96F52", color: "#FCFAF5", fontSize: 14, fontWeight: 700 }}>
           Rate & Review
         </button>
       </div>
+
+      {showReviewForm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="bg-white rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
+            <button onClick={() => setShowReviewForm(false)} className="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-900 rounded-full bg-gray-100">
+              <X size={18} />
+            </button>
+            <h2 className="text-xl font-bold text-[#1A3B2B] mb-4">Write a Review</h2>
+            
+            <div className="mb-4">
+              <label className="block text-sm font-bold text-[#2C4F3E] mb-2">Rating</label>
+              <div className="flex gap-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button key={star} onClick={() => setRating(star)}>
+                    <Star size={28} color={star <= rating ? "#C96F52" : "#CBD5E1"} fill={star <= rating ? "#C96F52" : "none"} />
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <div className="mb-6">
+              <label className="block text-sm font-bold text-[#2C4F3E] mb-2">Your Experience</label>
+              <textarea 
+                value={comment} 
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="How was your time with this companion?"
+                rows={4}
+                className="w-full rounded-xl px-4 py-3 outline-none resize-none bg-[#FCFAF5] border border-gray-200"
+              />
+            </div>
+            
+            <button 
+              onClick={handleReviewSubmit} 
+              disabled={createReview.isPending}
+              className="w-full rounded-xl py-3 text-white font-bold transition-all"
+              style={{ background: "#C96F52", opacity: createReview.isPending ? 0.7 : 1 }}
+            >
+              {createReview.isPending ? "Submitting..." : "Submit Review"}
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="grid px-10 py-8 gap-8" style={{ gridTemplateColumns: "320px 1fr" }}>
 
