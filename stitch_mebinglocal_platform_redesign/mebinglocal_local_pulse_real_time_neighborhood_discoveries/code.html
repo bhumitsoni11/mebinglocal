@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "outline-variant": "#e0bfba", "on-primary": "#ffffff", "on-tertiary-fixed": "#2f1500", "on-secondary-container": "#4c6861", "outline": "#8c716c", "tertiary": "#8d4b00", "tertiary-fixed-dim": "#ffb77d", "primary": "#a83223", "on-error": "#ffffff", "surface-container": "#ebefea", "on-secondary-fixed": "#02201b", "tertiary-fixed": "#ffdcc3", "surface-container-low": "#f0f5f0", "on-surface-variant": "#58413d", "on-secondary": "#ffffff", "surface-bright": "#f6fbf5", "on-tertiary-fixed-variant": "#6e3900", "on-surface": "#181d1a", "secondary-container": "#c7e6dd", "secondary": "#48645d", "on-error-container": "#93000a", "tertiary-container": "#b15f00", "on-secondary-fixed-variant": "#304c46", "on-tertiary-container": "#fffbff", "on-background": "#181d1a", "surface": "#f6fbf5", "error-container": "#ffdad6", "surface-tint": "#ab3425", "secondary-fixed-dim": "#aecdc4", "on-primary-fixed-variant": "#8a1c10", "secondary-fixed": "#cae9e0", "background": "#f6fbf5", "surface-container-highest": "#dfe4df", "on-primary-container": "#fffbff", "inverse-on-surface": "#edf2ed", "primary-fixed-dim": "#ffb4a8", "inverse-surface": "#2c322e", "primary-fixed": "#ffdad4", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#410100", "surface-variant": "#dfe4df", "surface-dim": "#d7dbd6", "inverse-primary": "#ffb4a8", "surface-container-high": "#e5e9e4", "primary-container": "#c94a38" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "3rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin-tablet": "2rem", "gutter": "1.5rem", "gutter-mobile": "1rem", "margin-mobile": "1.25rem" }, "fontFamily": { "headline-lg": [ "Plus Jakarta Sans" ], "display-hero-mobile": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "body-xl": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "label-lg": [ "Inter" ], "headline-xl": [ "Plus Jakarta Sans" ], "label-md": [ "Inter" ], "display-hero": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "label-caps": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ] }, "fontSize": { "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-hero-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "body-xl": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-xl-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "display-hero": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-caps": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm shrink-0"><img alt="MebingLocal Wordmark Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wt2CZaen_XHwiN4LhFo5P_d4YqOcxyVoIfwqBhFlAChP502EqtZCSP_6XiGudVk6cfBSS3TT4LmQjcyHz5vlfvVRWXD7I9ZsSNETXPJsaXdbEYbjPEUN913bgnIa7QH3d2sdKB8Dq4ZECQ9wuM6YrEK9GaBFX516saY4eMkiHzGbbdTB2xIS_j0bGUf5Z4EY-FqRE2QSnGiWMosvXMcaEene43DBiJkCWli5qTCVZCB6z47RJOi4ZUBoU9"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">MebingLocal</span></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm"><a aria-current="page" class="transition-colors bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="local-friends" href="#">Local Friends</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="experiences" href="#">Experiences</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-planner" href="#">AI Planner</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="local-pulse" href="#">Local Pulse</a></nav><div class="flex items-center gap-space-sm shrink-0"><button class="hidden sm:inline-flex items-center justify-center px-space-md py-space-xs rounded-full bg-surface-container-low text-primary hover:bg-surface-container font-label-lg text-label-lg transition-colors" type="button">Become a Local</button><button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-base">language</span><span class="font-label-md text-label-md">EN · USD</span></button><button class="relative p-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary"></span></button><button class="flex items-center gap-space-xs pl-space-xs pr-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-colors" type="button"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZl0dmZxxUXhEDxnX2U5MdJH4xdhtr7V2Jax4qmrlU0B0TfFYAKyMB1Flqq64vYGrS92LCahBacMH33o6D-Tp6Mjiz9mUcChC-g_7TFALnqp35fl4mGp0WcWBFzwkSoj7e_PhJSsjFWSUuFvWw8Hse3SYxldRXwIChzCIDucjGG06aIHYyDdfZBShezosSbrSWCnHCFvxyt8WVlHb_wUeSqzciRFCx-6hV4lDq71liN8e178FM2CnUWA"/><span class="material-symbols-outlined text-base text-on-surface-variant">expand_more</span></button></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<script>
+    (() => {
+      const activeNav = document.querySelector('nav a[data-path="local-pulse"]');
+      if (activeNav) {
+        document.querySelectorAll('nav a').forEach(el => {
+          el.className = "px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors";
+        });
+        activeNav.className = "bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm transition-all";
+      }
+    })();
+  </script>
+<div class="w-full max-w-7xl mx-auto px-6 pt-10 pb-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/60 text-on-secondary-fixed mb-3">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Live Community Wire</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Local Pulse</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">
+          Live recommendations, pop-up events, seasonal flavors, and neighborhood whispers shared directly by residents this week.
+        </p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative inline-block text-left" id="cityDropdownWrapper">
+<button class="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-surface-container-lowest shadow-sm hover:bg-surface-container-low transition-all" id="cityDropdownBtn" type="button">
+<span class="material-symbols-outlined text-primary text-xl">near_me</span>
+<div class="text-left">
+<span class="block font-label-caps text-label-caps text-on-surface-variant uppercase leading-none">Exploring</span>
+<span class="font-headline-sm text-headline-sm text-on-surface leading-tight" id="selectedCityLabel">Tokyo, Japan</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base">expand_more</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-60 rounded-xl bg-surface-container-lowest shadow-xl z-30 py-2" id="cityMenu">
+<a class="city-option flex items-center justify-between px-4 py-2.5 text-on-surface font-label-lg text-label-lg bg-surface-container-low" data-city="Tokyo, Japan" href="#"><span>Tokyo, Japan</span><span class="material-symbols-outlined text-primary text-sm">check</span></a>
+<a class="city-option flex items-center justify-between px-4 py-2.5 text-on-surface font-label-lg text-label-lg hover:bg-surface-container-low" data-city="Florence, Italy" href="#"><span>Florence, Italy</span></a>
+<a class="city-option flex items-center justify-between px-4 py-2.5 text-on-surface font-label-lg text-label-lg hover:bg-surface-container-low" data-city="Mexico City, Mexico" href="#"><span>Mexico City, Mexico</span></a>
+<a class="city-option flex items-center justify-between px-4 py-2.5 text-on-surface font-label-lg text-label-lg hover:bg-surface-container-low" data-city="Lisbon, Portugal" href="#"><span>Lisbon, Portugal</span></a>
+<a class="city-option flex items-center justify-between px-4 py-2.5 text-on-surface font-label-lg text-label-lg hover:bg-surface-container-low" data-city="Paris, France" href="#"><span>Paris, France</span></a>
+<a class="city-option flex items-center justify-between px-4 py-2.5 text-on-surface font-label-lg text-label-lg hover:bg-surface-container-low" data-city="Seoul, South Korea" href="#"><span>Seoul, South Korea</span></a>
+<a class="city-option flex items-center justify-between px-4 py-2.5 text-on-surface font-label-lg text-label-lg hover:bg-surface-container-low" data-city="New York, USA" href="#"><span>New York, USA</span></a>
+</div>
+</div>
+<div class="hidden sm:flex items-center p-1 bg-surface-container rounded-full">
+<button class="time-btn px-4 py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-xs transition-all" type="button">Happening This Week</button>
+<button class="time-btn px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" type="button">Today</button>
+<button class="time-btn px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" type="button">Upcoming Weekend</button>
+</div>
+</div>
+</div>
+<div class="mt-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+<button class="vibe-pill shrink-0 px-4 py-2 rounded-full bg-secondary text-on-secondary font-label-md text-label-md shadow-sm transition-all" data-vibe="all">
+        All Updates
+      </button>
+<button class="vibe-pill shrink-0 px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container font-label-md text-label-md transition-all" data-vibe="food">
+        Food &amp; Drink Whispers
+      </button>
+<button class="vibe-pill shrink-0 px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container font-label-md text-label-md transition-all" data-vibe="markets">
+        Pop-up Markets
+      </button>
+<button class="vibe-pill shrink-0 px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container font-label-md text-label-md transition-all" data-vibe="music">
+        Underground Music &amp; Art
+      </button>
+<button class="vibe-pill shrink-0 px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container font-label-md text-label-md transition-all" data-vibe="seasonal">
+        Seasonal Spots
+      </button>
+<button class="vibe-pill shrink-0 px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container font-label-md text-label-md transition-all" data-vibe="walks">
+        Neighborhood Walks
+      </button>
+</div>
+</div>
+<section class="w-full max-w-7xl mx-auto px-6 py-6">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low shadow-sm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+<div class="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="px-2.5 py-1 rounded-full bg-secondary/15 text-secondary font-label-caps text-label-caps uppercase">Neighborhood Spotlight</span>
+<span class="text-on-surface-variant font-label-md text-label-md">Curated 2 days ago</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Yanaka, Tokyo</h2>
+<p class="font-headline-sm text-headline-sm text-primary mt-1">The Nostalgic Low-City Craft Quarter</p>
+<blockquote class="mt-6 p-4 rounded-lg bg-surface-container-lowest shadow-xs text-on-surface-variant font-body-md text-body-md relative">
+<span class="material-symbols-outlined text-secondary-fixed-dim absolute -top-3 left-3 text-3xl">format_quote</span>
+<p class="pt-1">
+                "While Shibuya races toward the future, Yanaka pauses. Here, iron kettles hiss softly behind sliding cedar doors, cats sunbathe on stone steps, and every artisan has an hour to share a warm cup of sencha."
+              </p>
+<footer class="mt-3 flex items-center gap-3">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Intimate portrait of Japanese host Kenji Tanaka smiling warmly in a dark indigo linen haori jacket inside an authentic woodcraft studio in Yanaka Tokyo warm natural rim lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdEDqEnENZAo4pE6aA_DwF0YLyNV5UMbJCOGDigbOEtDl5427MxzCYLaBgwlUDGnUUFxYbP12igYOFCcUYMz8PdMiDhA-OeFCb899dj6lKDYN8BjVGTnbFkYrqy61b1b93QvoJ346QBCNpli_xq2cTqQ7hDfFZsmAYJtAXpxP0y2pbmbZoOOsInAt7h5gRRvv1oYDXmb9r6DxAklr_psCUVTa3LBPxwUbqfoGbEhjOzG0SxYFZwKgMGg"/>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Kenji Tanaka</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Wood artisan &amp; Yanaka resident for 19 years</span>
+</div>
+</footer>
+</blockquote>
+</div>
+<div class="pt-8">
+<button class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container shadow-sm transition-transform active:scale-95" type="button">
+<span>Explore Yanaka with Kenji</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3 p-6 lg:p-8 bg-surface-container">
+<div class="group rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Traditional Japanese family senbei rice cracker shop in Yanaka Tokyo with glass jars stacked high and elderly craftsman fanning charcoal grill glowing amber warm golden hour." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEcXu2tHf9gkTFtZ2hY017lEoZfVGrv27i-kdWKj4XrE5Z_g5xkieWXbeNqN3ooy5cn_bP44a3ivTpbpGzcJsPfeTZU1MlQgZIDhVv3Y_4pNqFYWlS_AmdJx8OhrMkubbn2T4pjcgcPWGY93iy5hIK0Qr0c_KTKZbxrnQe3uiugFS3F4Nj3-nlP2yswitPgl5YIiYEEDwimmo0Cv4Va442ORor5P7EHwyULCh9FNlUov7AO0ej__iRqw"/>
+</div>
+<div class="p-4 flex flex-col justify-between flex-1">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-tertiary font-bold">Spot 01 · 70-Yr Senbei Stand</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 leading-snug">Kikumi Senbei</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Square soy sauce crackers hand-flipped over binchotan coals since 1940. Order the sansho pepper batch.</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span>Yanaka Ginza Alley</span>
+<span class="material-symbols-outlined text-primary text-base">pin_drop</span>
+</div>
+</div>
+</div>
+<div class="group rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Quiet vintage Japanese kissaten cafe in Tokyo with aged dark mahogany woodwork a brass syphon coffee brewer dripping slow drip dark roast ambient candle-like glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgJE9hFGEabWspiwtF-nji3EB387chwmsJWxAjIamULduKAYp09ucdt9tPFWcTHkuYvcRtyjaeihLrJxAWj181oUpvJTwv3cwuAaDXZ3l3alvS2nDb9_JbAAQVW2SYPsuVw7NcW5N6UL64g1bR8owSQgr2_yMRj8IwAOrvk_JdPy6FAzqI493Mq2ZfWmPxEcZB9S5VpuKMRdIWGq4NNj-5pFKorCHC1OzcDHUrXrCXwBsYCKB1o-lw9w"/>
+</div>
+<div class="p-4 flex flex-col justify-between flex-1">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-tertiary font-bold">Spot 02 · Hidden Kissaten</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 leading-snug">Kayaba Coffee Corner</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Built in 1916. Sip matcha lattes seated on tatami straw mats beneath warm raw timber joists.</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span>Near Nezu Shrine</span>
+<span class="material-symbols-outlined text-primary text-base">pin_drop</span>
+</div>
+</div>
+</div>
+<div class="group rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Rustic Japanese pottery shop interior in Tokyo lined with earthy ceramic teacups glazed in moss green and terracotta textured wabi sabi aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC2-at8rqVgxinFHqDCO1cw7Nydz1Rul1BhekOcPF7j70WcaMkSWUx3g79Iaz2nbqnbmSJROp00Xulm8cOLU0hXYwrh3b2BP0SifGqdl9fGpzw5CUliOitjlaMgxeUoqPB0pkwStAbhA3prjePNECAjnQQgqgWJ-ubr5tZf9zXb79GgGxuv2po_2m-63GBRRrlh9Yue2L7pBg58-OvcPhhFGI_I0D0W-BQ9-3T8BFZQe5r0kDVdh0lsg"/>
+</div>
+<div class="p-4 flex flex-col justify-between flex-1">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-tertiary font-bold">Spot 03 · Ceramic Studio</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 leading-snug">Toubou Touka</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Ungummed earthware teacups and antique celadon sake decanters sourced from Bizen kilns.</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span>Hebi-michi Curve</span>
+<span class="material-symbols-outlined text-primary text-base">pin_drop</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full max-w-7xl mx-auto px-6 py-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Live Neighborhood Pulse</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time alerts, seasonal updates, and gatherings curated by verified Tokyo locals.</p>
+</div>
+<div class="hidden sm:flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+<span>Auto-refreshed 8m ago</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<article class="flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+<div class="relative h-56 w-full overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="Lively dusk street festival in Shimokitazawa Tokyo vibrant paper lanterns hanging across vintage thrift store alleys warm amber glows people holding street food." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKJZxlNr5zbhmYg8K-1i7iHNSTaXcaY5MkfXosCtvS1D_kqPZ7J3-g2jiFikWt-Dpz1lAS8Nv2FqQF3rFZMEdsceYjT6OnaB5YYQekcybRa8ftJ8PS5fQ-f2ztXZ1QDGGg4W5e8hcuQSfohAcaoN0OKyT9a7NgFP7t1lGE7Lv-_qOu81hzysPoQwD5RfjhJKnt3Lau6Os7z16lD8wE83XBvvHsyDD3nhYgKzBvURDB9AzVBqULRn21yg"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-caps text-label-caps uppercase">Street Festival</span>
+</div>
+<button class="bookmark-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Bookmark" type="button">
+<span class="material-symbols-outlined text-lg">bookmark</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<div class="flex items-center gap-2">
+<img class="w-7 h-7 rounded-full object-cover" data-alt="Portrait of chic Japanese resident Yuka wearing knitted camel scarf outdoors in trendy Tokyo neighborhood smiling softly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIm9k5oyc-fF4bGkWJznj9yrq4Wyns-_bxXPtqLD533y3gXHYaS9L7-PVj9bLI2xGNv1t3rCC3BvdchqvLvx-l8LTpa4S_Fykas5WBdUfJBes1Ou7b3PgZAjxm3W02IIjViBO0EqS13fOP8_W8BZmncpLWdT7ZsucjTz8tsQ2adLa_7uZDEKTFz8fXh67vG4V1Vpavz2Px7qpCk2knZZH3LCyHcsYNNt4PwfWjhQShyHL99y3debpj5A"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Yuka M.</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[10px] mr-0.5">verified</span>Local Friend
+                    </span>
+</div>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">3 hrs ago</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer leading-tight">
+              Autumn Matsuri in Shimokitazawa this Saturday night
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+              The annual Minami-guchi portable shrine procession begins at 6:30 PM. Over 30 indie coffee vendors and izakayas are putting outdoor benches along the pedestrian alleys with hot spiced yuzu drinks.
+            </p>
+</div>
+<div class="mt-5 pt-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+<span class="material-symbols-outlined text-base text-primary">location_on</span>
+<span>Shimokitazawa, Setagaya</span>
+<span class="mx-1">·</span>
+<span class="text-primary font-semibold">42 bookmarked</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-2">
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-base">chat_bubble_outline</span>
+<span>Ask Yuka</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="View location on map" type="button">
+<span class="material-symbols-outlined text-lg">map</span>
+</button>
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="Share update" type="button">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+<div class="relative h-56 w-full overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="Artfully plated slices of fresh Japanese persimmon with aged raw goat cheese and delicate glass flask of unfiltered natural junmai sake on dark burnt-cedar counter." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmEAmp3WppHNVzXVd2_n8ufyb9f_ozoYbZ7nfKVDRA6O_M6tRFwS6szE_zMCwvVCM6jkqVAW3VR937Q4YzuwAtrxq_KttsJAFGBMzAEwhUGidYAcdgK0uEGVbg333MkLK3GvBReTO9q8avhayNy-m5YaGEvQZ_PrfaM07Oq-HZGoLQ--22hBUchXkZg5n9e5wf-zzOVucBh8t3zyLgn18EW30a7dlSh_HR01G3dbBGWOXDPe4bNu0KgA"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-tertiary font-label-caps text-label-caps uppercase">Seasonal Food</span>
+</div>
+<button class="bookmark-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Bookmark" type="button">
+<span class="material-symbols-outlined text-lg">bookmark</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<div class="flex items-center gap-2">
+<img class="w-7 h-7 rounded-full object-cover" data-alt="Host Kenji Tanaka profile photo wearing round spectacles and warm charcoal apron." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ7ydT8jBk3EcJaTYUiI3THFP04E0kj9V5PW9l9hjBIleyjzk1CbmYW1Jy0KwwkhgOc_ZmDIlSxjye9S4L_o1XyVTwFwpFPMhPAUwZMq6D2pHn97Mxz8e-PwWFt8MxwkELJOtDsekgVBKvqs894yxrfAS2zVYpf9yRBDhUIR0G9zAnbAMOCyxIXxTq3nkWhpzKErocPgBW-3Dh9myup2PIMt6iBBGUgjG8EbRHemsZp4_Sx5RMIiCa6w"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Kenji T.</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[10px] mr-0.5">verified</span>Host
+                    </span>
+</div>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">5 hrs ago</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer leading-tight">
+              Wild persimmon &amp; natural sake pairing menu just dropped at Bar Kodama
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+              Chef Sato harvested sweet fuyu persimmons from his family's orchard in Yamanashi. Only available for the next ten days alongside three unpasteurized sakes. Space is limited to 7 bar stools.
+            </p>
+</div>
+<div class="mt-5 pt-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+<span class="material-symbols-outlined text-base text-primary">location_on</span>
+<span>Nakameguro Backstreet</span>
+<span class="mx-1">·</span>
+<span class="text-primary font-semibold">68 bookmarked</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-2">
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-base">chat_bubble_outline</span>
+<span>Ask Kenji</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="View location on map" type="button">
+<span class="material-symbols-outlined text-lg">map</span>
+</button>
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="Share update" type="button">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+<div class="relative h-56 w-full overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="Moody nighttime rooftop gathering in Tokyo with string fairy lights musician playing upright bass against twinkling urban skyline silhouette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGJoNrgGsfWh3lVAETUAv9qWTVft3KA7rbFe-ESaut0dAiOTIeNR_q9v32X8-tEkiP2d8R4fMK8jt-pMEg-m18PnT0AE3nHGcD_PQj88WFA4hCEChDMYpDhjw9hqM2wFk0O88XyP2he_9P6uu-29nbE9H5b-WZA2YVqXT6weP4fc-xmWGe7Is52RVCIq0FXeualEQmW6jCvffv2wEOpWoOBjneI7pyt01BYzWkX_v8FYKW9nbdPV6IEw"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-caps text-label-caps uppercase">Music &amp; Nightlife</span>
+</div>
+<button class="bookmark-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Bookmark" type="button">
+<span class="material-symbols-outlined text-lg">bookmark</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<div class="flex items-center gap-2">
+<img class="w-7 h-7 rounded-full object-cover" data-alt="Portrait of jazz saxophonist Daiki in vintage leather jacket smiling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBasSOdaH1XXW3Fuv5W_6CDS3e-wBaH_uoPioxaMLSPjUJVTrIiY3d7_9chjxS4XgzKN-5P0W965SEgqa5ymPW0kljVlkMfhEO7bzzCa4pe0-8YG9Q-8utZwxSI7Vg83kkLXGxYLv2N5W704l8OmhOmurOoc9FJFeUXhwKhMpW43rI7tfTm8fb0k5DmZ1BoPqDEiIXYKfTIXEIgHQkqmrnkpQhaO4jRF2znMbII7UIeuKQheGE8i0uhNA"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Daiki K.</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[10px] mr-0.5">verified</span>Host
+                    </span>
+</div>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">8 hrs ago</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer leading-tight">
+              Secret rooftop jazz jam session behind the old fabric warehouse
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+              Unannounced acoustic trio set playing modal jazz from 9 PM until midnight. BYO drinks. Enter through the cargo elevator beside the dry cleaner on Kuramae-dori.
+            </p>
+</div>
+<div class="mt-5 pt-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+<span class="material-symbols-outlined text-base text-primary">location_on</span>
+<span>Kuramae, Taito</span>
+<span class="mx-1">·</span>
+<span class="text-primary font-semibold">114 bookmarked</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-2">
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-base">chat_bubble_outline</span>
+<span>Ask Daiki</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="View location on map" type="button">
+<span class="material-symbols-outlined text-lg">map</span>
+</button>
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="Share update" type="button">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+<div class="relative h-56 w-full overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="Majestic golden yellow gingko tree canopy creating a glowing tunnel of leaves over a clean cobblestone path in Meiji Jingu Gaien Tokyo autumn foliage." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVJyrzxuszBZN7kT0Z__wkUPVWwMGarvUiVvMkjNN28yIE3jdXjW6-gI0ALDSoz7mCzwgIWBdEdt8vSMF-QFTJe7zjsBOcHt4dmZOn68lKi52IMDnqmyh5d43HMagBkToB4QipikRBr4baIfb18o46M5ps854_4nnprXh_0H8POrzWy6vWpkk4Vt83D3vP6PW-vvTN3GhIDjQ93nJZoQ0VULzQejvpp5bUmPqpFyQwV-VB8nTqtUr6ww"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-tertiary font-label-caps text-label-caps uppercase">Nature &amp; Foliage</span>
+</div>
+<button class="bookmark-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Bookmark" type="button">
+<span class="material-symbols-outlined text-lg">bookmark</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<div class="flex items-center gap-2">
+<img class="w-7 h-7 rounded-full object-cover" data-alt="Portrait of nature photographer Aoi wearing wool beret and camera strap." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJJN3GsQBvX0gqfw5WbmM_C2zJx-3-q0mmJx7UQ4DpAn1setP_fRwGcp7DpJI9H3OosQC70Dd_c9qZHpJ0OSSvg4B0dFJl6XmTiUMLcJ23-wLifEf9fGVyGdP-SY03F2_Wk-V-7RnBHAjE3zq6O2JtS4snOT8d-wDoZl9VnIWzPbUw1-Z-CDS7ofdB65qEsVKUOngc7YKAKN3xF8ZvwxTjbAB_FDb4lxk2RiiBrq5PuTtQfFkPJMBhQQ"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Aoi S.</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[10px] mr-0.5">verified</span>Local Friend
+                    </span>
+</div>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">12 hrs ago</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer leading-tight">
+              Hidden gingko tree avenue in Meiji Jingu Gaien reaching peak golden foliage
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+              Avoid the tourist crowds by visiting between 7:00 AM and 8:15 AM. The low horizontal morning sunlight pierces the golden canopy at the western intersection right now.
+            </p>
+</div>
+<div class="mt-5 pt-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+<span class="material-symbols-outlined text-base text-primary">location_on</span>
+<span>Aoyama / Gaienmae</span>
+<span class="mx-1">·</span>
+<span class="text-primary font-semibold">89 bookmarked</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-2">
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-base">chat_bubble_outline</span>
+<span>Ask Aoi</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="View location on map" type="button">
+<span class="material-symbols-outlined text-lg">map</span>
+</button>
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="Share update" type="button">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+<div class="relative h-56 w-full overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="Dim atmospheric underground vinyl listening bar in Shibuya Tokyo warm tube amplifiers glowing red walls lined with vintage jazz records turntable spinning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkgIAwvJYiDEkpF7O03l5RSJuK1YU2C4X1x5L5ERlZi1u3Ogd19SSXu9MGRMnc1Y_X1-VIb1gPz2BiS4TJ8pN83IVz7L-9Y0Az9NPkvEY4ajYLugEkx7g96aC3mvi5h3sqeAztznG5IrGfryTstryzGrieuZIL_NzDk_pAA2SEPyGikd_YAZm54cZwwRlpL82kyb4JkYwan4Bdac5AgadAVcEmjcdjQ_sdi7dUI1_K-fIorucDVFh2FQ"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-caps text-label-caps uppercase">Arts &amp; Music</span>
+</div>
+<button class="bookmark-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Bookmark" type="button">
+<span class="material-symbols-outlined text-lg">bookmark</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<div class="flex items-center gap-2">
+<img class="w-7 h-7 rounded-full object-cover" data-alt="Portrait of audio enthusiast host Tatsuya holding a classic Japanese city-pop vinyl record." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCivaaE4jYDN07ZWVqiirTyhNcCe0WjWSVKtm48aA3qMiDhC7Q3YXU5aMk2ZdCtoovxgehxzZmyDiFQC0uGqDH0ro_4cnZfje0tQzmxVk6i17vgWYHtjHa9RUbtZFCu3hCq1A6QbDPJH4QoGU6T4fQOoyY8pbC6vUWHDyL_y6BpZjEnblClmg22IamJu_oOOxH7vdiUY1f0VdfpXmgyKAiFE0xDaabQ1bh0MlFI2zzaCp6HzL_gNW-mQ"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Tatsuya</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[10px] mr-0.5">verified</span>Host
+                    </span>
+</div>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1 day ago</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer leading-tight">
+              Underground vinyl listening bar opening a weekend pop-up in Shibuya
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+              Playing rare 1970s City Pop and Japanese ambient records on restored Tannoy dual-concentric speakers. Hand-drip iced coffee and single malt highballs served by guest bartender Maya.
+            </p>
+</div>
+<div class="mt-5 pt-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+<span class="material-symbols-outlined text-base text-primary">location_on</span>
+<span>Udagawacho, Shibuya</span>
+<span class="mx-1">·</span>
+<span class="text-primary font-semibold">153 bookmarked</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-2">
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-base">chat_bubble_outline</span>
+<span>Ask Tatsuya</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="View location on map" type="button">
+<span class="material-symbols-outlined text-lg">map</span>
+</button>
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="Share update" type="button">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+<div class="relative h-56 w-full overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="Traditional Japanese soba noodle master cutting hand-kneaded buckwheat noodles with broad steel blade on wooden counter dusted with white buckwheat flour." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdPKeXlI-YS6SxtI80VT59EL0QYuM7BL3pCVFrKymJjll1K9xZi4RDFKgECvObm7YQ9U9ZO3UxR3XoSHm-aOD2uUvaF3LrfXzKlCC7JJptYhhXjjqPW_C2vMHlS5g_wHFrMAeTcRKDKZIB8BjnBZWLy8calnVSRSq-YM3HLft8k2K4OvZxY1CIaEFpKFJjiznbmS57CvBPkLviU_gwhNUs7OFcycM4b-KJpbE3awhnKBVNSNR531xbrg"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase">Hidden Culinary</span>
+</div>
+<button class="bookmark-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Bookmark" type="button">
+<span class="material-symbols-outlined text-lg">bookmark</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<div class="flex items-center gap-2">
+<img class="w-7 h-7 rounded-full object-cover" data-alt="Elderly artisan Japanese soba chef smiling serenely with white bandana headpiece." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4GK6TyE0CCYIwHtIS5-M2LmSAMZzN1_gxYp6TyWLPC_r0yStYeJPao-pJ6GCKPBmySBHdDloM8R1gJr4pOMAjAuLnTcWRhuewNvLnPdxxrgipCH9hPSArRbi0lZCmRDDgG_29OlpWEes5Yj86tVGLy4tDBSiFpekLoIqvaPzMydgrfN8s-skwlT6KI5XCjtVJZkHb7pAPmRTdTFCDUx3TmAunuAsgyglm62bUrzQJRUU6V2__ZpXy_g"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Master Hiroshi</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[10px] mr-0.5">verified</span>Host
+                    </span>
+</div>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1 day ago</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer leading-tight">
+              Third-generation handmade soba master offering impromptu lunch tasting table
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+              Fresh freshly milled buckwheat just arrived from Nagano today. Setting up a communal 6-seat tasting flight comparing raw Juwari (100%) vs Ni-Hachi noodles alongside seasonal duck dipping broth.
+            </p>
+</div>
+<div class="mt-5 pt-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+<span class="material-symbols-outlined text-base text-primary">location_on</span>
+<span>Kanda, Chiyoda</span>
+<span class="mx-1">·</span>
+<span class="text-primary font-semibold">97 bookmarked</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-2">
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-base">chat_bubble_outline</span>
+<span>Ask Hiroshi</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="View location on map" type="button">
+<span class="material-symbols-outlined text-lg">map</span>
+</button>
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" title="Share update" type="button">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<div class="mt-12 flex justify-center">
+<button class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-xs font-label-lg text-label-lg transition-all" id="loadMoreBtn" type="button">
+<span class="material-symbols-outlined text-primary text-base">refresh</span>
+<span>Load Earlier Whispers from Tokyo</span>
+</button>
+</div>
+</section>
+<section class="w-full max-w-7xl mx-auto px-6 py-12">
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-secondary to-on-secondary-container text-on-secondary p-8 md:p-12 shadow-lg">
+<div class="relative z-10 max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest/20 backdrop-blur-md text-surface-container-lowest mb-4">
+<span class="material-symbols-outlined text-base">campaign</span>
+<span class="font-label-caps text-label-caps uppercase">Community Contribution</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-secondary tracking-tight">
+          Are you a local resident?
+        </h2>
+<p class="font-body-lg text-body-lg text-on-secondary/90 mt-2">
+          Share your neighborhood pulse and guide conscious travelers to the quiet corners, ephemeral markets, and places you love.
+        </p>
+<div class="mt-8 flex flex-wrap items-center gap-4">
+<button class="px-6 py-3.5 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container shadow-md transition-all active:scale-95 flex items-center gap-2" id="openPostPulseModal" type="button">
+<span class="material-symbols-outlined text-lg">add_location_alt</span>
+<span>Post a Pulse Update</span>
+</button>
+<a class="px-6 py-3.5 rounded-lg bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 backdrop-blur-sm text-on-secondary font-label-lg text-label-lg transition-colors" href="#">
+            Learn About Host Rewards
+          </a>
+</div>
+</div>
+<div class="absolute -right-12 -bottom-12 w-96 h-96 rounded-full bg-primary/20 blur-3xl pointer-events-none"></div>
+</div>
+</section>
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-inverse-surface/60 backdrop-blur-sm" id="pulseModal">
+<div class="w-full max-w-lg bg-surface-container-lowest rounded-xl shadow-2xl overflow-hidden p-6 sm:p-8">
+<div class="flex items-center justify-between pb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">rss_feed</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Share Neighborhood Pulse</h3>
+</div>
+<button class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container" id="closePulseModal" type="button">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<form class="space-y-4 pt-2" onsubmit="event.preventDefault(); document.getElementById('pulseModal').classList.add('hidden');">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Headline or Whisper Title</label>
+<input class="w-full px-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest shadow-xs" placeholder="e.g. Secret courtyard ceramics fair this Sunday" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Category</label>
+<select class="w-full px-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none">
+<option>Food &amp; Drink Whispers</option>
+<option>Pop-up Markets</option>
+<option>Seasonal Spots</option>
+<option>Underground Music &amp; Art</option>
+<option>Neighborhood Walks</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Specific Area</label>
+<input class="w-full px-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none" placeholder="e.g. Yanaka, Taito-ku" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Your Local Tip / Details</label>
+<textarea class="w-full px-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none" placeholder="What should travelers know before heading there? Timing, secret orders, dress codes..." rows="3"></textarea>
+</div>
+<div class="pt-2 flex justify-end gap-3">
+<button class="px-5 py-2.5 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container" id="cancelPulseModal" type="button">Cancel</button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container shadow-sm" type="submit">Publish to Pulse Wire</button>
+</div>
+</form>
+</div>
+</div>
+<script>
+    (() => {
+      const cityBtn = document.getElementById('cityDropdownBtn');
+      const cityMenu = document.getElementById('cityMenu');
+      const selectedCityLabel = document.getElementById('selectedCityLabel');
+
+      if (cityBtn && cityMenu) {
+        cityBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          cityMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+          cityMenu.classList.add('hidden');
+        });
+
+        document.querySelectorAll('.city-option').forEach(opt => {
+          opt.addEventListener('click', (e) => {
+            e.preventDefault();
+            const city = opt.getAttribute('data-city');
+            selectedCityLabel.textContent = city;
+            cityMenu.classList.add('hidden');
+          });
+        });
+      }
+
+      const vibePills = document.querySelectorAll('.vibe-pill');
+      vibePills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          vibePills.forEach(p => {
+            p.className = "vibe-pill shrink-0 px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container font-label-md text-label-md transition-all";
+          });
+          pill.className = "vibe-pill shrink-0 px-4 py-2 rounded-full bg-secondary text-on-secondary font-label-md text-label-md shadow-sm transition-all";
+        });
+      });
+
+      const timeBtns = document.querySelectorAll('.time-btn');
+      timeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          timeBtns.forEach(b => {
+            b.className = "time-btn px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all";
+          });
+          btn.className = "time-btn px-4 py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-xs transition-all";
+        });
+      });
+
+      document.querySelectorAll('.bookmark-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const icon = btn.querySelector('.material-symbols-outlined');
+          if (icon.textContent === 'bookmark') {
+            icon.textContent = 'bookmark_added';
+            btn.classList.add('text-primary');
+          } else {
+            icon.textContent = 'bookmark';
+            btn.classList.remove('text-primary');
+          }
+        });
+      });
+
+      const modal = document.getElementById('pulseModal');
+      const openModalBtn = document.getElementById('openPostPulseModal');
+      const closeModalBtn = document.getElementById('closePulseModal');
+      const cancelModalBtn = document.getElementById('cancelPulseModal');
+
+      if (openModalBtn && modal) {
+        openModalBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+      }
+      if (closeModalBtn && modal) {
+        closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
+      }
+      if (cancelModalBtn && modal) {
+        cancelModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl shadow-[0_-1px_8px_rgba(0,0,0,0.03)]"><div class="max-w-7xl mx-auto px-6 py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-lg mb-space-xl"><div class="lg:col-span-1"><div class="flex items-center gap-space-xs mb-space-sm"><img alt="MebingLocal Wordmark Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wt2CZaen_XHwiN4LhFo5P_d4YqOcxyVoIfwqBhFlAChP502EqtZCSP_6XiGudVk6cfBSS3TT4LmQjcyHz5vlfvVRWXD7I9ZsSNETXPJsaXdbEYbjPEUN913bgnIa7QH3d2sdKB8Dq4ZECQ9wuM6YrEK9GaBFX516saY4eMkiHzGbbdTB2xIS_j0bGUf5Z4EY-FqRE2QSnGiWMosvXMcaEene43DBiJkCWli5qTCVZCB6z47RJOi4ZUBoU9"/><span class="font-headline-sm text-headline-sm text-on-surface">MebingLocal</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Human-to-human cultural journeys guided by verified local residents.</p><div class="flex items-center gap-space-sm text-on-surface-variant"><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">share</span></a><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">alternate_email</span></a></div></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Explore</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Tokyo</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Kyoto</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Paris</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Mexico City</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Florence</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Host with MebingLocal</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Host Guidelines</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Trust &amp; Safety</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Host Insurance</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Community Stories</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">AI Concierge</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Personalized Trips</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Smart Local Match</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Real-time Translation</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Neighborhood Radar</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Support &amp; Trust</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Safety Center</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Cancellation Policies</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Identity Verification</a></li><li><a class="hover:text-on-surface transition-colors" href="#">24/7 Concierge Support</a></li></ul></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><span>© 2025 MebingLocal Inc. All rights reserved.</span><a class="hover:text-on-surface transition-colors" href="#">Privacy</a><a class="hover:text-on-surface transition-colors" href="#">Terms</a><a class="hover:text-on-surface transition-colors" href="#">Sitemap</a></div><div class="flex items-center gap-space-sm"><span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-sm">language</span> English (US)</span><span>·</span><span>$ USD</span></div></div></div></footer></body></html>

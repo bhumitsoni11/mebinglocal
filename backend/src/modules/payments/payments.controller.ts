@@ -1,35 +1,39 @@
-import { Controller, Post, Body, UseGuards, Headers } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
+import { Controller, Post, Body, Headers, UseGuards, Req } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
-import { CreatePaymentOrderDto } from './dto/create-payment-order.dto';
-import { AuthGuard } from '../../common/guards/auth.guard';
-import { RolesGuard } from '../../common/guards/roles.guard';
-import { CurrentUser } from '../../common/decorators/current-user.decorator';
-import { Roles } from '../../common/decorators/roles.decorator';
+import { AuthGuard } from '@/common/guards/auth.guard';
+import { CurrentUser } from '@/common/decorators/current-user.decorator';
+import { User } from '@prisma/client';
+import { FastifyRequest } from 'fastify';
 
-@ApiTags('Payments')
 @Controller('payments')
 export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService) {}
 
-  @Post('orders')
-  @UseGuards(AuthGuard, RolesGuard)
-  @Roles('TRAVELER', 'ADMIN')
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'Create Razorpay payment order for a booking' })
-  createOrder(
-    @CurrentUser() user: any,
-    @Body() dto: CreatePaymentOrderDto,
+  @Post('create-order')
+  @UseGuards(AuthGuard)
+  async createOrder(@CurrentUser() user: User, @Body('bookingId') bookingId: string) {
+    return this.paymentsService.createOrder(bookingId, user);
+  }
+
+  @Post('verify')
+  @UseGuards(AuthGuard)
+  async verifyPayment(
+    @Body()
+    body: {
+      razorpayOrderId: string;
+      razorpayPaymentId: string;
+      razorpaySignature: string;
+    },
   ) {
-    return this.paymentsService.createOrder(user.id, dto);
+    return this.paymentsService.verifyPayment(body);
   }
 
   @Post('webhook')
-  @ApiOperation({ summary: 'Razorpay webhook receiver' })
-  webhook(
+  async webhook(
+    @Req() req: FastifyRequest,
     @Headers('x-razorpay-signature') signature: string,
-    @Body() body: any,
   ) {
-    return this.paymentsService.verifyWebhook(signature, body);
+    const rawBody = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
+    return this.paymentsService.handleWebhook(rawBody, signature || '');
   }
 }

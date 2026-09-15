@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "outline-variant": "#e0bfba", "on-primary": "#ffffff", "on-tertiary-fixed": "#2f1500", "on-secondary-container": "#4c6861", "outline": "#8c716c", "tertiary": "#8d4b00", "tertiary-fixed-dim": "#ffb77d", "primary": "#a83223", "on-error": "#ffffff", "surface-container": "#ebefea", "on-secondary-fixed": "#02201b", "tertiary-fixed": "#ffdcc3", "surface-container-low": "#f0f5f0", "on-surface-variant": "#58413d", "on-secondary": "#ffffff", "surface-bright": "#f6fbf5", "on-tertiary-fixed-variant": "#6e3900", "on-surface": "#181d1a", "secondary-container": "#c7e6dd", "secondary": "#48645d", "on-error-container": "#93000a", "tertiary-container": "#b15f00", "on-secondary-fixed-variant": "#304c46", "on-tertiary-container": "#fffbff", "on-background": "#181d1a", "surface": "#f6fbf5", "error-container": "#ffdad6", "surface-tint": "#ab3425", "secondary-fixed-dim": "#aecdc4", "on-primary-fixed-variant": "#8a1c10", "secondary-fixed": "#cae9e0", "background": "#f6fbf5", "surface-container-highest": "#dfe4df", "on-primary-container": "#fffbff", "inverse-on-surface": "#edf2ed", "primary-fixed-dim": "#ffb4a8", "inverse-surface": "#2c322e", "primary-fixed": "#ffdad4", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#410100", "surface-variant": "#dfe4df", "surface-dim": "#d7dbd6", "inverse-primary": "#ffb4a8", "surface-container-high": "#e5e9e4", "primary-container": "#c94a38" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "3rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin-tablet": "2rem", "gutter": "1.5rem", "gutter-mobile": "1rem", "margin-mobile": "1.25rem" }, "fontFamily": { "headline-lg": [ "Plus Jakarta Sans" ], "display-hero-mobile": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "body-xl": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "label-lg": [ "Inter" ], "headline-xl": [ "Plus Jakarta Sans" ], "label-md": [ "Inter" ], "display-hero": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "label-caps": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ] }, "fontSize": { "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-hero-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "body-xl": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-xl-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "display-hero": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-caps": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm shrink-0"><img alt="MebingLocal Wordmark Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wt2CZaen_XHwiN4LhFo5P_d4YqOcxyVoIfwqBhFlAChP502EqtZCSP_6XiGudVk6cfBSS3TT4LmQjcyHz5vlfvVRWXD7I9ZsSNETXPJsaXdbEYbjPEUN913bgnIa7QH3d2sdKB8Dq4ZECQ9wuM6YrEK9GaBFX516saY4eMkiHzGbbdTB2xIS_j0bGUf5Z4EY-FqRE2QSnGiWMosvXMcaEene43DBiJkCWli5qTCVZCB6z47RJOi4ZUBoU9"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">MebingLocal</span></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm"><a aria-current="page" class="transition-colors bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="local-friends" href="#">Local Friends</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="experiences" href="#">Experiences</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-planner" href="#">AI Planner</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="local-pulse" href="#">Local Pulse</a></nav><div class="flex items-center gap-space-sm shrink-0"><button class="hidden sm:inline-flex items-center justify-center px-space-md py-space-xs rounded-full bg-surface-container-low text-primary hover:bg-surface-container font-label-lg text-label-lg transition-colors" type="button">Become a Local</button><button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-base">language</span><span class="font-label-md text-label-md">EN · USD</span></button><button class="relative p-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary"></span></button><button class="flex items-center gap-space-xs pl-space-xs pr-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-colors" type="button"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZl0dmZxxUXhEDxnX2U5MdJH4xdhtr7V2Jax4qmrlU0B0TfFYAKyMB1Flqq64vYGrS92LCahBacMH33o6D-Tp6Mjiz9mUcChC-g_7TFALnqp35fl4mGp0WcWBFzwkSoj7e_PhJSsjFWSUuFvWw8Hse3SYxldRXwIChzCIDucjGG06aIHYyDdfZBShezosSbrSWCnHCFvxyt8WVlHb_wUeSqzciRFCx-6hV4lDq71liN8e178FM2CnUWA"/><span class="material-symbols-outlined text-base text-on-surface-variant">expand_more</span></button></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<script>
+    (() => {
+      const navLink = document.querySelector('nav a[data-path="experiences"]');
+      if (navLink) {
+        navLink.className = "bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm";
+      }
+    })();
+  </script>
+<!-- Page Introduction & Floating Search Module -->
+<section class="w-full max-w-7xl mx-auto px-6 pt-10 pb-8">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/50 text-on-secondary-fixed-variant font-label-caps text-label-caps tracking-widest uppercase mb-4">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          Direct Resident Curation
+        </div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-tight mb-4">
+          Unscripted Local Experiences
+        </h1>
+<p class="font-body-xl text-body-xl text-on-surface-variant max-w-xl">
+          Handcrafted, intimate journeys led exclusively by passionate locals. No tour buses. No tourist traps.
+        </p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+          100% Identity-Vetted Hosts
+        </span>
+<span class="hidden sm:inline-flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-sm text-secondary">groups</span>
+          Max 4-6 Explorers
+        </span>
+</div>
+</div>
+<!-- Multi-Filter Interactive Bar -->
+<div class="w-full bg-surface-container-lowest rounded-2xl shadow-xl p-4 md:p-6 mb-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+<!-- Destination -->
+<div class="flex flex-col gap-1 p-2 rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">location_on</span> Destination
+          </span>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface text-base group-hover:text-primary transition-colors">Any City</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Kyoto, Florence, Paris...</span>
+</div>
+<!-- Dates -->
+<div class="flex flex-col gap-1 p-2 rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">calendar_today</span> Dates
+          </span>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface text-base group-hover:text-primary transition-colors">Any Weekend</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Next 14 days</span>
+</div>
+<!-- Group Size -->
+<div class="flex flex-col gap-1 p-2 rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">group</span> Party Size
+          </span>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface text-base group-hover:text-primary transition-colors">Small (Max 4)</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Solo, Couples, Micro</span>
+</div>
+<!-- Duration -->
+<div class="flex flex-col gap-1 p-2 rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span> Duration
+          </span>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface text-base group-hover:text-primary transition-colors">Half-Day (3-4h)</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">&lt;2h, Half-day, Full-day</span>
+</div>
+<!-- Price Range -->
+<div class="flex flex-col gap-1 p-2 rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">payments</span> Price Range
+          </span>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface text-base group-hover:text-primary transition-colors">$40 - $80</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">tune</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Per participant</span>
+</div>
+<!-- CTA & Instant Toggle -->
+<div class="flex flex-col justify-between gap-2 p-2">
+<div class="flex items-center justify-between bg-surface-container-low px-3 py-1.5 rounded-full">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-tertiary" style="font-variation-settings: 'FILL' 1;">bolt</span> Instant
+            </span>
+<button class="w-8 h-4 bg-primary rounded-full relative p-0.5 transition-colors" id="instantToggleBtn" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('bg-outline'); this.firstElementChild.classList.toggle('translate-x-4');" type="button">
+<div class="w-3 h-3 bg-surface-container-lowest rounded-full transition-transform translate-x-4"></div>
+</button>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all active:scale-98" type="button">
+<span class="material-symbols-outlined text-lg">search</span>
+            Filter 148 Trips
+          </button>
+</div>
+</div>
+</div>
+<!-- Category Carousel Pills -->
+<div class="flex items-center gap-2.5 overflow-x-auto pb-2 scrollbar-none">
+<button class="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary text-on-secondary font-label-lg text-label-lg shadow-sm">
+<span class="material-symbols-outlined text-lg">arrow_back_ios_new</span>
+        All Experiences
+      </button>
+<button class="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors">
+<span class="material-symbols-outlined text-lg text-tertiary">wine_bar</span>
+        Food &amp; Natural Wine
+      </button>
+<button class="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors">
+<span class="material-symbols-outlined text-lg text-secondary">apartment</span>
+        Hidden Architectural Walks
+      </button>
+<button class="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors">
+<span class="material-symbols-outlined text-lg text-primary">nightlife</span>
+        Secret Speakeasies &amp; Jazz
+      </button>
+<button class="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors">
+<span class="material-symbols-outlined text-lg text-tertiary">draw</span>
+        Artisan Workshops
+      </button>
+<button class="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors">
+<span class="material-symbols-outlined text-lg text-secondary">camera_roll</span>
+        Twilight Photography
+      </button>
+<button class="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors">
+<span class="material-symbols-outlined text-lg text-primary">hiking</span>
+        Mountain &amp; Coastal Trails
+      </button>
+<button class="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors">
+<span class="material-symbols-outlined text-lg text-tertiary">storefront</span>
+        Local Market Tastings
+      </button>
+</div>
+</section>
+<!-- Featured Experience Hero Spotlight -->
+<section class="w-full max-w-7xl mx-auto px-6 mb-16">
+<div class="relative overflow-hidden rounded-3xl bg-inverse-surface text-inverse-on-surface shadow-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
+<!-- Imagery Section with Backdrop Glow -->
+<div class="lg:col-span-7 relative min-h-[300px] lg:min-h-full overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="An atmospheric twilight rooftop gathering in Kyoto surrounded by historic cedar wood townhouses and mountains in the mist, warm amber lantern glow illuminating artisanal ceramic sake cups and wooden fermentation barrels, rich editorial documentary travel aesthetic with soft cinematic lighting and warm terracotta accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSq7I14m_xcIb6Ataa6mHYHhoaZqs4OEJMEqdDb0VrImiDMofvHucaR32ahusy1924L5b8hiCw8i6Cs14Gyburk60mx4bOEGL1riX-H9IzfUmm98pq5NXqVapvIElCCGtoRHDO0dH7Dn8ro563KfjLwK7XRv2_ahLkdD_HTntQZdV9Una-WsKHLyx6lfoC6xd48Vb0gKV2BMY9ilmPNu_bMAx2feAbwxvs9wazQ1ITijQpjkAAY007nw"/>
+<div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-transparent via-inverse-surface/30 to-inverse-surface"></div>
+<div class="absolute top-6 left-6 flex items-center gap-2">
+<span class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider flex items-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+              Spotlight of the Week
+            </span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-caps text-label-caps uppercase tracking-wider">
+              Kyoto · Gion Secret Terrace
+            </span>
+</div>
+</div>
+<!-- Narrative Content -->
+<div class="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-between relative z-10">
+<div>
+<!-- Host profile snippet -->
+<div class="flex items-center gap-3 mb-6">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portait of Kenji, a thoughtful 42-year-old Japanese master brewer and culinary historian wearing an artisanal indigo linen apron in Kyoto, gentle warm expression, natural daylight photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVWZ-4lCdmxp3-oolmjHJRfazgBoguG9EJ6zFkziGZVXQx_WnY8fOlzN1qwj1NhV9BN8ONRny792v9e_tNBWz6oXWygy8Kml4vVIS3XvhdbI7l7D0-vOw7NarGuxNZoiNqX7OFWRyUHPZTOt3nSItQt6OSK2cs0D7nbNlHNe_39j1HEjjmCBE4qM66B8rp7B2zGuH_qyfAbWMKmj8RUCM4z5cyQSNqDpSE0SKCp3L7DRD8p23ReFN9Rg"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-inverse-on-surface text-base">Kenji Tanaka</span>
+<span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-inverse-on-surface/70">Master Brewer &amp; Culinary Historian (12 yrs local)</span>
+</div>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-inverse-on-surface mb-3 tracking-tight">
+              Secret Rooftops &amp; Natural Fermentations in Kyoto
+            </h2>
+<p class="font-body-md text-body-md text-inverse-on-surface/80 mb-6 leading-relaxed">
+              Step past closed temple gates at dusk to access a 300-year-old family warehouse and panoramic rooftop. Taste rare unpasteurized namazake, wild yeast misos, and fermented seasonal pairings unobtainable in any restaurant.
+            </p>
+<!-- Key metadata tags -->
+<div class="grid grid-cols-3 gap-3 mb-8 text-center">
+<div class="bg-surface-container-lowest/10 backdrop-blur-sm p-3 rounded-xl">
+<span class="material-symbols-outlined text-primary-fixed block mb-1 text-xl">timelapse</span>
+<span class="font-label-caps text-label-caps text-inverse-on-surface/70 block uppercase">Duration</span>
+<span class="font-label-lg text-label-lg text-inverse-on-surface font-semibold">3.5 Hours</span>
+</div>
+<div class="bg-surface-container-lowest/10 backdrop-blur-sm p-3 rounded-xl">
+<span class="material-symbols-outlined text-secondary-fixed block mb-1 text-xl">diversity_3</span>
+<span class="font-label-caps text-label-caps text-inverse-on-surface/70 block uppercase">Intimacy</span>
+<span class="font-label-lg text-label-lg text-inverse-on-surface font-semibold">Max 4 Guests</span>
+</div>
+<div class="bg-surface-container-lowest/10 backdrop-blur-sm p-3 rounded-xl">
+<span class="material-symbols-outlined text-tertiary-fixed block mb-1 text-xl">hotel_class</span>
+<span class="font-label-caps text-label-caps text-inverse-on-surface/70 block uppercase">Rating</span>
+<span class="font-label-lg text-label-lg text-inverse-on-surface font-semibold">4.99 (184)</span>
+</div>
+</div>
+</div>
+<!-- Spotlight CTA Bar -->
+<div class="flex items-center justify-between pt-6 bg-surface-container-lowest/5 rounded-2xl p-4">
+<div>
+<span class="font-body-sm text-body-sm text-inverse-on-surface/70 block">All-inclusive pairing</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-inverse-on-surface font-bold">$65</span>
+<span class="font-body-sm text-body-sm text-inverse-on-surface/70">/ explorer</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-6 py-3 rounded-xl font-label-lg text-label-lg shadow-lg hover:shadow-xl transition-all active:scale-98 flex items-center gap-2" type="button">
+<span>Reserve Spot</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Marketplace Header & Sorting -->
+<section class="w-full max-w-7xl mx-auto px-6 mb-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Curated Departures</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Showing 8 of 148 verified small-group encounters worldwide</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Sort by:</span>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low font-label-md text-label-md text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span>Top Local Rating</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Main Marketplace Experience Grid -->
+<section class="w-full max-w-7xl mx-auto px-6 mb-16">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1: Florence -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Intimate candlelit wine cellar in Florence with rows of dust-covered Sangiovese bottles, rustic terracotta brick arches, warm amber light reflecting off clear wine glasses held by smiling travelers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVriuh3h-xXvpWYGGVkfJmshmYtf388zAu7q3H-_YXM2LqZbYiBAbQBd2P6AHviogiVk6ZC_fgE5zkbs0AJEyxYyIvypFllbUArIkLN9qR8x3V1OdnMCidfsXwR0jQjR2Oc_PPukUyTNQEq7WNjGt1No_JLUrmEL_oCGGTrNdgh-xxObYuLjpr2OcOybhKdW7i_L5is2GE73PK0ok4YI7UQDgs-Lllnsb28S7v8yUD4dZYXys5o-Okxg"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span> 3.0h
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/90 text-on-secondary-fixed-variant font-label-caps text-label-caps uppercase">
+              Wine &amp; Dine
+            </span>
+</div>
+<button aria-label="Save experience" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Portrait of Elena, an Italian sommelier with curly brunette hair and an artisanal green linen shirt in Florence, warm inviting smile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD11QXIhijF2zGNGp7cHpJ3lPCQANV3JoSIl_apPbxEgVlbQHvCiBQlBQ7PywVcKsHgniMIb_GU13pCg_M4pzl_WVMj9a8ExAxev2MNeAZv6-THMIiXNNYHKiuQQA5l9A5CKVNsNdZIkARiLnScKWbWGhTLYczNc5g5ZosnJYiwGd6mb8A9n_4R_yrUX7xw_w067LpyK3zd2j5LryVw_miyEwfPfWl5BfKq_zUg4HkMoOOPzD57UokYpg"/>
+<span class="font-label-md text-label-md text-on-surface">Elena</span>
+<span class="material-symbols-outlined text-secondary text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1.5 font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.98</span>
+<span class="text-on-surface-variant font-normal">(92 reviews) · Florence</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+              Twilight Natural Wine &amp; Historic Botteghe Walk
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 line-clamp-2">
+              Traverse Oltrarno back-alleys to three unlisted artisan cellars with indigenous Tuscan bio-dynamic pours.
+            </p>
+<div class="flex items-center gap-1.5 text-secondary font-label-caps text-label-caps uppercase mb-4">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+              5 Cellar pours &amp; wild boar crostini included
+            </div>
+</div>
+<div class="pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-4 -mb-4 px-4 py-3">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">From</span>
+<div class="flex items-baseline">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">$55</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">/ person</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-3.5 py-2 rounded-lg transition-colors" type="button">
+              Book Spot
+            </button>
+</div>
+</div>
+</div>
+<!-- Card 2: Tokyo -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Traditional Japanese knife artisan sharpening a Damascus steel sashimi knife on a wet whetstone in a historic Tokyo workshop, delicate water sprays and steel shavings reflecting studio morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3W4i8IFwhyk38aN4Gcmjk1_dklv-eKRvwmDwvYf6iGqFgZFQWpWj3r0R-JX495P_YHbMMYE-rIQJ1uTKL70r_Jh1KEQZnGU7bQCxDUWfCZX3zu0lzlt0Iq8QQa80mWCNlO4DoQC6QHLLyXgEIJmmJhaofse82luzKFXthznc07jqDeVw-MN7NYH0dEivsvoJclGs8OFUZcktftV9N9nrBeSOmdpw0QYJ7IRh_t8d38IukxAxDO4_CUw"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span> 4.5h
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/90 text-on-secondary-fixed-variant font-label-caps text-label-caps uppercase">
+              Culinary Craft
+            </span>
+</div>
+<button aria-label="Save experience" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Portrait of Kenji, third generation fishmonger and food guide in Tokyo, warm friendly eyes wearing traditional craftsman headband." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxJSRLYTnuxc4BZQsOF_LgB0_n9BSqmYvyuqmWyc8O9tfYn2aKaxtEXErGFBnyGG_IvCSXHT2wLTvpQuNPiEue-WHDLDbf9Gm5mDmXYO1I1tumQpcp_xzlDWXi7JwiTzcrRtP_FYZ8wbyPw_jLugjkI2iSlWadXs1EtkvahKrFV42u2-quGBUeo4xeGT0TWVW43TnULteK4JSBNrHxBSW2ZhcTPeukAPBCjn_iiGCWDf14QUZrVzQz9A"/>
+<span class="font-label-md text-label-md text-on-surface">Kenji</span>
+<span class="material-symbols-outlined text-secondary text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1.5 font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">5.0</span>
+<span class="text-on-surface-variant font-normal">(118 reviews) · Tokyo</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+              Dawn Tsukiji Market Tasting &amp; Knife Artisan Visit
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 line-clamp-2">
+              Bypass commercial outer rows to meet 4th-gen blade smiths and taste tuna nigiri freshly carved at sunrise.
+            </p>
+<div class="flex items-center gap-1.5 text-secondary font-label-caps text-label-caps uppercase mb-4">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+              Breakfast tasting &amp; custom engraving included
+            </div>
+</div>
+<div class="pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-4 -mb-4 px-4 py-3">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">From</span>
+<div class="flex items-baseline">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">$75</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">/ person</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-3.5 py-2 rounded-lg transition-colors" type="button">
+              Book Spot
+            </button>
+</div>
+</div>
+</div>
+<!-- Card 3: Mexico City -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Traditional wood-paneled cantina in Coyoacán with colorful vintage tiles, hand-blown copitas of artisanal mezcal garnished with orange slices and sal de gusano, warm festive lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-H5UI0GT1Rk_uTe861jaBIk25yYIiBomhsXrXMeNrifBUxVtRuaSzYyGsovdIzLJwPU9zQ-ZBEx90od89w6gmmB5bZD5Z2dwQhPd-y4swRT3NZf0Dxz_ltkxZxNCeFj0zpSKdxtJG9XvXeVq2-WZvHXhBCS1c-LIocfx6TTAsD5n1AHOOr9IZprbPCabCTueCRVbECVF5rAWsOL_qmmDD8xYb1hF3jra-VdxeZf38X7jkl81CsVq7Zg"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span> 3.5h
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/90 text-on-secondary-fixed-variant font-label-caps text-label-caps uppercase">
+              Spirits &amp; Music
+            </span>
+</div>
+<button aria-label="Save experience" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Portrait of Camila, an ethnographer and local mixologist in Mexico City with bright woven earrings and an engaging smile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRVddv-Tw2ZJWzdkpXiOU5Xn5dFLd5RU0-vQknwUouTlrlYsVJ83wmaSgV0zwCmgPuQ4-7swqIFQD4A3fYeVTFqSGtaH0uJyB3KYaCpLv5fCEf8R2EFv1xSPSJWeUpDLjq0seeU7qYueX8vHcDDZwd6w9QyB_qh8QvXsZPPk4p3GaSmmKA1UO_I1UCwWG7ky7jAgDE1F5Musmd49SSxLOZehvRxJpwkTdQLB1-H6FLlkRUNGjSIGpkfg"/>
+<span class="font-label-md text-label-md text-on-surface">Camila</span>
+<span class="material-symbols-outlined text-secondary text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1.5 font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.97</span>
+<span class="text-on-surface-variant font-normal">(143 reviews) · CDMX</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+              Secret Cantinas &amp; Mezcal Pairing in Coyoacán
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 line-clamp-2">
+              Uncover 80-year-old neighborhood saloons where folkloric musicians gather and wild agaves are poured straight.
+            </p>
+<div class="flex items-center gap-1.5 text-secondary font-label-caps text-label-caps uppercase mb-4">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+              4 Agave tastings &amp; traditional botanas
+            </div>
+</div>
+<div class="pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-4 -mb-4 px-4 py-3">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">From</span>
+<div class="flex items-baseline">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">$48</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">/ person</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-3.5 py-2 rounded-lg transition-colors" type="button">
+              Book Spot
+            </button>
+</div>
+</div>
+</div>
+<!-- Card 4: Lisbon -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Intimate candlelit attic loft in Lisbon with antique Portuguese wooden guitars, open window showing terracotta roofs and Tagus river at dusk, deep emotional fado ambience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWiJ4ZMaO7O2yQAuMTwDcVqAD25xqExHiSJpAKWG57xFmf72_BdkvlsfegNzaTsbKBipblSJXZcr2A7T7ZnPFvQguIqOgORJJovsR2slQjItNUEKAX0Sp4JYZwZO5C7sBGFRerPHtjE0mYclVxD6N0PDirg0eH96_fsidmKtO04SQAofxh6oSqLpi_p1uTSM84b0POTy4Js92kCsy15GuBRVIrxaYJvdyqjnrZvMKRXnclgM_ZBxTVwA"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span> 3.0h
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/90 text-on-secondary-fixed-variant font-label-caps text-label-caps uppercase">
+              Music &amp; Heritage
+            </span>
+</div>
+<button aria-label="Save experience" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Portrait of Amara, a fado singer with dark hair and a traditional embroidered black shawl in Lisbon, soulful artistic demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuvjpnXZQ8nYt6S7DsQ16uQG5QdA3gQTbVCDKq4DRcxn3_c0cSiZFWSy3ISdqHtaqWtMzcI1nyF0lJcXMPmpkXNtXZiUArIGhhYwjKXQ6pXfzTC_rXHTHMWL-smcG3vNhuGLvd7RnfA0gxa1gqFqgSH0AUXl4Nj1kTo52HMZWZ-CDKNlo5DWG9rNeXyUVB5RyGa7QRJycddRw9zW9JKG7BorbB809IwNp24Pt0Kp0Yke3yNNFfIrw1JQ"/>
+<span class="font-label-md text-label-md text-on-surface">Amara</span>
+<span class="material-symbols-outlined text-secondary text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1.5 font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.99</span>
+<span class="text-on-surface-variant font-normal">(86 reviews) · Lisbon</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+              Alfama Fado Culture &amp; Hidden Attic Listening Sessions
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 line-clamp-2">
+              Experience unplugged acoustic performances far from tourist taverns, paired with vintage Port wine.
+            </p>
+<div class="flex items-center gap-1.5 text-secondary font-label-caps text-label-caps uppercase mb-4">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+              Acoustic performance &amp; artisanal charcuterie
+            </div>
+</div>
+<div class="pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-4 -mb-4 px-4 py-3">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">From</span>
+<div class="flex items-baseline">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">$52</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">/ person</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-3.5 py-2 rounded-lg transition-colors" type="button">
+              Book Spot
+            </button>
+</div>
+</div>
+</div>
+<!-- Card 5: Berlin -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Underground analog synthesizer studio inside a repurposed brutalist warehouse in Kreuzberg Berlin, warm vintage VU meters glowing green and orange, reel-to-reel tape decks spinning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGf1sc0WKEet7pqulLO3iLGG0MiemQ6W31HI5xDB75kscHIhBCY1VcB9IaEiAHkw9AM_QafoAjuishgyLlxewLzoNZn8afov0JhDoGtWz7MWDSbaPON5uI_AuNieO8ZRFlqWo6RBrc-2X21naI8XQxPOKmU7Cukz8XTgP0Krc1n2KxjSlWagLfV3odkyDUFkvoYCPLnTL0TnZ6NvMH2gfJAUMOjkXMadn7I4P3HCJJgcrBNn1wRk1aRw"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span> 4.0h
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/90 text-on-secondary-fixed-variant font-label-caps text-label-caps uppercase">
+              Underground Sound
+            </span>
+</div>
+<button aria-label="Save experience" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Portrait of Lukas, an electronic music producer and architectural archivist in Berlin with round tortoiseshell glasses and black minimalist jacket." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwnUQ1gVnuZzH62rKMsOp7X1GcOaAtKkBO3DB-cUW252EobwPUzjUECXag7BO0PA8neS9q4pX148X2q822uoqutm4isy-kdQ64dviC04Az21M59nTOEJdkqZV5vI9dNySGt79D21ISgZ8BMmVKRrIptN4LZS62WEfbvPN22kFts6gXJ4gF6TvZQ7F5Pyxq2tuCFmnga0xZAmiIuHQPaeGwGH-aF_aGmNcIu8hMeiKReWUzGFLLaHk9sQ"/>
+<span class="font-label-md text-label-md text-on-surface">Lukas</span>
+<span class="material-symbols-outlined text-secondary text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1.5 font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.95</span>
+<span class="text-on-surface-variant font-normal">(67 reviews) · Berlin</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+              Berlin Bauhaus &amp; Underground Electronic Music Studios
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 line-clamp-2">
+              Trace modernism from functionalist architecture directly into secret Kreuzberg modular synth ateliers.
+            </p>
+<div class="flex items-center gap-1.5 text-secondary font-label-caps text-label-caps uppercase mb-4">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+              Private studio session &amp; sound stems included
+            </div>
+</div>
+<div class="pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-4 -mb-4 px-4 py-3">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">From</span>
+<div class="flex items-baseline">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">$58</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">/ person</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-3.5 py-2 rounded-lg transition-colors" type="button">
+              Book Spot
+            </button>
+</div>
+</div>
+</div>
+<!-- Card 6: Seoul -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant alleys of Gwangjang night market in Seoul, steam rising from fresh bindaetteok pancakes, colorful rolls of raw vintage silk fabrics stacked ceiling-high in an artisan stall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNbLaSJwQy1vBWLJGiiu9RxWs1mvhfFCdQ69lFdRaLm7TWGn7KgTucDmtPU7uoB5EQqx23dc_sJLzIKBqOTz9yoDmD1u4JlPfgBzEiGoQoyCAkgaOVHuYItBjMhs5Yz4Z2_j46VpG0BXZ6NMK7S4Bho9iFM3MaueXiLJSiRx5GMXxTbBLrCHiEpgeV5Ceo7WqcWhbeA38YU92Zcv3vBpjzH8VLkec-bXvT_CPXEURN7L67Nw5p9N62SQ"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span> 3.5h
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/90 text-on-secondary-fixed-variant font-label-caps text-label-caps uppercase">
+              Street Food &amp; Craft
+            </span>
+</div>
+<button aria-label="Save experience" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Portrait of Min-ji, textile designer and market historian in Seoul with chic bob cut and natural smile in front of colorful dyed fabrics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3GsHqU_8oy2SsJAHUHl9Weu2BKKekPOKPLw73HKCJ_sq_Nx_SZwPR26yNLNGGPCIl3KYxdYVzWk21KiJcp4K8kaFWE6YH0ejYWyi94AgO6QHG6Lune7NMG79WTyUwcj3_T2G_hQ6-ZWsC7GOFx3eG-g7U_XBBIcQqlDvy6Jn_MQOFjG7yWbjvyyCu4PVQ-2x-q7s0TcRjkYeEwkZzjJ9a1FGmoFh3CcrSKhnaqVxhlWwsGVqMPANbFA"/>
+<span class="font-label-md text-label-md text-on-surface">Min-ji</span>
+<span class="material-symbols-outlined text-secondary text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1.5 font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.98</span>
+<span class="text-on-surface-variant font-normal">(112 reviews) · Seoul</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+              Seoul Night Market &amp; Vintage Hanbok Textile Craft
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 line-clamp-2">
+              Navigate bustling fabric alleys, select heritage silk offcuts, and learn traditional knot craft with hot market bites.
+            </p>
+<div class="flex items-center gap-1.5 text-secondary font-label-caps text-label-caps uppercase mb-4">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+              All market delicacies &amp; silk souvenir included
+            </div>
+</div>
+<div class="pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-4 -mb-4 px-4 py-3">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">From</span>
+<div class="flex items-baseline">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">$62</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">/ person</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-3.5 py-2 rounded-lg transition-colors" type="button">
+              Book Spot
+            </button>
+</div>
+</div>
+</div>
+<!-- Card 7: Paris -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Atmospheric private artist studio in Montmartre overlooking Paris zinc rooftops, paint splattered wooden easel, traditional Belle Epoque absinthe fountain dripping cold water over sugar cubes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXAckMLp-hIqt6UigCZEWbGtH55-4F07Ria4lpJPv191SKTkX9P8mOp7YOu6gZxwH0O5a8DIKPcIoCq_wLurWwQdYnnzMLjmRG3sha1vTFN57vC09oiH5qLZf0zCre_6sDYdgsHeqIexV-TtfwKAANXz0NhOWdcmthvXBn-SsREBUpviByZVPoxWlpfwBMzQqEjhat2JqbGrALT2ayVX4EsWkNAvVka8HLbrXdC0iUmr_mOA15z4_j-A"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span> 3.0h
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/90 text-on-secondary-fixed-variant font-label-caps text-label-caps uppercase">
+              Bohemian Arts
+            </span>
+</div>
+<button aria-label="Save experience" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Portrait of Claire, a French fine arts conservator and oil painter in Paris with an expressive gaze in natural atelier window light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR1woV-MRft-CbATT5tVpy78GrB2hk0SqAZ3Fhq7cxX6C-EJ0Hcdy4oz6Yfe4mOwkGIGCS-4YnV21NeZiieJmPH0r6YUaD_tUfu2jVtVHYwZCgbwmBmZZkvGlcBAnIDa1r_vfHDa8b_SG3OXWwB8SBa3xi9Jg7EmUDWKD-qf4ZoAa-NUbn7spdl4b__EcHxiAy8jshnQUKFhNiLBas1SBuW5BxBjlfpAbVoeO4VfGOfiOKORUCoBxLvw"/>
+<span class="font-label-md text-label-md text-on-surface">Claire</span>
+<span class="material-symbols-outlined text-secondary text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1.5 font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.96</span>
+<span class="text-on-surface-variant font-normal">(79 reviews) · Paris</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+              Montmartre Bohemian Painters Atelier &amp; Absinthe Tasting
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 line-clamp-2">
+              Unlock a private 19th-century artist garret, sketch with charcoal, and prepare vintage herbal absinthe rituals.
+            </p>
+<div class="flex items-center gap-1.5 text-secondary font-label-caps text-label-caps uppercase mb-4">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+              All drawing supplies &amp; absinthe flight included
+            </div>
+</div>
+<div class="pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-4 -mb-4 px-4 py-3">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">From</span>
+<div class="flex items-baseline">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">$68</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">/ person</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-3.5 py-2 rounded-lg transition-colors" type="button">
+              Book Spot
+            </button>
+</div>
+</div>
+</div>
+<!-- Card 8: Oaxaca -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sun-drenched courtyard kitchen in Oaxaca with a traditional clay comal over wood fire, toasted chiles and cocoa beans in stone metate, clay pots of rich black mole simmering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPd82T3Zh9sw_h-v9FHHLOVKz3qfW4LyFQOJGhb4hYhqtitc41qoQ__bkYZZgWAR5U-6qW2O7NurNAt_HrAEVitUBUkg-uUvaUf1_ZgjoX8vIJDJ6FfqLj_QcRW1eODAJX-tOKhu94b1TDsIZ-jNUkmuBBYqHvUfinr7cB4UhisOMTOe77uwddJ8qow-9H6Bi_IcuK3J9T2Vq7sbbTWOrLo51fRHK6ehD_zn2AR2Dp5YbJpyMB4hUJ5A"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span> 5.0h
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/90 text-on-secondary-fixed-variant font-label-caps text-label-caps uppercase">
+              Ancestral Feast
+            </span>
+</div>
+<button aria-label="Save experience" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Portrait of Mateo, an indigenous Oaxacan cook and seed preserver standing proudly next to his family courtyard clay oven, warm welcoming smile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8D6U2qQUrUfQjYKcKGcoo4TBfoxAspaGroyt8OJTyUvH0zTdsMWzs5m3zC9sgotuYELOFXS5tDRGHSUFkwYWfi5ctjeShm20nWgNePO13MWNmZYf1-YI_yd9yu9RsmAhILTA156Cc5yi3GbA2nUFPpLnvFYcCro1NTPm43Yf5zBbGcks3zwV9gVFb_z2m3s79isAJ1PSOOnAx2YPBnW6LhA2aXmdFb9MXfnPkKGIe38oxXEbax72GdQ"/>
+<span class="font-label-md text-label-md text-on-surface">Mateo</span>
+<span class="material-symbols-outlined text-secondary text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1.5 font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">5.0</span>
+<span class="text-on-surface-variant font-normal">(156 reviews) · Oaxaca</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+              Oaxaca Pre-Hispanic Mole Cooking in a Family Courtyard
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 line-clamp-2">
+              Grind ancestral criollo chilies on hand-carved stone and slow cook rich 32-ingredient mole negro together.
+            </p>
+<div class="flex items-center gap-1.5 text-secondary font-label-caps text-label-caps uppercase mb-4">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+              Full 4-course banquet &amp; mezcal pairing
+            </div>
+</div>
+<div class="pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-4 -mb-4 px-4 py-3">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">From</span>
+<div class="flex items-baseline">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">$50</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">/ person</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-3.5 py-2 rounded-lg transition-colors" type="button">
+              Book Spot
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 bg-surface-container-low/30 rounded-2xl p-4">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 8 of 148 verified intimate experiences</span>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">arrow_back</span> Previous
+        </button>
+<span class="px-3 py-1 font-label-md text-label-md text-primary font-bold">1</span>
+<span class="px-3 py-1 font-label-md text-label-md text-on-surface-variant">2</span>
+<span class="px-3 py-1 font-label-md text-label-md text-on-surface-variant">3</span>
+<span class="text-on-surface-variant">...</span>
+<span class="px-3 py-1 font-label-md text-label-md text-on-surface-variant">19</span>
+<button class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1">
+          Next <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Guest Assurance Guarantee Banner -->
+<section class="w-full max-w-7xl mx-auto px-6 mb-16">
+<div class="bg-surface-container rounded-3xl p-8 lg:p-12 shadow-sm">
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mb-10">
+<div class="max-w-xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-caps text-label-caps tracking-widest uppercase mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">shield</span>
+            Protected Journeys
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">
+            The MebingLocal Promise
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+            We exist to protect true cultural reciprocity. Every booking comes guarded by four unconditional guarantees.
+          </p>
+</div>
+<div class="shrink-0 flex items-center gap-4">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of an explorer traveler laughing warmly, editorial candid photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABq2bL8F5WaNpVK5rLLLigpurgFruHwvs1NaPrwmURLVmIX5yq4vm6NT7bXv_UZdkC7mpT2eKo659GYBZYCJMht9e4WiEUukGhhEtOi7fkArFFR4DLWXTz8JN5L-1Jo2kGu3wpCqc7VB2dj_ybbO-X25OGSBYn5BxyBmulguta_f8msFPVy6dZH6Mk6JDHMJJn5ugg5Npu9EOeovDuaglTTboKN7ouvzUt7QmB3yOiOFXXEF6gbHYoVA"/>
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a female verified host smiling warmly in natural sun, editorial photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS_WFuETyywY6SG0oDFy3Z8E0lRHF3tHMoqKLc0P1Zl-I1Mv8mZlnq3wg8kt9ME8KNi5fc-sLd2MnUQ-qsN9bUrR01L07lz-4eNjeNkmY3PKfzuv9xOncuRhdWOwRrV1HxrtrUjBkRWAQI11eC-fNBLDbxQyVtHA_lxihtVupnB4yED8wBoaJCHCiDSVdjFM1nRcx9ZdTWxvn_dVw8_Gb8Mw-9yYUSj-_3GEIeCi4fRPwvwy0Jp297uA"/>
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a young explorer in an outdoor market, editorial candid photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANokEDmLQgsKWzouqQckX0QKoBPebd33PnOIE1EwcyZ8uBgzoqkN0LJRCpMQn2IR6ulyoda8yxsXjD1i66DyPGaS3jEthRipi4vSDWg2EQktPXYtfa_JJYLri06EQJ8121jzKc6Sck-KcKoBUIdL72u522fjhligotjgiNcLP8_i8ftnj4-YqnMMuU3vZR-tfTPUbLGiWGr-leB0wt_j33hY0djK7J1Nt9G82VuFEG0XhHRV_45OpZDA"/>
+</div>
+<div class="text-left">
+<span class="font-label-lg text-label-lg text-on-surface font-bold block">14,200+ Travelers Protected</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Zero disputed claims in 2024</span>
+</div>
+</div>
+</div>
+<!-- 4 Pillars Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Pillar 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">sentiment_very_satisfied</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface text-lg mb-2">100% Authentic or Refunded</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            If your experience feels commercial, staged, or includes unannounced tourist shopping stops, full money-back guarantee.
+          </p>
+</div>
+<!-- Pillar 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-secondary mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface text-lg mb-2">Weather &amp; Trail Protection</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Outdoor and roof encounters automatically reschedule or refund seamlessly if adverse weather interferes with the plan.
+          </p>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface text-lg mb-2">Milestone Escrow Hold</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Hosts receive compensation only 24 hours after successful completion of your journey, ensuring honest mutual commitment.
+          </p>
+</div>
+<!-- Pillar 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-on-surface mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">event_available</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface text-lg mb-2">48-Hour Zero Penalty</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Travel plans flex. Cancel up to 48 hours prior to the scheduled start time for an instant, complete cash-back reversal.
+          </p>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl shadow-[0_-1px_8px_rgba(0,0,0,0.03)]"><div class="max-w-7xl mx-auto px-6 py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-lg mb-space-xl"><div class="lg:col-span-1"><div class="flex items-center gap-space-xs mb-space-sm"><img alt="MebingLocal Wordmark Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wt2CZaen_XHwiN4LhFo5P_d4YqOcxyVoIfwqBhFlAChP502EqtZCSP_6XiGudVk6cfBSS3TT4LmQjcyHz5vlfvVRWXD7I9ZsSNETXPJsaXdbEYbjPEUN913bgnIa7QH3d2sdKB8Dq4ZECQ9wuM6YrEK9GaBFX516saY4eMkiHzGbbdTB2xIS_j0bGUf5Z4EY-FqRE2QSnGiWMosvXMcaEene43DBiJkCWli5qTCVZCB6z47RJOi4ZUBoU9"/><span class="font-headline-sm text-headline-sm text-on-surface">MebingLocal</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Human-to-human cultural journeys guided by verified local residents.</p><div class="flex items-center gap-space-sm text-on-surface-variant"><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">share</span></a><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">alternate_email</span></a></div></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Explore</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Tokyo</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Kyoto</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Paris</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Mexico City</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Florence</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Host with MebingLocal</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Host Guidelines</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Trust &amp; Safety</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Host Insurance</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Community Stories</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">AI Concierge</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Personalized Trips</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Smart Local Match</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Real-time Translation</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Neighborhood Radar</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Support &amp; Trust</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Safety Center</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Cancellation Policies</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Identity Verification</a></li><li><a class="hover:text-on-surface transition-colors" href="#">24/7 Concierge Support</a></li></ul></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><span>© 2025 MebingLocal Inc. All rights reserved.</span><a class="hover:text-on-surface transition-colors" href="#">Privacy</a><a class="hover:text-on-surface transition-colors" href="#">Terms</a><a class="hover:text-on-surface transition-colors" href="#">Sitemap</a></div><div class="flex items-center gap-space-sm"><span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-sm">language</span> English (US)</span><span>·</span><span>$ USD</span></div></div></div></footer></body></html>

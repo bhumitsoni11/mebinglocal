@@ -1,37 +1,35 @@
-import { Controller, Get, Patch, Body, UseGuards, Param } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
+import { Controller, Get, Put, Post, Body, UseGuards } from '@nestjs/common';
 import { TravelersService } from './travelers.service';
-import { UpdateTravelerDto } from './dto/update-traveler.dto';
-import { AuthGuard } from '../../common/guards/auth.guard';
-import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import { AuthGuard } from '@/common/guards/auth.guard';
+import { CurrentUser } from '@/common/decorators/current-user.decorator';
+import { User, SavedItemType } from '@prisma/client';
 
-@ApiTags('Travelers')
 @Controller('travelers')
+@UseGuards(AuthGuard)
 export class TravelersController {
   constructor(private readonly travelersService: TravelersService) {}
 
-  @Get('me')
-  @UseGuards(AuthGuard)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'Get current traveler profile' })
-  async getMe(@CurrentUser() user: any) {
-    return this.travelersService.findByUserId(user.id);
+  @Get('profile')
+  async getProfile(@CurrentUser() user: User) {
+    return this.travelersService.getProfile(user.id);
   }
 
-  @Patch('me')
-  @UseGuards(AuthGuard)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'Update current traveler profile' })
-  async updateMe(
-    @CurrentUser() user: any,
-    @Body() updateTravelerDto: UpdateTravelerDto,
+  @Put('profile')
+  async updateProfile(@CurrentUser() user: User, @Body() body: any) {
+    return this.travelersService.updateProfile(user.id, body);
+  }
+
+  @Get('saved')
+  async getSavedItems(@CurrentUser() user: User) {
+    return this.travelersService.getSavedItems(user.id);
+  }
+
+  @Post('saved/toggle')
+  async toggleSaveItem(
+    @CurrentUser() user: User,
+    @Body('itemType') itemType: SavedItemType,
+    @Body('targetId') targetId: string,
   ) {
-    return this.travelersService.updateByUserId(user.id, updateTravelerDto);
-  }
-
-  @Get(':id')
-  @ApiOperation({ summary: 'Get traveler profile by ID' })
-  async getTraveler(@Param('id') id: string) {
-    return this.travelersService.findByUserId(id);
+    return this.travelersService.toggleSaveItem(user.id, itemType, targetId);
   }
 }

@@ -1,81 +1,102 @@
-import { Injectable, BadRequestException, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { PrismaService } from '../../common/database/prisma.service';
-import { CreateReviewDto } from './dto/create-review.dto';
+import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '@/database/prisma.service';
+import { User } from '@prisma/client';
+
+export interface CreateReviewDto {
+  bookingId: string;
+  rating: number; // 1 to 5
+  content: string;
+}
 
 @Injectable()
 export class ReviewsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async create(reviewerId: string, data: CreateReviewDto) {
+  async createReview(user: User, dto: CreateReviewDto) {
     const booking = await this.prisma.booking.findUnique({
-      where: { id: data.bookingId },
+      where: { id: dto.bookingId },
+      include: { localProfile: true, review: true },
     });
 
     if (!booking) {
       throw new NotFoundException('Booking not found');
     }
 
-    if (booking.status !== 'COMPLETED') {
-      throw new BadRequestException('Can only review completed bookings');
+    if (booking.travelerUserId !== user.id) {
+      throw new BadRequestException('Only the booking traveler can write a review');
     }
 
-    const isTraveler = booking.travelerId === reviewerId;
-    const isLocalFriend = booking.localFriendId === reviewerId;
-
-    if (!isTraveler && !isLocalFriend) {
-      throw new ForbiddenException('You were not part of this booking');
+    if (booking.review) {
+      throw new BadRequestException('Review has already been submitted for this booking');
     }
 
-    const revieweeId = isTraveler ? booking.localFriendId : booking.travelerId;
-
-    // Verify hasn't already reviewed this booking
-    const existing = await this.prisma.review.findUnique({
-      where: { bookingId: booking.id },
-    });
-
-    if (existing) {
-      throw new BadRequestException('Review already exists for this booking');
-    }
+    const rating = Math.min(5, Math.max(1, Number(dto.rating) || 5));
 
     const review = await this.prisma.review.create({
       data: {
         bookingId: booking.id,
-        reviewerId,
-        revieweeId,
-        rating: data.rating,
-        comment: data.comment,
+        authorUserId: user.id,
+        localProfileId: booking.localProfileId,
+        experienceId: booking.experienceId,
+        rating,
+        content: dto.content,
+      },
+      include: {
+        author: { select: { name: true, avatar: true } },
       },
     });
 
-    // Update target user's rating (if Local Friend)
-    if (isTraveler) {
-      const localFriend = await this.prisma.localFriendProfile.findUnique({
-        where: { userId: revieweeId },
-      });
-      
-      if (localFriend) {
-        const totalReviews = localFriend.totalReviews + 1;
-        const rating = ((localFriend.rating * localFriend.totalReviews) + data.rating) / totalReviews;
-        
-        await this.prisma.localFriendProfile.update({
-          where: { userId: revieweeId },
-          data: { rating, totalReviews },
-        });
-      }
-    }
+    // Recalculate host average rating
+    const allReviews = await this.prisma.review.findMany({
+      where: { localProfileId: booking.localProfileId },
+      select: { rating: true },
+    });
+
+    const totalRatings = allReviews.reduce((sum, r) => sum + r.rating, 0);
+    const avgScore = Number((totalRatings / allReviews.length).toFixed(2));
+
+    await this.prisma.localProfile.update({
+      where: { id: booking.localProfileId },
+      data: {
+        ratingScore: avgScore,
+        reviewCount: allReviews.length,
+      },
+    });
 
     return review;
   }
 
-  async findByReviewee(revieweeId: string) {
+  async getLocalReviews(localProfileId: string) {
     return this.prisma.review.findMany({
-      where: { revieweeId, isFlagged: false },
+      where: { localProfileId },
       include: {
-        reviewer: {
-          select: { firstName: true, lastName: true, avatarUrl: true },
-        },
+        author: { select: { name: true, avatar: true } },
+        experience: { select: { title: true } },
       },
       orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async replyToReview(reviewId: string, user: User, replyContent: string) {
+    const review = await this.prisma.review.findUnique({
+      where: { id: reviewId },
+      include: { localProfile: true },
+    });
+
+    if (!review) {
+      throw new NotFoundException('Review not found');
+    }
+
+    if (review.localProfile.userId !== user.id) {
+      throw new BadRequestException('Only the reviewed host can reply');
+    }
+
+    return this.prisma.review.update({
+      where: { id: reviewId },
+      data: {
+        hostReply: replyContent,
+        hostRepliedAt: new Date(),
+      },
     });
   }
 }

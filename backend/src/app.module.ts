@@ -1,42 +1,44 @@
 import { Module } from '@nestjs/common';
-import { APP_GUARD } from '@nestjs/core';
-import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
-import { PrismaModule } from './common/database/prisma.module';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
-import { CompanionsModule } from './modules/companions/companions.module';
-import { BookingsModule } from './modules/bookings/bookings.module';
-import { ReviewsModule } from './modules/reviews/reviews.module';
-import { ChatModule } from './modules/chat/chat.module';
-import { TripsModule } from './modules/trips/trips.module';
-import { AiModule } from './modules/ai/ai.module';
-import { MapsModule } from './modules/maps/maps.module';
-import { PaymentsModule } from './modules/payments/payments.module';
-import { NotificationsModule } from './modules/notifications/notifications.module';
+import { DestinationsModule } from './modules/destinations/destinations.module';
+import { LocalsModule } from './modules/locals/locals.module';
 import { TravelersModule } from './modules/travelers/travelers.module';
 import { ExperiencesModule } from './modules/experiences/experiences.module';
-import { AvailabilityModule } from './modules/availability/availability.module';
-import { LocalPulseModule } from './modules/local-pulse/local-pulse.module';
-import { ReportsModule } from './modules/reports/reports.module';
-import { OpenaiModule } from './modules/openai/openai.module';
-import { RedisModule } from './modules/redis/redis.module';
+import { BookingsModule } from './modules/bookings/bookings.module';
+import { PaymentsModule } from './modules/payments/payments.module';
+import { ReviewsModule } from './modules/reviews/reviews.module';
+import { PulseModule } from './modules/pulse/pulse.module';
+import { ChatModule } from './modules/chat/chat.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
+import { VerificationModule } from './modules/verification/verification.module';
+import { AIModule } from './modules/ai/ai.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
-    ThrottlerModule.forRoot([{
-      ttl: 60000,
-      limit: 100,
-    }]),
-    PrismaModule, AuthModule, UsersModule, CompanionsModule, BookingsModule, ReviewsModule, ChatModule, TripsModule, AiModule, MapsModule, PaymentsModule, NotificationsModule, TravelersModule, ExperiencesModule, AvailabilityModule, LocalPulseModule, ReportsModule, OpenaiModule, RedisModule],
-  controllers: [AppController],
-  providers: [
-    AppService,
-    {
-      provide: APP_GUARD,
-      useClass: ThrottlerGuard,
-    }
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ['.env.local', '.env'],
+    }),
+    DatabaseModule,
+    AuthModule,
+    UsersModule,
+    DestinationsModule,
+    LocalsModule,
+    TravelersModule,
+    ExperiencesModule,
+    BookingsModule,
+    PaymentsModule,
+    ReviewsModule,
+    PulseModule,
+    ChatModule,
+    NotificationsModule,
+    VerificationModule,
+    AIModule,
+    AdminModule,
   ],
 })
 export class AppModule {}

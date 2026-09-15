@@ -1,135 +1,102 @@
-import { Injectable, NotFoundException, ForbiddenException, BadRequestException } from '@nestjs/common';
-import { PrismaService } from '../../common/database/prisma.service';
-import { CreateMessageDto } from './dto/create-message.dto';
+import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
+import { PrismaService } from '@/database/prisma.service';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class ChatService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async getChatsForUser(userId: string) {
-    return this.prisma.chat.findMany({
-      where: {
-        OR: [
-          { participant1Id: userId },
-          { participant2Id: userId },
-        ],
-      },
+  async getUserConversations(user: User) {
+    const participants = await this.prisma.conversationParticipant.findMany({
+      where: { userId: user.id },
       include: {
-        participant1: { select: { id: true, firstName: true, lastName: true, avatarUrl: true } },
-        participant2: { select: { id: true, firstName: true, lastName: true, avatarUrl: true } },
-        messages: {
-          orderBy: { createdAt: 'desc' },
-          take: 1, // Get latest message for preview
+        conversation: {
+          include: {
+            booking: {
+              include: {
+                experience: { select: { title: true } },
+              },
+            },
+            participants: {
+              include: {
+                user: { select: { id: true, name: true, avatar: true, role: true } },
+              },
+            },
+            messages: {
+              orderBy: { createdAt: 'desc' },
+              take: 1,
+            },
+          },
         },
       },
-      orderBy: { updatedAt: 'desc' },
+      orderBy: { conversation: { lastMessageAt: 'desc' } },
+    });
+
+    return participants.map((p) => {
+      const otherParticipant = p.conversation.participants.find((part) => part.userId !== user.id);
+      return {
+        id: p.conversation.id,
+        booking: p.conversation.booking,
+        lastMessage: p.conversation.messages[0] || null,
+        lastMessageAt: p.conversation.lastMessageAt,
+        otherUser: otherParticipant?.user || null,
+      };
     });
   }
 
-  async getMessages(userId: string, chatId: string, page = 1, limit = 50) {
-    const chat = await this.prisma.chat.findUnique({
-      where: { id: chatId },
+  async getMessages(conversationId: string, user: User) {
+    const isMember = await this.prisma.conversationParticipant.findUnique({
+      where: { conversationId_userId: { conversationId, userId: user.id } },
     });
 
-    if (!chat) {
-      throw new NotFoundException('Chat not found');
+    if (!isMember && !['ADMIN', 'SUPER_ADMIN'].includes(user.role)) {
+      throw new ForbiddenException('Not authorized to access this conversation');
     }
 
-    if (chat.participant1Id !== userId && chat.participant2Id !== userId) {
-      throw new ForbiddenException('You are not a participant in this chat');
+    // Update lastReadAt
+    await this.prisma.conversationParticipant.updateMany({
+      where: { conversationId, userId: user.id },
+      data: { lastReadAt: new Date() },
+    });
+
+    return this.prisma.message.findMany({
+      where: { conversationId },
+      include: {
+        sender: { select: { id: true, name: true, avatar: true } },
+      },
+      orderBy: { createdAt: 'asc' },
+    });
+  }
+
+  async sendMessage(conversationId: string, user: User, content: string, mediaUrl?: string) {
+    const isMember = await this.prisma.conversationParticipant.findUnique({
+      where: { conversationId_userId: { conversationId, userId: user.id } },
+    });
+
+    if (!isMember) {
+      throw new ForbiddenException('Not a member of this conversation');
     }
 
-    const skip = (page - 1) * limit;
+    const now = new Date();
 
-    const [items, total] = await Promise.all([
-      this.prisma.message.findMany({
-        where: { chatId },
-        orderBy: { createdAt: 'desc' },
-        skip,
-        take: limit,
+    const [message] = await this.prisma.$transaction([
+      this.prisma.message.create({
+        data: {
+          conversationId,
+          senderUserId: user.id,
+          content,
+          mediaUrl: mediaUrl || null,
+        },
+        include: {
+          sender: { select: { id: true, name: true, avatar: true } },
+        },
       }),
-      this.prisma.message.count({ where: { chatId } }),
+      this.prisma.conversation.update({
+        where: { id: conversationId },
+        data: { lastMessageAt: now },
+      }),
     ]);
 
-    // Mark unread messages as read
-    const unreadMessages = items.filter(m => m.senderId !== userId && !m.isRead);
-    if (unreadMessages.length > 0) {
-      await this.prisma.message.updateMany({
-        where: {
-          id: { in: unreadMessages.map(m => m.id) },
-        },
-        data: { isRead: true },
-      });
-    }
-
-    return {
-      items,
-      meta: {
-        total,
-        page,
-        limit,
-        totalPages: Math.ceil(total / limit),
-      },
-    };
-  }
-
-  async sendMessage(userId: string, data: CreateMessageDto) {
-    const chat = await this.prisma.chat.findUnique({
-      where: { id: data.chatId },
-    });
-
-    if (!chat) {
-      throw new NotFoundException('Chat not found');
-    }
-
-    if (chat.participant1Id !== userId && chat.participant2Id !== userId) {
-      throw new ForbiddenException('You are not a participant in this chat');
-    }
-
-    const message = await this.prisma.message.create({
-      data: {
-        chatId: data.chatId,
-        senderId: userId,
-        content: data.content,
-        mediaUrl: data.mediaUrl,
-      },
-    });
-
-    // Update chat updatedAt for sorting
-    await this.prisma.chat.update({
-      where: { id: data.chatId },
-      data: { updatedAt: new Date() },
-    });
-
     return message;
-  }
-
-  async createChat(userId: string, targetUserId: string) {
-    if (userId === targetUserId) {
-      throw new BadRequestException('Cannot create a chat with yourself');
-    }
-
-    // Ensure users exist
-    const target = await this.prisma.user.findUnique({ where: { id: targetUserId } });
-    if (!target) throw new NotFoundException('Target user not found');
-
-    // Check if chat already exists (order independent)
-    const existingChat = await this.prisma.chat.findFirst({
-      where: {
-        OR: [
-          { participant1Id: userId, participant2Id: targetUserId },
-          { participant1Id: targetUserId, participant2Id: userId },
-        ],
-      },
-    });
-
-    if (existingChat) return existingChat;
-
-    return this.prisma.chat.create({
-      data: {
-        participant1Id: userId,
-        participant2Id: targetUserId,
-      },
-    });
   }
 }

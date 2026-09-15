@@ -8,519 +8,537 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-enum Role {
-  ADMIN
+enum UserRole {
   TRAVELER
   LOCAL_FRIEND
+  ADMIN
+  MODERATOR
+  SUPPORT
+  SUPER_ADMIN
+}
+
+enum OnboardingStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum VerificationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  CHANGES_REQUESTED
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum ExperienceStatus {
+  DRAFT
+  PUBLISHED
+  PAUSED
 }
 
 enum BookingStatus {
   PENDING
+  PAYMENT_PENDING
   CONFIRMED
-  REJECTED
-  CANCELLED
   COMPLETED
+  CANCELLED
+  REFUND_PENDING
+  REFUNDED
+  FAILED
+}
+
+enum PaymentStatus {
+  CREATED
+  AUTHORIZED
+  CAPTURED
+  FAILED
   REFUNDED
 }
 
-enum VerificationStatus {
-  PENDING
-  APPROVED
-  REJECTED
-}
-
-enum LocalPulseStatus {
-  DRAFT
-  PUBLISHED
-  FLAGGED
-  REMOVED
-  EXPIRED
-}
-
 enum ReportStatus {
-  OPEN
-  INVESTIGATING
+  PENDING
+  IN_REVIEW
   RESOLVED
   DISMISSED
 }
 
+enum ReportTargetType {
+  USER
+  LOCAL
+  EXPERIENCE
+  REVIEW
+  MESSAGE
+}
+
+enum SavedItemType {
+  LOCAL_FRIEND
+  EXPERIENCE
+  DESTINATION
+  PULSE_SPOT
+}
+
 model User {
-  id        String    @id @default(uuid())
-  clerkId   String    @unique
-  email     String    @unique
-  phone     String?
-  role      Role      @default(TRAVELER)
-  firstName String?
-  lastName  String?
-  avatarUrl String?
-  isActive  Boolean   @default(true)
-  deletedAt DateTime? 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id               String           @id @default(uuid())
+  clerkUserId      String           @unique
+  email            String           @unique
+  name             String?
+  avatar           String?
+  role             UserRole         @default(TRAVELER)
+  onboardingStatus OnboardingStatus @default(NOT_STARTED)
+  isActive         Boolean          @default(true)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
 
   travelerProfile   TravelerProfile?
-  localFriendProfile LocalFriendProfile?
-  
-  bookingsAsTraveler Booking[] @relation("TravelerBookings")
-  bookingsAsLocalFriend Booking[] @relation("LocalFriendBookings")
-  
-  reviewsGiven      Review[] @relation("ReviewsGiven")
-  reviewsReceived   Review[] @relation("ReviewsReceived")
-  
-  messages          Message[]
-  chatsAsParticipant1 Chat[] @relation("Participant1Chats")
-  chatsAsParticipant2 Chat[] @relation("Participant2Chats")
-  
-  trips             Trip[]
-  savedTrips        SavedTrip[]
-  payments          Payment[]
+  localProfile      LocalProfile?
+  reviewsAuthored   Review[]                  @relation("AuthorReviews")
+  bookingsAsTraveler Booking[]                @relation("TravelerBookings")
+  savedItems        SavedItem[]
+  chatParticipants  ConversationParticipant[]
+  messagesSent      Message[]
   notifications     Notification[]
-  emergencyContacts EmergencyContact[]
-  sosRequests       SOSRequest[]
-  aiTrips           AITrip[]
-  verificationDocs  VerificationDocument[]
-  activityLogs      ActivityLog[]
-  localPulsePosts   LocalPulsePost[]
-  reportsFiled      Report[] @relation("Reporter")
-  reportsReceived   Report[] @relation("ReportedUser")
-  adminAuditLogs    AuditLog[] @relation("AdminUser")
+  auditLogs         AuditLog[]                @relation("AdminAuditLogs")
+  reportsSubmitted  Report[]                  @relation("ReporterUser")
+  aiConversations   AIConversation[]
+  itineraries       Itinerary[]
 
-  @@index([clerkId])
+  @@index([clerkUserId])
   @@index([email])
-}
-
-model Interest {
-  id          String   @id @default(uuid())
-  name        String   @unique
-  description String?
-  createdAt   DateTime @default(now())
-
-  travelers    TravelerInterest[]
-  localFriends LocalFriendInterest[]
-}
-
-model Language {
-  id        String   @id @default(uuid())
-  code      String   @unique // e.g., "en", "es", "fr"
-  name      String   // e.g., "English", "Spanish"
-  createdAt   DateTime @default(now())
-
-  travelers    TravelerLanguage[]
-  localFriends LocalFriendLanguage[]
+  @@index([role])
 }
 
 model TravelerProfile {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio            String?
+  languages      String[] @default([])
+  interests      String[] @default([])
+  travelStyle    String?
+  budgetRange    String?
+  homeCountry    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model LocalProfile {
+  id                 String             @id @default(uuid())
+  userId             String             @unique
+  user               User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tagline            String?
+  bio                String?
+  city               String
+  country            String
+  destinationId      String?
+  destination        Destination?       @relation(fields: [destinationId], references: [id], onDelete: SetNull)
+  latitude           Float?
+  longitude          Float?
+  hourlyRate         Decimal            @default(35.00) @db.Decimal(10, 2)
+  currency           String             @default("USD")
+  languages          String[]           @default([])
+  interests          String[]           @default([])
+  expertise          String[]           @default([])
+  yearsResident      Int                @default(1)
+  responseTimeMin    Int                @default(15)
+  responseRatePct    Int                @default(100)
+  ratingScore        Float              @default(5.0)
+  reviewCount        Int                @default(0)
+  isSuperhost        Boolean            @default(false)
+  verificationStatus VerificationStatus @default(DRAFT)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  experiences            Experience[]
+  availabilitySlots      AvailabilitySlot[]
+  bookingsReceived       Booking[]               @relation("LocalFriendBookings")
+  reviewsReceived        Review[]                @relation("TargetLocalReviews")
+  pulsePosts             PulsePost[]
+  verificationApplication VerificationApplication?
+
+  @@index([city, country])
+  @@index([verificationStatus])
+  @@index([ratingScore])
+  @@index([destinationId])
+}
+
+model Destination {
   id          String   @id @default(uuid())
-  userId      String   @unique
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  bio         String?
-  travelStyle Json?    // General preferences
-  budgetLevel String?  // e.g. BUDGET, MODERATE, LUXURY
+  slug        String   @unique
+  city        String
+  country     String
+  region      String?
+  heroImage   String
+  description String?
+  latitude    Float
+  longitude   Float
+  weatherNote String?
+  avgPrice    Decimal? @db.Decimal(10, 2)
+  isTrending  Boolean  @default(false)
+  localCount  Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  interests   TravelerInterest[]
-  languages   TravelerLanguage[]
-}
+  locals      LocalProfile[]
+  experiences Experience[]
+  pulsePosts  PulsePost[]
 
-model LocalFriendProfile {
-  id          String   @id @default(uuid())
-  userId      String   @unique
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  bio         String?
-  hourlyRate  Int      // Stored in minor units (e.g. cents)
-  currency    String   @default("USD")
-  location    String?
-  latitude    Float?
-  longitude   Float?
-  isVerified  Boolean  @default(false)
-  rating      Float    @default(0.0)
-  totalReviews Int     @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  interests    LocalFriendInterest[]
-  languages    LocalFriendLanguage[]
-  experiences  Experience[]
-  availability Availability[]
-}
-
-// Junction Tables for Normalized Relations
-model TravelerInterest {
-  travelerId String
-  interestId String
-  traveler   TravelerProfile @relation(fields: [travelerId], references: [id], onDelete: Cascade)
-  interest   Interest        @relation(fields: [interestId], references: [id], onDelete: Cascade)
-
-  @@id([travelerId, interestId])
-}
-
-model LocalFriendInterest {
-  localFriendId String
-  interestId    String
-  localFriend   LocalFriendProfile @relation(fields: [localFriendId], references: [id], onDelete: Cascade)
-  interest      Interest           @relation(fields: [interestId], references: [id], onDelete: Cascade)
-
-  @@id([localFriendId, interestId])
-}
-
-model TravelerLanguage {
-  travelerId String
-  languageId String
-  traveler   TravelerProfile @relation(fields: [travelerId], references: [id], onDelete: Cascade)
-  language   Language        @relation(fields: [languageId], references: [id], onDelete: Cascade)
-
-  @@id([travelerId, languageId])
-}
-
-model LocalFriendLanguage {
-  localFriendId String
-  languageId    String
-  localFriend   LocalFriendProfile @relation(fields: [localFriendId], references: [id], onDelete: Cascade)
-  language      Language           @relation(fields: [languageId], references: [id], onDelete: Cascade)
-
-  @@id([localFriendId, languageId])
+  @@index([slug])
+  @@index([city, country])
+  @@index([isTrending])
 }
 
 model Experience {
-  id              String   @id @default(uuid())
-  localFriendId   String
-  title           String
-  description     String
-  category        String?
-  location        String?
-  latitude        Float?
-  longitude       Float?
-  durationMinutes Int
-  price           Int      // Minor units
-  currency        String   @default("USD")
-  mediaUrls       String[] // Cloudinary references
-  isActive        Boolean  @default(true)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id             String           @id @default(uuid())
+  localProfileId String
+  localProfile   LocalProfile     @relation(fields: [localProfileId], references: [id], onDelete: Cascade)
+  destinationId  String?
+  destination    Destination?     @relation(fields: [destinationId], references: [id], onDelete: SetNull)
+  title          String
+  description    String
+  category       String
+  durationHours  Float            @default(3.0)
+  maxGuests      Int              @default(4)
+  pricePerPerson Decimal          @db.Decimal(10, 2)
+  currency       String           @default("USD")
+  meetingPoint   String
+  inclusions     String[]         @default([])
+  requirements   String[]         @default([])
+  languages      String[]         @default([])
+  status         ExperienceStatus @default(PUBLISHED)
+  isInstantBook  Boolean          @default(true)
+  isFeatured     Boolean          @default(false)
+  ratingScore    Float            @default(5.0)
+  reviewCount    Int              @default(0)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
 
-  localFriend LocalFriendProfile @relation(fields: [localFriendId], references: [id], onDelete: Cascade)
-  bookings    Booking[]
+  images   ExperienceImage[]
+  bookings Booking[]
+  reviews  Review[]
 
-  @@index([localFriendId])
+  @@index([localProfileId])
+  @@index([destinationId])
   @@index([category])
+  @@index([status])
+  @@index([isFeatured])
 }
 
-model Availability {
-  id              String   @id @default(uuid())
-  localFriendId   String
-  startTime       DateTime
-  endTime         DateTime
-  isRecurring     Boolean  @default(false)
-  recurringRule   String?  // e.g., RRULE for weekly availability
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+model ExperienceImage {
+  id           String     @id @default(uuid())
+  experienceId String
+  experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  imageUrl     String
+  caption      String?
+  displayOrder Int        @default(0)
+  createdAt    DateTime   @default(now())
 
-  localFriend LocalFriendProfile @relation(fields: [localFriendId], references: [id], onDelete: Cascade)
+  @@index([experienceId])
+}
 
-  @@index([localFriendId, startTime, endTime])
+model AvailabilitySlot {
+  id             String       @id @default(uuid())
+  localProfileId String
+  localProfile   LocalProfile @relation(fields: [localProfileId], references: [id], onDelete: Cascade)
+  date           DateTime     @db.Date
+  startTime      String
+  endTime        String
+  isBlocked      Boolean      @default(false)
+  maxCapacity    Int          @default(4)
+  currentBooked  Int          @default(0)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@unique([localProfileId, date, startTime])
+  @@index([localProfileId, date])
 }
 
 model Booking {
-  id              String        @id @default(uuid())
-  travelerId      String
-  localFriendId   String
-  experienceId    String?
-  status          BookingStatus @default(PENDING)
-  startTime       DateTime
-  endTime         DateTime
-  totalAmount     Int           // Minor units
-  currency        String        @default("USD")
-  meetingLocation String?
-  notes           String?
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
+  id             String        @id @default(uuid())
+  bookingNumber  String        @unique
+  travelerUserId String
+  traveler       User          @relation("TravelerBookings", fields: [travelerUserId], references: [id], onDelete: Restrict)
+  localProfileId String
+  localProfile   LocalProfile  @relation("LocalFriendBookings", fields: [localProfileId], references: [id], onDelete: Restrict)
+  experienceId   String?
+  experience     Experience?   @relation(fields: [experienceId], references: [id], onDelete: SetNull)
+  bookingDate    DateTime      @db.Date
+  startTime      String
+  endTime        String?
+  guestCount     Int           @default(1)
+  specialNotes   String?
+  totalAmount    Decimal       @db.Decimal(10, 2)
+  platformFee    Decimal       @default(0.00) @db.Decimal(10, 2)
+  hostPayout     Decimal       @db.Decimal(10, 2)
+  currency       String        @default("USD")
+  status         BookingStatus @default(PENDING)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
 
-  traveler    User        @relation("TravelerBookings", fields: [travelerId], references: [id], onDelete: Restrict)
-  localFriend User        @relation("LocalFriendBookings", fields: [localFriendId], references: [id], onDelete: Restrict)
-  experience  Experience? @relation(fields: [experienceId], references: [id], onDelete: SetNull)
-  payment     Payment?
-  review      Review?
+  payment        Payment?
+  review         Review?
+  conversation   Conversation?
 
-  @@index([travelerId])
-  @@index([localFriendId])
+  @@index([travelerUserId])
+  @@index([localProfileId])
+  @@index([experienceId])
   @@index([status])
-  @@index([startTime, endTime])
+  @@index([bookingDate])
 }
 
 model Payment {
-  id                 String   @id @default(uuid())
-  bookingId          String   @unique
-  userId             String
-  amount             Int      // Gross Amount
-  platformCommission Int      // Platform cut
-  localFriendAmount  Int      // Net for Local Friend
-  currency           String   @default("USD")
-  status             String   // PENDING, COMPLETED, FAILED, REFUNDED
-  razorpayOrderId    String?  @unique
-  razorpayPaymentId  String?  @unique
-  refundId           String?  @unique
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-
-  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
-  user    User    @relation(fields: [userId], references: [id], onDelete: Restrict)
+  id                 String        @id @default(uuid())
+  bookingId          String        @unique
+  booking            Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  razorpayOrderId    String        @unique
+  razorpayPaymentId  String?       @unique
+  razorpaySignature  String?
+  amount             Decimal       @db.Decimal(10, 2)
+  currency           String        @default("USD")
+  status             PaymentStatus @default(CREATED)
+  paymentMethod      String?
+  webhookPayload     Json?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
 
   @@index([razorpayOrderId])
   @@index([status])
 }
 
 model Review {
-  id          String   @id @default(uuid())
-  bookingId   String   @unique
-  reviewerId  String
-  revieweeId  String
-  rating      Int      // e.g., 1 to 5
-  comment     String?
-  isFlagged   Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id             String        @id @default(uuid())
+  bookingId      String        @unique
+  booking        Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  authorUserId   String
+  author         User          @relation("AuthorReviews", fields: [authorUserId], references: [id], onDelete: Cascade)
+  localProfileId String
+  localProfile   LocalProfile  @relation("TargetLocalReviews", fields: [localProfileId], references: [id], onDelete: Cascade)
+  experienceId   String?
+  experience     Experience?   @relation(fields: [experienceId], references: [id], onDelete: SetNull)
+  rating         Int           @default(5)
+  content        String
+  hostReply      String?
+  hostRepliedAt  DateTime?
+  isVerified     Boolean       @default(true)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
 
-  booking  Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
-  reviewer User    @relation("ReviewsGiven", fields: [reviewerId], references: [id], onDelete: Cascade)
-  reviewee User    @relation("ReviewsReceived", fields: [revieweeId], references: [id], onDelete: Cascade)
-
-  @@index([revieweeId])
-}
-
-model Chat {
-  id             String   @id @default(uuid())
-  participant1Id String
-  participant2Id String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-
-  participant1 User      @relation("Participant1Chats", fields: [participant1Id], references: [id], onDelete: Cascade)
-  participant2 User      @relation("Participant2Chats", fields: [participant2Id], references: [id], onDelete: Cascade)
-  messages     Message[]
-
-  @@unique([participant1Id, participant2Id])
-}
-
-model Message {
-  id        String   @id @default(uuid())
-  chatId    String
-  senderId  String
-  content   String
-  mediaUrl  String?  // Cloudinary reference
-  isRead    Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  chat   Chat @relation(fields: [chatId], references: [id], onDelete: Cascade)
-  sender User @relation(fields: [senderId], references: [id], onDelete: Cascade)
-
-  @@index([chatId, createdAt])
-}
-
-model Trip {
-  id          String   @id @default(uuid())
-  userId      String
-  title       String
-  description String?
-  startDate   DateTime
-  endDate     DateTime
-  destinations Json
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model SavedTrip {
-  id        String   @id @default(uuid())
-  userId    String
-  tripData  Json
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([localProfileId])
+  @@index([experienceId])
+  @@index([authorUserId])
 }
 
 model SavedItem {
-  id         String   @id @default(uuid())
+  id         String        @id @default(uuid())
   userId     String
-  itemType   String   // LOCAL_FRIEND, EXPERIENCE, LOCAL_PULSE
-  itemId     String
-  createdAt  DateTime @default(now())
+  user       User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itemType   SavedItemType
+  targetId   String
+  createdAt  DateTime      @default(now())
 
-  @@unique([userId, itemType, itemId])
+  @@unique([userId, itemType, targetId])
+  @@index([userId])
+}
+
+model PulsePost {
+  id             String       @id @default(uuid())
+  localProfileId String
+  localProfile   LocalProfile @relation(fields: [localProfileId], references: [id], onDelete: Cascade)
+  destinationId  String
+  destination    Destination  @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  title          String
+  content        String
+  vibeCategory   String
+  spotName       String?
+  spotAddress    String?
+  latitude       Float?
+  longitude      Float?
+  imageUrl       String?
+  upvotesCount   Int          @default(0)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([destinationId])
+  @@index([vibeCategory])
+  @@index([createdAt])
+}
+
+model Conversation {
+  id           String    @id @default(uuid())
+  bookingId    String?   @unique
+  booking      Booking?  @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+  lastMessageAt DateTime @default(now())
+  createdAt    DateTime  @default(now())
+
+  participants ConversationParticipant[]
+  messages     Message[]
+
+  @@index([lastMessageAt])
+}
+
+model ConversationParticipant {
+  id             String       @id @default(uuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lastReadAt     DateTime     @default(now())
+
+  @@unique([conversationId, userId])
+  @@index([userId])
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderUserId   String
+  sender         User         @relation(fields: [senderUserId], references: [id], onDelete: Cascade)
+  content        String
+  mediaUrl       String?
+  isSystem       Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId, createdAt])
 }
 
 model Notification {
   id        String   @id @default(uuid())
   userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   title     String
   message   String
-  type      String   // BOOKING, CHAT, SYSTEM, REVIEW, SAFETY
-  metadata  Json?
+  type      String
+  linkUrl   String?
   isRead    Boolean  @default(false)
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, isRead])
 }
 
-model EmergencyContact {
-  id        String   @id @default(uuid())
-  userId    String
-  name      String
-  phone     String
-  relation  String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model VerificationApplication {
+  id             String             @id @default(uuid())
+  localProfileId String             @unique
+  localProfile   LocalProfile       @relation(fields: [localProfileId], references: [id], onDelete: Cascade)
+  status         VerificationStatus @default(SUBMITTED)
+  adminNotes     String?
+  idDocType      String?
+  residentDocType String?
+  automatedChecks Json?
+  riskScore      Float?             @default(0.0)
+  reviewedBy     String?
+  reviewedAt     DateTime?
+  submittedAt    DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model SOSRequest {
-  id        String   @id @default(uuid())
-  userId    String
-  latitude  Float
-  longitude Float
-  status    String   // ACTIVE, RESOLVED
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model Report {
-  id          String       @id @default(uuid())
-  reporterId  String
-  reportedId  String?      // Could be user, post, review
-  reportType  String       // USER, REVIEW, LOCAL_PULSE, EXPERIENCE, MESSAGE
-  reason      String
-  description String?
-  status      ReportStatus @default(OPEN)
-  resolution  String?
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-
-  reporter     User  @relation("Reporter", fields: [reporterId], references: [id], onDelete: Cascade)
-  reportedUser User? @relation("ReportedUser", fields: [reportedId], references: [id], onDelete: SetNull)
+  documents VerificationDocument[]
 
   @@index([status])
 }
 
+model VerificationDocument {
+  id            String                  @id @default(uuid())
+  applicationId String
+  application   VerificationApplication @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  documentType  String
+  fileUrl       String
+  isVerified    Boolean                 @default(false)
+  uploadedAt    DateTime                @default(now())
+
+  @@index([applicationId])
+}
+
+model Report {
+  id             String           @id @default(uuid())
+  reporterUserId String
+  reporter       User             @relation("ReporterUser", fields: [reporterUserId], references: [id], onDelete: Cascade)
+  targetType     ReportTargetType
+  targetId       String
+  reason         String
+  details        String?
+  status         ReportStatus     @default(PENDING)
+  resolvedBy     String?
+  resolutionNote String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@index([status])
+  @@index([targetType, targetId])
+}
+
 model AuditLog {
   id         String   @id @default(uuid())
-  adminId    String
+  actorId    String?
+  actor      User?    @relation("AdminAuditLogs", fields: [actorId], references: [id], onDelete: SetNull)
   action     String
   entityType String
-  entityId   String
-  metadata   Json?
+  entityId   String?
+  details    Json?
+  ipAddress  String?
   createdAt  DateTime @default(now())
 
-  adminUser User @relation("AdminUser", fields: [adminId], references: [id], onDelete: Restrict)
+  @@index([action])
+  @@index([entityType, entityId])
+  @@index([createdAt])
 }
 
-model AITrip {
-  id        String   @id @default(uuid())
-  userId    String
-  prompt    String
-  response  Json
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model AIMatchRequest {
+model AIConversation {
   id          String   @id @default(uuid())
-  travelerId  String
-  preferences Json
-  matchResult Json?
-  score       Float?
-  createdAt   DateTime @default(now())
-}
-
-model AITrustSignal {
-  id          String   @id @default(uuid())
-  userId      String
-  signalType  String   // VERIFICATION, REVIEWS, BEHAVIOR
-  score       Float
-  metadata    Json?
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  prompt      String
+  destination String?
+  preferences Json?
+  result      Json?
   createdAt   DateTime @default(now())
 
   @@index([userId])
 }
 
-model VerificationDocument {
-  id             String             @id @default(uuid())
-  userId         String
-  docType        String
-  docUrl         String             // Cloudinary reference
-  status         VerificationStatus @default(PENDING)
-  rejectionReason String?
-  reviewerId     String?            // Admin user ID who reviewed it
-  createdAt      DateTime           @default(now())
-  updatedAt      DateTime           @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model ActivityLog {
-  id        String   @id @default(uuid())
-  userId    String
-  action    String
-  details   Json?
-  createdAt DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model LocalPulsePost {
-  id               String           @id @default(uuid())
-  authorId         String
-  content          String?
-  location         String?
-  latitude         Float?
-  longitude        Float?
-  status           LocalPulseStatus @default(DRAFT)
-  processingStatus String           // PENDING, COMPLETED, FAILED
-  aiAnalysis       Json?            // Stores structured AI result
-  authenticityScore Float?
-  isVerified       Boolean          @default(false)
-  createdAt        DateTime         @default(now())
-  updatedAt        DateTime         @updatedAt
-
-  author User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  events Event[]
-  media  EventMedia[]
-
-  @@index([location])
-  @@index([status])
-}
-
-model Event {
-  id             String         @id @default(uuid())
-  postId         String
+model Itinerary {
+  id             String   @id @default(uuid())
+  userId         String?
+  user           User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   title          String
-  description    String?
-  eventType      String         // FESTIVAL, FOOD_MARKET, etc.
-  estimatedCrowd String?        // LOW, MEDIUM, HIGH
-  startTime      DateTime?
-  endTime        DateTime?
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
+  destination    String
+  durationDays   Int
+  travelStyle    String?
+  budgetEstimate String?
+  matchScore     Float?   @default(98.0)
+  isSaved        Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
-  post LocalPulsePost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  days ItineraryDay[]
+
+  @@index([userId])
 }
 
-model EventMedia {
-  id        String         @id @default(uuid())
-  postId    String
-  url       String         // Cloudinary
-  mediaType String         // IMAGE, VIDEO
-  createdAt DateTime       @default(now())
+model ItineraryDay {
+  id          String    @id @default(uuid())
+  itineraryId String
+  itinerary   Itinerary @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
+  dayNumber   Int
+  themeTitle  String?
+  dateLabel   String?
 
-  post LocalPulsePost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  activities ItineraryActivity[]
+
+  @@index([itineraryId, dayNumber])
+}
+
+model ItineraryActivity {
+  id             String       @id @default(uuid())
+  dayId          String
+  day            ItineraryDay @relation(fields: [dayId], references: [id], onDelete: Cascade)
+  timeSlot       String
+  title          String
+  description    String
+  neighborhood   String?
+  matchedLocalId String?
+  activityOrder  Int          @default(0)
+
+  @@index([dayId, activityOrder])
 }

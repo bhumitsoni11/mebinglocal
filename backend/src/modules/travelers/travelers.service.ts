@@ -1,27 +1,25 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaService } from '../../common/database/prisma.service';
-import { UpdateTravelerDto } from './dto/update-traveler.dto';
+import { PrismaService } from '@/database/prisma.service';
+import { User, SavedItemType } from '@prisma/client';
 
 @Injectable()
 export class TravelersService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async findByUserId(userId: string) {
+  async getProfile(userId: string) {
     const profile = await this.prisma.travelerProfile.findUnique({
       where: { userId },
       include: {
-        interests: { include: { interest: true } },
-        languages: { include: { language: true } },
+        user: { select: { id: true, name: true, email: true, avatar: true, role: true } },
       },
     });
 
     if (!profile) {
-      // If it doesn't exist, create it (lazy initialization)
+      // Auto-create profile if missing
       return this.prisma.travelerProfile.create({
         data: { userId },
         include: {
-          interests: { include: { interest: true } },
-          languages: { include: { language: true } },
+          user: { select: { id: true, name: true, email: true, avatar: true, role: true } },
         },
       });
     }
@@ -29,39 +27,76 @@ export class TravelersService {
     return profile;
   }
 
-  async updateByUserId(userId: string, data: UpdateTravelerDto) {
-    const { interestIds, languageIds, ...profileData } = data;
-
-    // We must ensure the profile exists first
-    await this.findByUserId(userId);
-
-    const updateData: any = { ...profileData };
-
-    if (interestIds) {
-      updateData.interests = {
-        deleteMany: {},
-        create: interestIds.map(id => ({
-          interest: { connect: { id } }
-        }))
-      };
-    }
-
-    if (languageIds) {
-      updateData.languages = {
-        deleteMany: {},
-        create: languageIds.map(id => ({
-          language: { connect: { id } }
-        }))
-      };
-    }
-
-    return this.prisma.travelerProfile.update({
+  async updateProfile(userId: string, data: any) {
+    return this.prisma.travelerProfile.upsert({
       where: { userId },
-      data: updateData,
+      update: {
+        bio: data.bio,
+        languages: data.languages,
+        interests: data.interests,
+        travelStyle: data.travelStyle,
+        budgetRange: data.budgetRange,
+        homeCountry: data.homeCountry,
+      },
+      create: {
+        userId,
+        bio: data.bio || '',
+        languages: data.languages || [],
+        interests: data.interests || [],
+        travelStyle: data.travelStyle || 'Slow Cultural',
+      },
       include: {
-        interests: { include: { interest: true } },
-        languages: { include: { language: true } },
+        user: { select: { id: true, name: true, email: true, avatar: true } },
       },
     });
+  }
+
+  async getSavedItems(userId: string) {
+    const items = await this.prisma.savedItem.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    const localIds = items.filter((i) => i.itemType === SavedItemType.LOCAL_FRIEND).map((i) => i.targetId);
+    const experienceIds = items.filter((i) => i.itemType === SavedItemType.EXPERIENCE).map((i) => i.targetId);
+
+    const [locals, experiences] = await Promise.all([
+      this.prisma.localProfile.findMany({
+        where: { id: { in: localIds } },
+        include: { user: { select: { name: true, avatar: true } } },
+      }),
+      this.prisma.experience.findMany({
+        where: { id: { in: experienceIds } },
+        include: { images: true, localProfile: { include: { user: { select: { name: true } } } } },
+      }),
+    ]);
+
+    return {
+      locals,
+      experiences,
+    };
+  }
+
+  async toggleSaveItem(userId: string, itemType: SavedItemType, targetId: string) {
+    const existing = await this.prisma.savedItem.findUnique({
+      where: {
+        userId_itemType_targetId: {
+          userId,
+          itemType,
+          targetId,
+        },
+      },
+    });
+
+    if (existing) {
+      await this.prisma.savedItem.delete({ where: { id: existing.id } });
+      return { saved: false };
+    }
+
+    await this.prisma.savedItem.create({
+      data: { userId, itemType, targetId },
+    });
+
+    return { saved: true };
   }
 }

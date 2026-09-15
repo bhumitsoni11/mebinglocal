@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "outline-variant": "#e0bfba", "on-primary": "#ffffff", "on-tertiary-fixed": "#2f1500", "on-secondary-container": "#4c6861", "outline": "#8c716c", "tertiary": "#8d4b00", "tertiary-fixed-dim": "#ffb77d", "primary": "#a83223", "on-error": "#ffffff", "surface-container": "#ebefea", "on-secondary-fixed": "#02201b", "tertiary-fixed": "#ffdcc3", "surface-container-low": "#f0f5f0", "on-surface-variant": "#58413d", "on-secondary": "#ffffff", "surface-bright": "#f6fbf5", "on-tertiary-fixed-variant": "#6e3900", "on-surface": "#181d1a", "secondary-container": "#c7e6dd", "secondary": "#48645d", "on-error-container": "#93000a", "tertiary-container": "#b15f00", "on-secondary-fixed-variant": "#304c46", "on-tertiary-container": "#fffbff", "on-background": "#181d1a", "surface": "#f6fbf5", "error-container": "#ffdad6", "surface-tint": "#ab3425", "secondary-fixed-dim": "#aecdc4", "on-primary-fixed-variant": "#8a1c10", "secondary-fixed": "#cae9e0", "background": "#f6fbf5", "surface-container-highest": "#dfe4df", "on-primary-container": "#fffbff", "inverse-on-surface": "#edf2ed", "primary-fixed-dim": "#ffb4a8", "inverse-surface": "#2c322e", "primary-fixed": "#ffdad4", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#410100", "surface-variant": "#dfe4df", "surface-dim": "#d7dbd6", "inverse-primary": "#ffb4a8", "surface-container-high": "#e5e9e4", "primary-container": "#c94a38" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "3rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin-tablet": "2rem", "gutter": "1.5rem", "gutter-mobile": "1rem", "margin-mobile": "1.25rem" }, "fontFamily": { "headline-lg": [ "Plus Jakarta Sans" ], "display-hero-mobile": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "body-xl": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "label-lg": [ "Inter" ], "headline-xl": [ "Plus Jakarta Sans" ], "label-md": [ "Inter" ], "display-hero": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "label-caps": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ] }, "fontSize": { "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-hero-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "body-xl": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-xl-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "display-hero": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-caps": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm shrink-0"><img alt="MebingLocal Wordmark Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wt2CZaen_XHwiN4LhFo5P_d4YqOcxyVoIfwqBhFlAChP502EqtZCSP_6XiGudVk6cfBSS3TT4LmQjcyHz5vlfvVRWXD7I9ZsSNETXPJsaXdbEYbjPEUN913bgnIa7QH3d2sdKB8Dq4ZECQ9wuM6YrEK9GaBFX516saY4eMkiHzGbbdTB2xIS_j0bGUf5Z4EY-FqRE2QSnGiWMosvXMcaEene43DBiJkCWli5qTCVZCB6z47RJOi4ZUBoU9"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">MebingLocal</span></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm"><a aria-current="page" class="transition-colors bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="local-friends" href="#">Local Friends</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="experiences" href="#">Experiences</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-planner" href="#">AI Planner</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="local-pulse" href="#">Local Pulse</a></nav><div class="flex items-center gap-space-sm shrink-0"><button class="hidden sm:inline-flex items-center justify-center px-space-md py-space-xs rounded-full bg-surface-container-low text-primary hover:bg-surface-container font-label-lg text-label-lg transition-colors" type="button">Become a Local</button><button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-base">language</span><span class="font-label-md text-label-md">EN · USD</span></button><button class="relative p-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary"></span></button><button class="flex items-center gap-space-xs pl-space-xs pr-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-colors" type="button"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZl0dmZxxUXhEDxnX2U5MdJH4xdhtr7V2Jax4qmrlU0B0TfFYAKyMB1Flqq64vYGrS92LCahBacMH33o6D-Tp6Mjiz9mUcChC-g_7TFALnqp35fl4mGp0WcWBFzwkSoj7e_PhJSsjFWSUuFvWw8Hse3SYxldRXwIChzCIDucjGG06aIHYyDdfZBShezosSbrSWCnHCFvxyt8WVlHb_wUeSqzciRFCx-6hV4lDq71liN8e178FM2CnUWA"/><span class="material-symbols-outlined text-base text-on-surface-variant">expand_more</span></button></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- Top Editorial Hero & Dynamic Calculator Section -->
+<section class="relative w-full overflow-hidden px-6 lg:px-12 py-16 lg:py-24">
+<!-- Ambient organic light glow -->
+<div class="absolute -top-32 right-10 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-12 w-80 h-80 rounded-full bg-secondary/5 blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<!-- Left Narrative Column -->
+<div class="lg:col-span-7 flex flex-col space-y-6">
+<div class="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full bg-secondary-container/30 text-secondary font-label-caps text-label-caps uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+          Verified Community of Insiders
+        </div>
+<h1 class="font-display-hero text-display-hero text-on-surface tracking-tight leading-none">
+          Turn your love for your city into <span class="text-primary font-headline-xl">meaningful income</span> and human connection.
+        </h1>
+<p class="font-body-xl text-body-xl text-on-surface-variant max-w-2xl leading-relaxed">
+          Welcome curious, respectful travelers into your world. Share unscripted neighborhood haunts, secret dining, artisanal craft, or your local creative scene entirely on your schedule.
+        </p>
+<!-- Trust Badges Under Narrative -->
+<div class="flex flex-wrap items-center gap-4 pt-4">
+<div class="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="material-symbols-outlined text-primary text-xl">percent</span>
+<span class="font-label-md text-label-md text-on-surface">Zero platform fees for first 3 months</span>
+</div>
+<div class="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="material-symbols-outlined text-secondary text-xl">security</span>
+<span class="font-label-md text-label-md text-on-surface">$1,000,000 Host Protection Insurance included</span>
+</div>
+</div>
+<!-- Micro Testimonial Pill -->
+<div class="flex items-center gap-3 pt-2">
+<div class="flex -space-x-2">
+<div class="w-9 h-9 rounded-full bg-cover bg-center ring-2 ring-surface shadow-sm" data-alt="Portrait of a young friendly female local host with glasses smiling warmly against an artisan sunlit ceramic workshop" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAElgRmbzDNbBNBR77IW4ffZ1iVcwlGGJz1Bw0gu5G_CaWwqlgIU0jFyxM4y_lkHiZGAGwSa_t0Wy8-9ZQiQu5Lvg2lBB7JiTLRXhPX_qys9jGyow1MJVFwv6t-flnmlo5Lq71HMWHmteI6f41iJdJovyAGn4vbbc-pZIMHJ-09FPk6ZWn-PKkRmARsXqfmhL_Q_ZetKcDWYV3BENmaX9p_3kxp1ob-vodzUpmpeSItZu67HftAAte82A')"></div>
+<div class="w-9 h-9 rounded-full bg-cover bg-center ring-2 ring-surface shadow-sm" data-alt="Close-up outdoor portrait of a stylish male guide in Kyoto with traditional textured linen shirt under cherry blossoms" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsSlhY27P7OjMEDhuJxOn8AGIrt7CNKoaYXS_mT_ee-hG3Feek5r1pyreg5aVBjU9yADsAmYd3vW3Z8FfzZaum3RcszD2EgdG6Btx1kf0DZ2egYAUOOPntjEC04yxiIWK9JDOHLCw9N2zdiSx2WRYsgoNkbO5lOmISx8a4qm_IQanyZkEMlYfeb6SccKgSftFc0JjCo97Ji-3jXgf7KW0dHJ5FtGDxZhiZ5s5SGoJJTRAU22xSTSChdQ')"></div>
+<div class="w-9 h-9 rounded-full bg-cover bg-center ring-2 ring-surface shadow-sm" data-alt="Radiant portrait of an architectural guide smiling in front of terracotta stone archways in Mexico City" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLdT8_6LNxdF_BlZNW3F97h2X5fLheJi_F-NMJ0fo2mB7rdzKV2aG2PnBZM9gt_uvyWsppONGBbdumPQj8n7ciNj8uVmSsdZwRAg6lUP7GMIqclLr5igJBmCPmmw1F7QZ_N-oD6-yjeuvDhDyc616ydBFSEX_eCbXzCN7EfTd_W3SBD3250tVobUke4W52qhLa6m2EYPtHEDiTH1tfhCVs-h-Vhsh1rnRlvbTR2Bq6TIZJ-J4-GYO0hQ')"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Joined by <span class="font-label-lg text-label-lg text-on-surface font-semibold">2,480+ local friends &amp; makers</span> across 42 heritage cities.
+          </p>
+</div>
+</div>
+<!-- Right Interactive Calculator Card -->
+<div class="lg:col-span-5 relative">
+<div class="bg-surface-container-lowest rounded-xl p-6 lg:p-8 shadow-xl flex flex-col space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider">Host Earnings Estimator</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Calculate your monthly potential</h2>
+</div>
+<span class="p-2 rounded-full bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-2xl">calculate</span>
+</span>
+</div>
+<!-- Selector Group -->
+<div class="space-y-4">
+<!-- City Selection -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">pin_drop</span> City / Region
+              </label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg px-4 py-3 appearance-none focus:outline-none focus:bg-surface-container cursor-pointer transition-colors" id="calcCity">
+<option data-rate="55" value="tokyo">Tokyo, Japan</option>
+<option data-rate="60" selected="" value="florence">Florence, Italy</option>
+<option data-rate="42" value="mexico">Mexico City, Mexico</option>
+<option data-rate="48" value="lisbon">Lisbon, Portugal</option>
+<option data-rate="75" value="newyork">New York City, USA</option>
+<option data-rate="58" value="kyoto">Kyoto, Japan</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3.5 text-on-surface-variant pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<!-- Activity Type Tabs -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Hosting Format</label>
+<div class="grid grid-cols-2 gap-2 bg-surface-container-low p-1 rounded-lg">
+<button class="calc-type-btn py-2 px-3 rounded-md font-label-md text-label-md text-center bg-surface-container-lowest text-on-surface shadow-sm transition-all" data-multiplier="1.0" id="tabCompanionship" type="button">
+                  Local Friend Walk
+                </button>
+<button class="calc-type-btn py-2 px-3 rounded-md font-label-md text-label-md text-center text-on-surface-variant hover:text-on-surface transition-all" data-multiplier="1.35" id="tabCraft" type="button">
+                  Craft / Food Workshop
+                </button>
+</div>
+</div>
+<!-- Hours Slider -->
+<div class="space-y-2 pt-2">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant">Hours committed per week</label>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="hoursLabel">6 hrs / wk</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-full accent-primary cursor-pointer" id="hoursSlider" max="24" min="2" step="2" type="range" value="6"/>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant text-xs">
+<span>Casual (2h)</span>
+<span>Weekend (8h)</span>
+<span>Enthusiast (24h)</span>
+</div>
+</div>
+</div>
+<!-- Dynamic Output Plate -->
+<div class="bg-surface-container-low rounded-xl p-5 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Estimated Monthly Payout</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight" id="earningsValue">$1,440</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ month</span>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-block px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-caps text-label-caps">
+                Direct escrow
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs mt-1">Paid after each trip</p>
+</div>
+</div>
+<!-- Application Button & Meta -->
+<div class="flex flex-col space-y-2.5">
+<a class="w-full text-center py-3.5 px-6 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:shadow-lg transition-all active:scale-[0.99] flex items-center justify-center gap-2" href="#apply">
+              Start Your Host Application
+              <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+<div class="flex items-center justify-center gap-2 font-body-sm text-body-sm text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm text-secondary">schedule</span>
+              Takes ~10 minutes to submit · Free background review
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Why Host with MebingLocal vs Traditional Platforms -->
+<section class="w-full bg-surface-container-low px-6 lg:px-12 py-20">
+<div class="max-w-7xl mx-auto">
+<!-- Section Header -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+<div class="max-w-2xl">
+<span class="font-label-caps text-label-caps uppercase text-primary tracking-widest">Built For Genuine People</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mt-2 tracking-tight">
+            Human hospitality, not commercial tour mills.
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-3">
+            Legacy booking directories treat locals as gig labor and tourists as barcodes. MebingLocal is designed for creative residents who want meaningful cultural exchanges and fair economic agency.
+          </p>
+</div>
+<div class="hidden lg:flex items-center gap-3 self-end">
+<span class="font-label-caps text-label-caps uppercase text-secondary">Standard: Solo or micro-groups (max 4)</span>
+</div>
+</div>
+<!-- 4 Strategic Pillars Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Pillar 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-2xl">tune</span>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-secondary">Autonomy</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 mb-3">You Set the Rules &amp; Pace</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              No mandatory quotas or rigid itineraries. Accept only guests who share your passions, define your blackout dates, and host intimate micro-groups of 1 to 4 travelers max.
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center gap-2 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-base text-primary">check_circle</span>
+            100% calendar flexibility
+          </div>
+</div>
+<!-- Pillar 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-2xl">payments</span>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-secondary">Fair Economics</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 mb-3">Fair, Direct Payouts</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Earn $35 to $90+ per hour depending on your craft and locale. Instant escrow release disburses funds directly to your preferred bank within 24 hours after completion.
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center gap-2 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-base text-primary">check_circle</span>
+            Instant Stripe / Local transfer
+          </div>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-2xl">diversity_1</span>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-secondary">Soul &amp; Context</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 mb-3">Community, Not Commodity</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Skip megaphone bus tours and pre-scripted speeches. You are an insider friend, cultural custodian, artisan, or wine collector sharing what genuinely moves you.
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center gap-2 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-base text-primary">check_circle</span>
+            Zero corporate scripts
+          </div>
+</div>
+<!-- Pillar 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-2xl">shield</span>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-secondary">Peace of Mind</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 mb-3">Comprehensive Protection</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Every guest provides biometric passport verification. You are shielded by our $1,000,000 Host Liability Policy with real-time 24/7 localized emergency concierge standing by.
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center gap-2 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-base text-primary">check_circle</span>
+            Biometric identity verification
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: How It Works (Simple 4-Step Journey) -->
+<section class="w-full px-6 lg:px-12 py-20 lg:py-28">
+<div class="max-w-7xl mx-auto flex flex-col space-y-16">
+<div class="text-center max-w-3xl mx-auto">
+<span class="font-label-caps text-label-caps uppercase text-primary tracking-widest">Straightforward Onboarding</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mt-2">
+          From application to welcoming your first guest in four clear steps.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-3">
+          We intentionally curate our community to safeguard quality, warmth, and mutual respect.
+        </p>
+</div>
+<!-- Step Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+<!-- Step 1 -->
+<div class="relative flex flex-col bg-surface-container-lowest rounded-xl p-7 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<span class="font-headline-xl text-headline-xl font-bold text-primary/25">01</span>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">person_pin</span>
+</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Tell us about your passions</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Create your host bio detailing your neighborhood secrets, creative craft, culinary obsessions, and native languages.
+          </p>
+<div class="mt-6 pt-4 text-xs font-label-caps text-secondary uppercase">Takes ~8 minutes</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex flex-col bg-surface-container-lowest rounded-xl p-7 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<span class="font-headline-xl text-headline-xl font-bold text-primary/25">02</span>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">price_change</span>
+</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Set rates &amp; availability</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Design your bespoke offerings: a slow espresso crawl, architectural studio walk, or vintage market treasure hunt. Set your own pricing.
+          </p>
+<div class="mt-6 pt-4 text-xs font-label-caps text-secondary uppercase">Full pricing freedom</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex flex-col bg-surface-container-lowest rounded-xl p-7 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<span class="font-headline-xl text-headline-xl font-bold text-primary/25">03</span>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">video_call</span>
+</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">1-on-1 verification call</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            A relaxed 15-minute video welcome with our regional community lead to review local hospitality guidelines and confirm identity.
+          </p>
+<div class="mt-6 pt-4 text-xs font-label-caps text-secondary uppercase">Personalized support</div>
+</div>
+<!-- Step 4 -->
+<div class="relative flex flex-col bg-surface-container-lowest rounded-xl p-7 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<span class="font-headline-xl text-headline-xl font-bold text-primary/25">04</span>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">celebration</span>
+</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Host &amp; get paid smoothly</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Your profile goes live. Review incoming requests, chat before approving, meet at your chosen sanctuary spot, and receive instant payouts.
+          </p>
+<div class="mt-6 pt-4 text-xs font-label-caps text-secondary uppercase">24h automated transfer</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Real Host Stories (Spotlight Cards) -->
+<section class="w-full bg-surface-container-low px-6 lg:px-12 py-20">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-primary tracking-widest">Voices of the Community</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mt-2 tracking-tight">
+            How fellow locals shape their hosting rhythm.
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-4 lg:mt-0">
+          Our hosts are architects, retired botanists, independent sculptors, and third-generation neighborhood chefs.
+        </p>
+</div>
+<!-- Spotlight Cards Bento -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Host Card 1: Elena -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group hover:shadow-md transition-all">
+<div class="relative w-full h-72 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Sun-drenched portrait of Elena, an architect in Florence with olive skin and stylish dark sunglasses propped on head, standing beside classic warm terracotta Tuscan rooftop balustrade overlooking Duomo dome at golden hour" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBEsUpy6cqbtMaXaNtM7psaVsg0bAv9fo9OY7olGLFSS8dLy-Zd8uUZuxTBMOoZ98TwLygqC4Tno1IQpXuvizRMHk_9PHl03mLTndzOThVWMWBnroPh_xcMIvRiXcxGUxZe8wvvkEIFwQlID70a9iNp3Bg4BnXPLDiiSEfre0wr6kRCMYgEoryrm7XwF-q3Tq0myOur9RBuHW6MWWJjaQ0-zvLMMP33s5xwVy15sRSKq3PgbMthk4xv7w')"></div>
+<div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-caps text-label-caps flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-xs">verified</span> Verified Host · Florence
+            </div>
+<div class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-on-surface/80 backdrop-blur-md text-surface font-label-md text-label-md">
+              €65 / hour
+            </div>
+</div>
+<div class="p-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">4.98</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(64 experiences)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Elena R.</h3>
+<span class="font-label-md text-label-md text-secondary block mb-3">Architect &amp; Natural Wine Aficionado</span>
+<p class="font-body-md text-body-md text-on-surface-variant italic leading-relaxed">
+                “I host 2 evenings a week showing architects and curious souls secret rooftop terraces in Oltrarno. It completely pays my studio rent while expanding my global network.”
+              </p>
+</div>
+<div class="mt-6 pt-4 flex items-center justify-between text-xs text-on-surface-variant">
+<span>Avg: 5 hrs/week</span>
+<span class="font-semibold text-primary">€1,300/mo avg.</span>
+</div>
+</div>
+</div>
+<!-- Host Card 2: Kenji -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group hover:shadow-md transition-all">
+<div class="relative w-full h-72 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Kenji working patiently at a traditional Japanese ceramic potter wheel shaping textured dark stoneware clay with warm soft diffuse natural shoji screen workshop light in Kyoto" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWISBzWzRPsgR5Adb4GHtH76MH7c6mBOWnXG30jP_EErV0HaBFoqwD6hV4FZo2gCNOihvaax-gnZyc4szk4sUTEtbrTszXWCjB7-w-4jfbpywUS1QXO34xihPfWx3JqabMpbLF4gXQ-Y2Lt13RjjNqp8YxrcIHKVrkohIz3OvqcjbrWYnnVh7Xuguyc3-whJRoFkPc-nEzZXkBrPFsNBRve92kvaQmCOcx88hkfKtM8bBPdvvKlovf5Q')"></div>
+<div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-caps text-label-caps flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-xs">verified</span> Verified Host · Kyoto
+            </div>
+<div class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-on-surface/80 backdrop-blur-md text-surface font-label-md text-label-md">
+              ¥9,200 / hour
+            </div>
+</div>
+<div class="p-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">5.0</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(92 experiences)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Kenji T.</h3>
+<span class="font-label-md text-label-md text-secondary block mb-3">3rd Generation Ceramicist</span>
+<p class="font-body-md text-body-md text-on-surface-variant italic leading-relaxed">
+                “MebingLocal connects me with respectful travelers who truly appreciate pottery and slow craftsmanship. I never feel like a showman; we just share quiet tea and clay.”
+              </p>
+</div>
+<div class="mt-6 pt-4 flex items-center justify-between text-xs text-on-surface-variant">
+<span>Avg: 6 hrs/week</span>
+<span class="font-semibold text-primary">¥220,000/mo avg.</span>
+</div>
+</div>
+</div>
+<!-- Host Card 3: Camila -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group hover:shadow-md transition-all">
+<div class="relative w-full h-72 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Camila smiling warmly amidst a vibrant color-saturated neighborhood market stall in Mexico City holding artisanal heirloom blue corn tortillas and fresh clay pottery" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcvlSMlWhSqTYluUcegZNkfaIw8GfmoUfVNoB7RowZ1ErJT8YLPgaT4_qzJZvwAv-wMvmWVhnCw50w-01bBPco9z6btTEv1qiynrnR8RCiNo6N4mHodFCmeLQZ10VbFL0bXYm5vV-lO2SnKkOwySx3FifpAM7hcHWMdeKNrI64td9oTiUaUm3MgFx4HdB5U237I9Bx5X5fpIHjkbx2HBKDoKJiXNTKqqA2feHzBZVWcPIyXLWH42_qnw')"></div>
+<div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-caps text-label-caps flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-xs">verified</span> Verified Host · Mexico City
+            </div>
+<div class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-on-surface/80 backdrop-blur-md text-surface font-label-md text-label-md">
+              $45 / hour
+            </div>
+</div>
+<div class="p-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">4.97</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(110 experiences)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Camila M.</h3>
+<span class="font-label-md text-label-md text-secondary block mb-3">Street Food Historian &amp; Writer</span>
+<p class="font-body-md text-body-md text-on-surface-variant italic leading-relaxed">
+                “It feels like welcoming an old friend from overseas, not running a commercial tour. I introduce travelers to taqueros my family has known for thirty years.”
+              </p>
+</div>
+<div class="mt-6 pt-4 flex items-center justify-between text-xs text-on-surface-variant">
+<span>Avg: 8 hrs/week</span>
+<span class="font-semibold text-primary">$1,450/mo avg.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Detailed Host FAQ (Accordion Interaction) -->
+<section class="w-full px-6 lg:px-12 py-20 lg:py-24">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-14">
+<span class="font-label-caps text-label-caps uppercase text-primary tracking-widest">Clear Answers</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mt-2">
+          Frequently Asked Questions
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">
+          Everything you need to know about safety, legality, taxes, and scheduling.
+        </p>
+</div>
+<div class="space-y-4">
+<!-- Question 1 -->
+<div class="faq-item bg-surface-container-lowest rounded-xl p-6 shadow-sm transition-all">
+<button class="faq-toggle w-full flex items-center justify-between text-left focus:outline-none" type="button">
+<span class="font-headline-sm text-headline-sm text-on-surface">Do I need a professional tour guide license?</span>
+<span class="faq-icon material-symbols-outlined text-primary text-2xl transition-transform duration-300">expand_more</span>
+</button>
+<div class="faq-content hidden pt-4 text-on-surface-variant font-body-md text-body-md leading-relaxed">
+            In most destinations, no license is required for offering local companionship, cultural friendship, creative studio visits, or personal lifestyle guidance. Certain regulated historic landmarks (like the Colosseum in Rome or state museums) require licensed tour guides for formal historical lectures; MebingLocal hosts simply provide neighborhood companionship and off-the-beaten-track cultural immersion. We provide clear regional guidelines during your onboarding call.
+          </div>
+</div>
+<!-- Question 2 -->
+<div class="faq-item bg-surface-container-lowest rounded-xl p-6 shadow-sm transition-all">
+<button class="faq-toggle w-full flex items-center justify-between text-left focus:outline-none" type="button">
+<span class="font-headline-sm text-headline-sm text-on-surface">How and when do I receive payment?</span>
+<span class="faq-icon material-symbols-outlined text-primary text-2xl transition-transform duration-300">expand_more</span>
+</button>
+<div class="faq-content hidden pt-4 text-on-surface-variant font-body-md text-body-md leading-relaxed">
+            When a traveler reserves an outing with you, their payment is secured in trusted third-party escrow. Exactly 2 hours after your confirmed outing concludes without dispute, funds are automatically released to your linked Stripe account or direct local bank wire. You keep 100% of your earnings for your first 90 days.
+          </div>
+</div>
+<!-- Question 3 -->
+<div class="faq-item bg-surface-container-lowest rounded-xl p-6 shadow-sm transition-all">
+<button class="faq-toggle w-full flex items-center justify-between text-left focus:outline-none" type="button">
+<span class="font-headline-sm text-headline-sm text-on-surface">How does traveler verification work?</span>
+<span class="faq-icon material-symbols-outlined text-primary text-2xl transition-transform duration-300">expand_more</span>
+</button>
+<div class="faq-content hidden pt-4 text-on-surface-variant font-body-md text-body-md leading-relaxed">
+            Safety is our non-negotiable foundation. Every single traveler booking through MebingLocal is required to complete government ID verification, phone number authentication, and clear automated safety screenings. In addition, you have full authority to message the guest prior to accepting any booking.
+          </div>
+</div>
+<!-- Question 4 -->
+<div class="faq-item bg-surface-container-lowest rounded-xl p-6 shadow-sm transition-all">
+<button class="faq-toggle w-full flex items-center justify-between text-left focus:outline-none" type="button">
+<span class="font-headline-sm text-headline-sm text-on-surface">Can I host while working a full-time job?</span>
+<span class="faq-icon material-symbols-outlined text-primary text-2xl transition-transform duration-300">expand_more</span>
+</button>
+<div class="faq-content hidden pt-4 text-on-surface-variant font-body-md text-body-md leading-relaxed">
+            Yes, over 70% of our active hosts hold full-time jobs, freelance practices, or creative studios. You control your exact calendar down to specific hours: host only Saturday mornings, Thursday sunset aperitifs, or Sunday gallery walks. You can also pause your profile whenever your schedule requires.
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Bottom Final Host CTA Banner -->
+<section class="w-full px-6 lg:px-12 py-16 lg:py-24" id="apply">
+<div class="max-w-7xl mx-auto rounded-xl bg-surface-container overflow-hidden relative shadow-lg">
+<!-- Subtle background graphic motif -->
+<div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="p-8 lg:p-16 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+<div class="max-w-2xl text-center lg:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest text-primary font-label-caps text-label-caps uppercase tracking-wider mb-4 shadow-sm">
+<span class="material-symbols-outlined text-sm">handshake</span> Now Accepting Applications
+          </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+            Ready to share your city's secrets?
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-3 leading-relaxed">
+            Join a conscious global guild of neighborhood insiders, craftsmen, and cultural bridge-builders. Experience the world through welcoming hands.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full lg:w-auto">
+<button class="w-full sm:w-auto px-8 py-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:shadow-lg transition-all active:scale-[0.99] flex items-center justify-center gap-2" type="button">
+            Apply to Become a Local
+            <span class="material-symbols-outlined text-lg">east</span>
+</button>
+<a class="w-full sm:w-auto px-6 py-4 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-all flex items-center justify-center gap-2 shadow-sm" href="#">
+<span class="material-symbols-outlined text-base text-secondary">download</span>
+            Download Host Guide PDF
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Calculator & FAQ Logic -->
+<script>
+    (function() {
+      // Calculator state
+      const citySelect = document.getElementById('calcCity');
+      const hoursSlider = document.getElementById('hoursSlider');
+      const hoursLabel = document.getElementById('hoursLabel');
+      const earningsValue = document.getElementById('earningsValue');
+      const tabCompanionship = document.getElementById('tabCompanionship');
+      const tabCraft = document.getElementById('tabCraft');
+
+      let currentMultiplier = 1.0;
+
+      function updateCalculator() {
+        if (!citySelect || !hoursSlider || !earningsValue || !hoursLabel) return;
+        const selectedOption = citySelect.options[citySelect.selectedIndex];
+        const baseHourlyRate = parseFloat(selectedOption.getAttribute('data-rate') || '50');
+        const hoursPerWeek = parseInt(hoursSlider.value, 10);
+
+        hoursLabel.textContent = hoursPerWeek + ' hrs / wk';
+
+        // Monthly calculation (approx 4.33 weeks per month)
+        const weeklyIncome = baseHourlyRate * currentMultiplier * hoursPerWeek;
+        const monthlyTotal = Math.round(weeklyIncome * 4.33);
+
+        earningsValue.textContent = '$' + monthlyTotal.toLocaleString();
+      }
+
+      if (citySelect) {
+        citySelect.addEventListener('change', updateCalculator);
+      }
+      if (hoursSlider) {
+        hoursSlider.addEventListener('input', updateCalculator);
+      }
+
+      if (tabCompanionship && tabCraft) {
+        tabCompanionship.addEventListener('click', function() {
+          currentMultiplier = 1.0;
+          tabCompanionship.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+          tabCompanionship.classList.remove('text-on-surface-variant');
+
+          tabCraft.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+          tabCraft.classList.add('text-on-surface-variant');
+          updateCalculator();
+        });
+
+        tabCraft.addEventListener('click', function() {
+          currentMultiplier = 1.35;
+          tabCraft.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+          tabCraft.classList.remove('text-on-surface-variant');
+
+          tabCompanionship.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+          tabCompanionship.classList.add('text-on-surface-variant');
+          updateCalculator();
+        });
+      }
+
+      // FAQ Accordion interactions
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function(item) {
+        const toggleBtn = item.querySelector('.faq-toggle');
+        const content = item.querySelector('.faq-content');
+        const icon = item.querySelector('.faq-icon');
+
+        if (toggleBtn && content && icon) {
+          toggleBtn.addEventListener('click', function() {
+            const isExpanded = !content.classList.contains('hidden');
+            // Close all
+            faqItems.forEach(function(other) {
+              const otherContent = other.querySelector('.faq-content');
+              const otherIcon = other.querySelector('.faq-icon');
+              if (otherContent) otherContent.classList.add('hidden');
+              if (otherIcon) otherIcon.classList.remove('rotate-180');
+            });
+
+            if (!isExpanded) {
+              content.classList.remove('hidden');
+              icon.classList.add('rotate-180');
+            }
+          });
+        }
+      });
+
+      // Initialize calculation on page load
+      updateCalculator();
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl shadow-[0_-1px_8px_rgba(0,0,0,0.03)]"><div class="max-w-7xl mx-auto px-6 py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-lg mb-space-xl"><div class="lg:col-span-1"><div class="flex items-center gap-space-xs mb-space-sm"><img alt="MebingLocal Wordmark Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wt2CZaen_XHwiN4LhFo5P_d4YqOcxyVoIfwqBhFlAChP502EqtZCSP_6XiGudVk6cfBSS3TT4LmQjcyHz5vlfvVRWXD7I9ZsSNETXPJsaXdbEYbjPEUN913bgnIa7QH3d2sdKB8Dq4ZECQ9wuM6YrEK9GaBFX516saY4eMkiHzGbbdTB2xIS_j0bGUf5Z4EY-FqRE2QSnGiWMosvXMcaEene43DBiJkCWli5qTCVZCB6z47RJOi4ZUBoU9"/><span class="font-headline-sm text-headline-sm text-on-surface">MebingLocal</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Human-to-human cultural journeys guided by verified local residents.</p><div class="flex items-center gap-space-sm text-on-surface-variant"><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">share</span></a><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">alternate_email</span></a></div></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Explore</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Tokyo</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Kyoto</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Paris</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Mexico City</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Florence</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Host with MebingLocal</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Host Guidelines</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Trust &amp; Safety</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Host Insurance</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Community Stories</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">AI Concierge</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Personalized Trips</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Smart Local Match</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Real-time Translation</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Neighborhood Radar</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Support &amp; Trust</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Safety Center</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Cancellation Policies</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Identity Verification</a></li><li><a class="hover:text-on-surface transition-colors" href="#">24/7 Concierge Support</a></li></ul></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><span>© 2025 MebingLocal Inc. All rights reserved.</span><a class="hover:text-on-surface transition-colors" href="#">Privacy</a><a class="hover:text-on-surface transition-colors" href="#">Terms</a><a class="hover:text-on-surface transition-colors" href="#">Sitemap</a></div><div class="flex items-center gap-space-sm"><span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-sm">language</span> English (US)</span><span>·</span><span>$ USD</span></div></div></div></footer></body></html>

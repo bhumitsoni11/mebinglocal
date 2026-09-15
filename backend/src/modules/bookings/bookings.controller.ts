@@ -1,52 +1,40 @@
-import { Controller, Get, Post, Body, Patch, Param, UseGuards } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
-import { BookingsService } from './bookings.service';
-import { CreateBookingDto } from './dto/create-booking.dto';
-import { UpdateBookingStatusDto } from './dto/update-booking-status.dto';
-import { AuthGuard } from '../../common/guards/auth.guard';
-import { CurrentUser } from '../../common/decorators/current-user.decorator';
-import { RolesGuard } from '../../common/guards/roles.guard';
-import { Roles } from '../../common/decorators/roles.decorator';
+import { Controller, Get, Post, Put, Body, Param, UseGuards } from '@nestjs/common';
+import { BookingsService, CreateBookingDto } from './bookings.service';
+import { AuthGuard } from '@/common/guards/auth.guard';
+import { CurrentUser } from '@/common/decorators/current-user.decorator';
+import { User, BookingStatus } from '@prisma/client';
 
-@ApiTags('Bookings')
 @Controller('bookings')
 @UseGuards(AuthGuard)
-@ApiBearerAuth()
 export class BookingsController {
   constructor(private readonly bookingsService: BookingsService) {}
 
   @Post()
-  @UseGuards(RolesGuard)
-  @Roles('TRAVELER', 'ADMIN') // Only travelers book
-  @ApiOperation({ summary: 'Create a new booking request' })
-  create(
-    @CurrentUser() user: any,
-    @Body() createBookingDto: CreateBookingDto,
-  ) {
-    return this.bookingsService.create(user.id, createBookingDto);
+  async createBooking(@CurrentUser() user: User, @Body() body: CreateBookingDto) {
+    return this.bookingsService.createBooking(user, body);
   }
 
-  @Get('traveler')
-  @ApiOperation({ summary: 'Get all bookings for current traveler' })
-  findByTraveler(@CurrentUser() user: any) {
-    return this.bookingsService.findByTraveler(user.id);
+  @Get('my-trips')
+  async getTravelerBookings(@CurrentUser() user: User) {
+    return this.bookingsService.getTravelerBookings(user.id);
   }
 
-  @Get('local-friend')
-  @UseGuards(RolesGuard)
-  @Roles('LOCAL_FRIEND', 'ADMIN')
-  @ApiOperation({ summary: 'Get all bookings for current local friend' })
-  findByLocalFriend(@CurrentUser() user: any) {
-    return this.bookingsService.findByLocalFriend(user.id);
+  @Get('my-hosted')
+  async getLocalBookings(@CurrentUser() user: User) {
+    return this.bookingsService.getLocalBookings(user.id);
   }
 
-  @Patch(':id/status')
-  @ApiOperation({ summary: 'Update booking status (accept, reject, cancel, complete)' })
-  updateStatus(
-    @CurrentUser() user: any,
+  @Get(':id')
+  async getBookingById(@Param('id') id: string, @CurrentUser() user: User) {
+    return this.bookingsService.getBookingById(id, user);
+  }
+
+  @Put(':id/status')
+  async updateBookingStatus(
     @Param('id') id: string,
-    @Body() updateBookingStatusDto: UpdateBookingStatusDto,
+    @CurrentUser() user: User,
+    @Body('status') status: BookingStatus,
   ) {
-    return this.bookingsService.updateStatus(user.id, id, updateBookingStatusDto);
+    return this.bookingsService.updateBookingStatus(id, user, status);
   }
 }

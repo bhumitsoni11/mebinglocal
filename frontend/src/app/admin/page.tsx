@@ -1,0 +1,113 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function AdminDashboardPage() {
+  return (
+    <div className="w-full max-w-7xl mx-auto px-6 py-10 pb-20">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-surface-container-high">
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-label-caps text-xs font-bold uppercase mb-2">
+            <span className="material-symbols-outlined text-sm">shield_person</span>
+            Platform Administration
+          </div>
+          <h1 className="font-headline-xl text-3xl font-bold text-on-surface">MebingLocal Admin Console</h1>
+        </div>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/admin/verifications"
+            className="px-5 py-2.5 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-xs font-bold transition-all shadow-sm"
+          >
+            Review Applications (3 Pending)
+          </Link>
+        </div>
+      </div>
+
+      {/* Metric Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <div className="p-6 rounded-3xl bg-surface-container-lowest border border-surface-container-high shadow-sm">
+          <span className="font-label-caps uppercase text-on-surface-variant text-[10px] font-bold">Total Platform GMV</span>
+          <div className="font-headline-xl text-3xl font-bold text-on-surface mt-1">$142,800</div>
+          <p className="text-[11px] text-emerald-600 font-bold mt-2">+$18,400 this month</p>
+        </div>
+
+        <div className="p-6 rounded-3xl bg-surface-container-lowest border border-surface-container-high shadow-sm">
+          <span className="font-label-caps uppercase text-on-surface-variant text-[10px] font-bold">Verified Local Hosts</span>
+          <div className="font-headline-xl text-3xl font-bold text-on-surface mt-1">1,420</div>
+          <p className="text-[11px] text-secondary font-bold mt-2">48 Countries · 120 Cities</p>
+        </div>
+
+        <div className="p-6 rounded-3xl bg-surface-container-lowest border border-surface-container-high shadow-sm">
+          <span className="font-label-caps uppercase text-on-surface-variant text-[10px] font-bold">Active Travelers</span>
+          <div className="font-headline-xl text-3xl font-bold text-on-surface mt-1">24,650</div>
+          <p className="text-[11px] text-primary font-bold mt-2">98.4% Satisfaction Rate</p>
+        </div>
+
+        <div className="p-6 rounded-3xl bg-surface-container-lowest border border-surface-container-high shadow-sm">
+          <span className="font-label-caps uppercase text-on-surface-variant text-[10px] font-bold">Escrow In-Transit</span>
+          <div className="font-headline-xl text-3xl font-bold text-tertiary mt-1">$38,240</div>
+          <p className="text-[11px] text-on-surface-variant mt-2">124 Protected active bookings</p>
+        </div>
+      </div>
+
+      {/* Admin Quick Action Panels */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Link
+          href="/admin/verifications"
+          className="p-6 rounded-3xl bg-surface-container-low hover:bg-surface-container border border-surface-container-high transition-all flex flex-col justify-between group"
+        >
+          <div>
+            <span className="material-symbols-outlined text-3xl text-primary mb-3">how_to_reg</span>
+            <h3 className="font-headline-sm text-lg font-bold text-on-surface group-hover:text-primary transition-colors">
+              Host Verification Workspace
+            </h3>
+            <p className="font-body-md text-xs text-on-surface-variant mt-1">
+              Review government ID documents, video interview logs, and grant Verified Emerald Badges.
+            </p>
+          </div>
+          <span className="text-primary font-bold text-xs mt-4 flex items-center gap-1">
+            Open Verification Queue →
+          </span>
+        </Link>
+
+        <Link
+          href="/admin/users"
+          className="p-6 rounded-3xl bg-surface-container-low hover:bg-surface-container border border-surface-container-high transition-all flex flex-col justify-between group"
+        >
+          <div>
+            <span className="material-symbols-outlined text-3xl text-secondary mb-3">manage_accounts</span>
+            <h3 className="font-headline-sm text-lg font-bold text-on-surface group-hover:text-primary transition-colors">
+              User & Host Directory
+            </h3>
+            <p className="font-body-md text-xs text-on-surface-variant mt-1">
+              Search, filter, update roles, manage bans, and inspect host ratings.
+            </p>
+          </div>
+          <span className="text-primary font-bold text-xs mt-4 flex items-center gap-1">
+            Browse Directory →
+          </span>
+        </Link>
+
+        <Link
+          href="/admin/experiences"
+          className="p-6 rounded-3xl bg-surface-container-low hover:bg-surface-container border border-surface-container-high transition-all flex flex-col justify-between group"
+        >
+          <div>
+            <span className="material-symbols-outlined text-3xl text-tertiary mb-3">local_activity</span>
+            <h3 className="font-headline-sm text-lg font-bold text-on-surface group-hover:text-primary transition-colors">
+              Experience Moderation
+            </h3>
+            <p className="font-body-md text-xs text-on-surface-variant mt-1">
+              Approve new unscripted itinerary submissions, price adjustments, and review safety compliance.
+            </p>
+          </div>
+          <span className="text-primary font-bold text-xs mt-4 flex items-center gap-1">
+            Moderate Experiences →
+          </span>
+        </Link>
+      </div>
+    </div>
+  );
+}

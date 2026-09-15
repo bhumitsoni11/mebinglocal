@@ -1,26 +1,14 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaService } from '../../common/database/prisma.service';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { PrismaService } from '@/database/prisma.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private prisma: PrismaService) {}
-
-  async findByClerkId(clerkId: string) {
-    const user = await this.prisma.user.findUnique({
-      where: { clerkId },
-    });
-
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
-
-    return user;
-  }
+  constructor(private readonly prisma: PrismaService) {}
 
   async findById(id: string) {
     const user = await this.prisma.user.findUnique({
       where: { id },
+      include: { travelerProfile: true, localProfile: true },
     });
 
     if (!user) {
@@ -30,48 +18,21 @@ export class UsersService {
     return user;
   }
 
-  async update(id: string, data: UpdateUserDto) {
-    try {
-      return await this.prisma.user.update({
-        where: { id },
-        data,
-      });
-    } catch (error) {
-      throw new NotFoundException('User not found');
-    }
-  }
-
-  async getSavedItems(userId: string) {
-    return this.prisma.savedItem.findMany({
-      where: { userId },
-      orderBy: { createdAt: 'desc' },
+  async findByClerkId(clerkUserId: string) {
+    return this.prisma.user.findUnique({
+      where: { clerkUserId },
+      include: { travelerProfile: true, localProfile: true },
     });
   }
 
-  async saveItem(userId: string, itemType: string, itemId: string) {
-    return this.prisma.savedItem.upsert({
-      where: {
-        userId_itemType_itemId: {
-          userId,
-          itemType,
-          itemId,
-        }
+  async updateProfile(userId: string, data: { name?: string; avatar?: string }) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        ...(data.name ? { name: data.name } : {}),
+        ...(data.avatar ? { avatar: data.avatar } : {}),
       },
-      update: {},
-      create: {
-        userId,
-        itemType,
-        itemId,
-      }
-    });
-  }
-
-  async removeSavedItem(userId: string, id: string) {
-    return this.prisma.savedItem.deleteMany({
-      where: {
-        id,
-        userId, // ensure ownership
-      },
+      include: { travelerProfile: true, localProfile: true },
     });
   }
 }

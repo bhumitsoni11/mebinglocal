@@ -4,6 +4,7 @@ import { ExperiencesService } from './experiences.service';
 
 @Module({
   controllers: [ExperiencesController],
-  providers: [ExperiencesService]
+  providers: [ExperiencesService],
+  exports: [ExperiencesService],
 })
 export class ExperiencesModule {}

@@ -1,122 +1,197 @@
-import { Injectable, NotFoundException, ForbiddenException, BadRequestException } from '@nestjs/common';
-import { PrismaService } from '../../common/database/prisma.service';
-import { CreateBookingDto } from './dto/create-booking.dto';
-import { UpdateBookingStatusDto } from './dto/update-booking-status.dto';
-import { BookingStatus } from '@prisma/client';
+import { Injectable, BadRequestException, NotFoundException, ForbiddenException } from '@nestjs/common';
+import { PrismaService } from '@/database/prisma.service';
+import { BookingStatus, User } from '@prisma/client';
+
+export interface CreateBookingDto {
+  localProfileId: string;
+  experienceId?: string;
+  bookingDate: string; // ISO date YYYY-MM-DD
+  startTime: string; // e.g. "10:00 AM"
+  endTime?: string;
+  guestCount: number;
+  specialNotes?: string;
+}
 
 @Injectable()
 export class BookingsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async create(travelerId: string, data: CreateBookingDto) {
-    // 1. Verify traveler is not booking themselves
-    if (travelerId === data.localFriendId) {
-      throw new BadRequestException('You cannot book yourself');
+  async createBooking(user: User, dto: CreateBookingDto) {
+    const guestCount = Math.max(1, Number(dto.guestCount) || 1);
+    const dateObj = new Date(dto.bookingDate);
+
+    // 1. Fetch Local Profile & Experience
+    const localProfile = await this.prisma.localProfile.findUnique({
+      where: { id: dto.localProfileId },
+    });
+
+    if (!localProfile) {
+      throw new NotFoundException('Local Friend not found');
     }
 
-    // 2. Check for overlapping bookings for the local friend that are already CONFIRMED
-    const existingBooking = await this.prisma.booking.findFirst({
-      where: {
-        localFriendId: data.localFriendId,
-        status: BookingStatus.CONFIRMED,
-        OR: [
-          {
-            startTime: { lte: new Date(data.endTime) },
-            endTime: { gte: new Date(data.startTime) },
-          }
-        ]
+    let experience = null;
+    let ratePerGuest = Number(localProfile.hourlyRate);
+
+    if (dto.experienceId) {
+      experience = await this.prisma.experience.findUnique({
+        where: { id: dto.experienceId },
+      });
+      if (experience) {
+        ratePerGuest = Number(experience.pricePerPerson);
       }
-    });
-
-    if (existingBooking) {
-      throw new BadRequestException('The Local Friend is already booked during this time');
     }
 
-    // 3. Create the booking as PENDING
-    return this.prisma.booking.create({
-      data: {
-        ...data,
-        travelerId,
-        startTime: new Date(data.startTime),
-        endTime: new Date(data.endTime),
-        status: BookingStatus.PENDING,
-      },
-    });
-  }
+    const totalAmount = ratePerGuest * guestCount;
+    const platformFee = 0.00; // Zero fee for initial launch
+    const hostPayout = totalAmount - platformFee;
 
-  async findByTraveler(travelerId: string) {
-    return this.prisma.booking.findMany({
-      where: { travelerId },
-      include: {
-        localFriend: {
-          select: { firstName: true, lastName: true, avatarUrl: true },
+    // 2. Generate unique booking number
+    const bookingNumber = `MBL-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+
+    // 3. Perform transactional creation
+    return this.prisma.$transaction(async (tx) => {
+      // Create booking
+      const booking = await tx.booking.create({
+        data: {
+          bookingNumber,
+          travelerUserId: user.id,
+          localProfileId: localProfile.id,
+          experienceId: experience?.id || null,
+          bookingDate: dateObj,
+          startTime: dto.startTime,
+          endTime: dto.endTime || null,
+          guestCount,
+          specialNotes: dto.specialNotes || null,
+          totalAmount,
+          platformFee,
+          hostPayout,
+          currency: 'USD',
+          status: BookingStatus.PENDING,
         },
-        experience: true,
-      },
-      orderBy: { createdAt: 'desc' },
-    });
-  }
-
-  async findByLocalFriend(localFriendId: string) {
-    return this.prisma.booking.findMany({
-      where: { localFriendId },
-      include: {
-        traveler: {
-          select: { firstName: true, lastName: true, avatarUrl: true },
+        include: {
+          localProfile: {
+            include: { user: { select: { name: true, avatar: true, email: true } } },
+          },
+          experience: true,
         },
-        experience: true,
-      },
-      orderBy: { createdAt: 'desc' },
+      });
+
+      // Create conversation for chat
+      const conversation = await tx.conversation.create({
+        data: {
+          bookingId: booking.id,
+          participants: {
+            create: [
+              { userId: user.id },
+              { userId: localProfile.userId },
+            ],
+          },
+          messages: {
+            create: {
+              senderUserId: user.id,
+              content: `Hi! I just booked ${experience?.title ? `"${experience.title}"` : 'time with you'} for ${dto.bookingDate} at ${dto.startTime}. Excited to connect!`,
+              isSystem: false,
+            },
+          },
+        },
+      });
+
+      return { booking, conversationId: conversation.id };
     });
   }
 
-  async updateStatus(userId: string, id: string, dto: UpdateBookingStatusDto) {
-    const booking = await this.prisma.booking.findUnique({ where: { id } });
+  async getTravelerBookings(userId: string) {
+    return this.prisma.booking.findMany({
+      where: { travelerUserId: userId },
+      include: {
+        localProfile: {
+          include: { user: { select: { name: true, avatar: true, email: true } } },
+        },
+        experience: { include: { images: true } },
+        payment: true,
+        review: true,
+      },
+      orderBy: { bookingDate: 'desc' },
+    });
+  }
+
+  async getLocalBookings(userId: string) {
+    const localProfile = await this.prisma.localProfile.findUnique({
+      where: { userId },
+    });
+
+    if (!localProfile) {
+      throw new NotFoundException('Local profile not found');
+    }
+
+    return this.prisma.booking.findMany({
+      where: { localProfileId: localProfile.id },
+      include: {
+        traveler: { select: { id: true, name: true, avatar: true, email: true } },
+        experience: { include: { images: true } },
+        payment: true,
+        review: true,
+      },
+      orderBy: { bookingDate: 'desc' },
+    });
+  }
+
+  async getBookingById(id: string, user: User) {
+    const booking = await this.prisma.booking.findUnique({
+      where: { id },
+      include: {
+        traveler: { select: { id: true, name: true, avatar: true, email: true } },
+        localProfile: {
+          include: { user: { select: { id: true, name: true, avatar: true, email: true } } },
+        },
+        experience: { include: { images: true } },
+        payment: true,
+        review: true,
+        conversation: true,
+      },
+    });
+
     if (!booking) {
       throw new NotFoundException('Booking not found');
     }
 
-    const isTraveler = booking.travelerId === userId;
-    const isLocalFriend = booking.localFriendId === userId;
+    // Permission check
+    const isTraveler = booking.travelerUserId === user.id;
+    const isLocal = booking.localProfile.userId === user.id;
+    const isAdmin = ['ADMIN', 'SUPER_ADMIN'].includes(user.role);
 
-    if (!isTraveler && !isLocalFriend) {
-      throw new ForbiddenException('You do not have permission to modify this booking');
+    if (!isTraveler && !isLocal && !isAdmin) {
+      throw new ForbiddenException('Not authorized to view this booking');
     }
 
-    // State Machine Validation
-    const currentStatus = booking.status;
-    const newStatus = dto.status;
+    return booking;
+  }
 
-    // Local Friend transitions
-    if (isLocalFriend) {
-      if (currentStatus === 'PENDING' && !['CONFIRMED', 'REJECTED'].includes(newStatus)) {
-        throw new BadRequestException(`Local Friend can only CONFIRM or REJECT a PENDING booking`);
-      }
-      if (currentStatus === 'CONFIRMED' && !['CANCELLED', 'COMPLETED'].includes(newStatus)) {
-        throw new BadRequestException(`Local Friend can only CANCEL or COMPLETE a CONFIRMED booking`);
-      }
+  async updateBookingStatus(id: string, user: User, status: BookingStatus) {
+    const booking = await this.prisma.booking.findUnique({
+      where: { id },
+      include: { localProfile: true },
+    });
+
+    if (!booking) {
+      throw new NotFoundException('Booking not found');
     }
 
-    // Traveler transitions
-    if (isTraveler) {
-      if (currentStatus === 'PENDING' && newStatus !== 'CANCELLED') {
-        throw new BadRequestException(`Traveler can only CANCEL a PENDING booking`);
-      }
-      if (currentStatus === 'CONFIRMED' && !['CANCELLED', 'COMPLETED'].includes(newStatus)) {
-        throw new BadRequestException(`Traveler can only CANCEL or COMPLETE a CONFIRMED booking`);
-      }
+    const isLocal = booking.localProfile.userId === user.id;
+    const isAdmin = ['ADMIN', 'SUPER_ADMIN'].includes(user.role);
+
+    if (!isLocal && !isAdmin) {
+      throw new ForbiddenException('Only the host or admin can update booking status');
     }
 
-    // Invalid states to transition FROM
-    if (['REJECTED', 'CANCELLED', 'COMPLETED', 'REFUNDED'].includes(currentStatus)) {
-      throw new BadRequestException(`Cannot transition from terminal state ${currentStatus}`);
-    }
-
-    // Note: In a real implementation with Razorpay, CONFIRMING would create the Payment record, 
-    // and CANCELING might trigger refunds. For Phase 3 core API, we update state directly.
     return this.prisma.booking.update({
       where: { id },
-      data: { status: newStatus },
+      data: { status },
+      include: {
+        traveler: { select: { name: true, email: true } },
+        localProfile: { include: { user: { select: { name: true, email: true } } } },
+        experience: true,
+      },
     });
   }
 }

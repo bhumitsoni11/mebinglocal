@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "outline-variant": "#e0bfba", "on-primary": "#ffffff", "on-tertiary-fixed": "#2f1500", "on-secondary-container": "#4c6861", "outline": "#8c716c", "tertiary": "#8d4b00", "tertiary-fixed-dim": "#ffb77d", "primary": "#a83223", "on-error": "#ffffff", "surface-container": "#ebefea", "on-secondary-fixed": "#02201b", "tertiary-fixed": "#ffdcc3", "surface-container-low": "#f0f5f0", "on-surface-variant": "#58413d", "on-secondary": "#ffffff", "surface-bright": "#f6fbf5", "on-tertiary-fixed-variant": "#6e3900", "on-surface": "#181d1a", "secondary-container": "#c7e6dd", "secondary": "#48645d", "on-error-container": "#93000a", "tertiary-container": "#b15f00", "on-secondary-fixed-variant": "#304c46", "on-tertiary-container": "#fffbff", "on-background": "#181d1a", "surface": "#f6fbf5", "error-container": "#ffdad6", "surface-tint": "#ab3425", "secondary-fixed-dim": "#aecdc4", "on-primary-fixed-variant": "#8a1c10", "secondary-fixed": "#cae9e0", "background": "#f6fbf5", "surface-container-highest": "#dfe4df", "on-primary-container": "#fffbff", "inverse-on-surface": "#edf2ed", "primary-fixed-dim": "#ffb4a8", "inverse-surface": "#2c322e", "primary-fixed": "#ffdad4", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#410100", "surface-variant": "#dfe4df", "surface-dim": "#d7dbd6", "inverse-primary": "#ffb4a8", "surface-container-high": "#e5e9e4", "primary-container": "#c94a38" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "3rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin-tablet": "2rem", "gutter": "1.5rem", "gutter-mobile": "1rem", "margin-mobile": "1.25rem" }, "fontFamily": { "headline-lg": [ "Plus Jakarta Sans" ], "display-hero-mobile": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "body-xl": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "label-lg": [ "Inter" ], "headline-xl": [ "Plus Jakarta Sans" ], "label-md": [ "Inter" ], "display-hero": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "label-caps": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ] }, "fontSize": { "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-hero-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "body-xl": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-xl-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "display-hero": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-caps": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm shrink-0"><img alt="MebingLocal Wordmark Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wt2CZaen_XHwiN4LhFo5P_d4YqOcxyVoIfwqBhFlAChP502EqtZCSP_6XiGudVk6cfBSS3TT4LmQjcyHz5vlfvVRWXD7I9ZsSNETXPJsaXdbEYbjPEUN913bgnIa7QH3d2sdKB8Dq4ZECQ9wuM6YrEK9GaBFX516saY4eMkiHzGbbdTB2xIS_j0bGUf5Z4EY-FqRE2QSnGiWMosvXMcaEene43DBiJkCWli5qTCVZCB6z47RJOi4ZUBoU9"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">MebingLocal</span></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm"><a aria-current="page" class="transition-colors bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="local-friends" href="#">Local Friends</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="experiences" href="#">Experiences</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-planner" href="#">AI Planner</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="local-pulse" href="#">Local Pulse</a></nav><div class="flex items-center gap-space-sm shrink-0"><button class="hidden sm:inline-flex items-center justify-center px-space-md py-space-xs rounded-full bg-surface-container-low text-primary hover:bg-surface-container font-label-lg text-label-lg transition-colors" type="button">Become a Local</button><button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-base">language</span><span class="font-label-md text-label-md">EN · USD</span></button><button class="relative p-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary"></span></button><button class="flex items-center gap-space-xs pl-space-xs pr-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-colors" type="button"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZl0dmZxxUXhEDxnX2U5MdJH4xdhtr7V2Jax4qmrlU0B0TfFYAKyMB1Flqq64vYGrS92LCahBacMH33o6D-Tp6Mjiz9mUcChC-g_7TFALnqp35fl4mGp0WcWBFzwkSoj7e_PhJSsjFWSUuFvWw8Hse3SYxldRXwIChzCIDucjGG06aIHYyDdfZBShezosSbrSWCnHCFvxyt8WVlHb_wUeSqzciRFCx-6hV4lDq71liN8e178FM2CnUWA"/><span class="material-symbols-outlined text-base text-on-surface-variant">expand_more</span></button></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- Interactive Script for Navigation & Tab Switching -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Highlight navigation element for AI Planner
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === 'ai-planner') {
+          link.className = "bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs shadow-sm";
+        }
+      });
+    });
+
+    function selectDay(dayIndex) {
+      const tabs = document.querySelectorAll('.day-tab');
+      tabs.forEach((tab, i) => {
+        if (i === dayIndex) {
+          tab.classList.remove('bg-surface-container', 'text-on-surface-variant');
+          tab.classList.add('bg-secondary', 'text-on-secondary', 'shadow-sm');
+        } else {
+          tab.classList.remove('bg-secondary', 'text-on-secondary', 'shadow-sm');
+          tab.classList.add('bg-surface-container', 'text-on-surface-variant');
+        }
+      });
+    }
+
+    function togglePromptSample(text) {
+      const textarea = document.getElementById('ai-prompt-input');
+      if (textarea) {
+        textarea.value = text;
+        textarea.focus();
+      }
+    }
+  </script>
+<!-- Editorial Masthead Section -->
+<section class="relative w-full px-6 py-space-xl overflow-hidden bg-gradient-to-b from-surface-container-low/60 via-background to-background">
+<div class="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+<!-- Overline Pill -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary-container/50 text-on-secondary-container font-label-caps uppercase tracking-wider mb-space-md shadow-sm">
+<span class="material-symbols-outlined text-sm text-secondary">auto_awesome</span>
+<span>MebingLocal Intelligent Concierge</span>
+</div>
+<!-- Main Heading -->
+<h1 class="font-display-hero text-display-hero text-on-surface max-w-4xl tracking-tight mb-space-md">
+        Your Trip, Planned Around You. <span class="text-primary font-headline-xl">Co-created with Real Locals.</span>
+</h1>
+<p class="font-body-xl text-body-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-space-xl">
+        Describe your dream journey in plain words. Our travel intelligence pairs deep destination knowledge with verified resident hosts to weave a seamless, authentic itinerary.
+      </p>
+<!-- Conversational & Guided Planner Console -->
+<div class="w-full max-w-4xl bg-surface-container-lowest rounded-xl shadow-xl p-space-md md:p-space-lg text-left">
+<!-- Input Textarea Area -->
+<div class="relative bg-surface-container-low rounded-lg p-space-md transition-all focus-within:bg-surface-container-lowest focus-within:shadow-md">
+<div class="flex items-start gap-space-sm mb-space-xs">
+<span class="material-symbols-outlined text-primary mt-1">psychology_alt</span>
+<div class="flex-1">
+<label class="block font-label-caps uppercase text-on-surface-variant tracking-wider text-xs mb-1" for="ai-prompt-input">
+                Conversational Journey Vision
+              </label>
+<textarea class="w-full bg-transparent font-body-lg text-body-lg text-on-surface placeholder:text-outline focus:outline-none resize-none leading-relaxed" id="ai-prompt-input" placeholder="Tell us what you love: food, pottery, morning silence, jazz kissa, craft distillers..." rows="3">Planning a 5-day autumn trip to Kyoto &amp; Osaka focusing on ceramic studios, tranquil Zen gardens, natural wine, and authentic neighborhood dining with local artists.</textarea>
+</div>
+</div>
+<!-- Live Sample Chips -->
+<div class="flex items-center gap-space-xs flex-wrap pt-space-xs">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider mr-1">Inspirations:</span>
+<button class="px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-colors" onclick="togglePromptSample('3 days in Florence hunting hidden terracotta workshops, natural Chianti basements, and riverside fresco painting.')" type="button">
+              Florence Artisians
+            </button>
+<button class="px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-colors" onclick="togglePromptSample('7 days slow trail around Mexico City culinary markets, quiet brutalist courtyards, and Mezcal master distilleries with bilingual chef hosts.')" type="button">
+              Oaxaca &amp; CDMX Flavors
+            </button>
+<button class="px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-colors" onclick="togglePromptSample('4 tranquil days in Kyoto Arashiyama tea forests, morning Zen meditation, and private lacquerware studio sessions.')" type="button">
+              Kyoto Zen &amp; Teahouses
+            </button>
+</div>
+</div>
+<!-- Dynamic Parameter Badges Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-space-sm my-space-md">
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-center">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Destination</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Kyoto, Japan</span>
+</div>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-center">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Dates</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-primary">calendar_month</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Nov 12 – 17</span>
+</div>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-center">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Travel Style</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-primary">spa</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Slow Cultural</span>
+</div>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-center">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Pace</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-primary">timer</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">2-3 spots / day</span>
+</div>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-center">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Budget</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-primary">payments</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">$150 - $250/d</span>
+</div>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-center">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Companions</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-primary">person</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Solo Explorer</span>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-base text-secondary">verified_user</span>
+<span>AI model cross-checks 1,420+ vetted Kyoto neighborhood hosts</span>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<button class="w-1/2 sm:w-auto px-space-md py-3 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-lg text-label-lg transition-colors flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-lg text-tertiary">casino</span>
+<span>Surprise Me</span>
+</button>
+<button class="w-1/2 sm:w-auto px-space-lg py-3 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-lg">magic_button</span>
+<span>Generate Bespoke Itinerary</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Itinerary Section -->
+<section class="max-w-7xl mx-auto px-6 py-space-xl w-full">
+<!-- Itinerary Status & Match Header -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md md:p-space-lg mb-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wide">Synthesized in 1.4s</span>
+<span class="text-outline">·</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Host Concierge Sync Active</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">
+            Kyoto Autumn Cultural Journey
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            5 Days • Solo Immersive Pace • 3 Verified Resident Artisans Joined
+          </p>
+</div>
+<!-- Metrics & Trust Match Badge -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-sm bg-secondary-container/40 px-space-md py-space-sm rounded-lg">
+<div class="relative w-11 h-11 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-secondary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="98, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<span class="absolute font-label-caps text-label-caps text-on-secondary-container">98%</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-secondary-container">Deep Profile Match</div>
+<div class="font-body-sm text-body-sm text-secondary">Zero generic stops</div>
+</div>
+</div>
+<div class="hidden sm:flex items-center gap-space-xs">
+<button class="p-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Export PDF / Calendar" type="button">
+<span class="material-symbols-outlined text-lg">calendar_add_on</span>
+</button>
+<button class="p-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Share with travel companion" type="button">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Day Navigation Tabs -->
+<div class="flex items-center gap-space-sm overflow-x-auto pt-space-lg pb-space-xs scrollbar-none">
+<button class="day-tab shrink-0 px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-surface-container text-on-surface-variant hover:text-on-surface transition-all" onclick="selectDay(0)" type="button">
+          Day 1: Arashiyama &amp; Zen Bamboo
+        </button>
+<button class="day-tab shrink-0 px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-secondary text-on-secondary shadow-sm transition-all flex items-center gap-1.5" onclick="selectDay(1)" type="button">
+<span class="material-symbols-outlined text-sm">palette</span>
+<span>Day 2: Kiyomizu Ceramic Workshops</span>
+</button>
+<button class="day-tab shrink-0 px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-surface-container text-on-surface-variant hover:text-on-surface transition-all" onclick="selectDay(2)" type="button">
+          Day 3: Historic Gion &amp; Natural Wine
+        </button>
+<button class="day-tab shrink-0 px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-surface-container text-on-surface-variant hover:text-on-surface transition-all" onclick="selectDay(3)" type="button">
+          Day 4: Uji Matcha &amp; Temple Gardens
+        </button>
+<button class="day-tab shrink-0 px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-surface-container text-on-surface-variant hover:text-on-surface transition-all" onclick="selectDay(4)" type="button">
+          Day 5: Tenjin Artisan Antique Flea
+        </button>
+</div>
+</div>
+<!-- Main Itinerary Content & Co-Creation Split Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Day 2 Interactive Timeline Breakdown (8 cols) -->
+<div class="lg:col-span-8 space-y-space-md">
+<!-- Timeline Item 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow p-space-md md:p-space-lg flex flex-col md:flex-row gap-space-md">
+<!-- Time indicator & Map hook -->
+<div class="md:w-36 shrink-0 flex md:flex-col justify-between items-start">
+<div>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">09:30 AM</span>
+<span class="block font-body-sm text-body-sm text-outline mt-0.5">2 hours duration</span>
+</div>
+<div class="mt-2 md:mt-auto inline-flex items-center gap-1 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">explore</span>
+<span>South Higashiyama</span>
+</div>
+</div>
+<!-- Activity Details -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs mb-1 flex-wrap">
+<span class="font-label-caps text-label-caps text-secondary bg-secondary-container/40 px-2 py-0.5 rounded-full">Intimate Cultural Ritual</span>
+<span class="font-body-sm text-body-sm text-outline">• Pre-opening Access</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">
+              Private Morning Matcha Ceremony in a 180-Year-Old Wooden Teahouse
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
+              Step past the stone lantern pathway into a preserved Edo-era machiya before neighborhood crowds arrive. Experience silence, fresh autumn tatami fragrance, and single-estate ceremonial matcha whisked in handmade Shino bowls.
+            </p>
+<!-- Matched Host Card Snippet -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<img class="w-10 h-10 rounded-full object-cover shrink-0" data-alt="Close up warm portrait of Satoshi Mori, a gentle Japanese ceramicist and tea enthusiast with spectacles in his wood-paneled Kyoto workshop with soft morning sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ9VvoQVWs63ajh16vgVNdl0_4j4J2f3wa8JkghfDsA1GVwv6gDSWrh3TvgbpSLBWDT_V9McyePcBvnT-EpqQnNVknWmbD5_I6m8MIwxpRwx15BfJ7eouL4UTYGRcRMWWBrPeN9H03ODPmZf9Suv0CUIeAJJxu9qhjOap-6Xqw5FlXJrd_LQ01vOZnM_j9bwnoSmqTxJfax-xjRQz0YL1oYZCEFpJyRFnCDO_ApFXJ3ArYSGUg4JNBow"/>
+<div class="min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Satoshi Mori</span>
+<span class="material-symbols-outlined text-secondary text-sm" title="Verified Resident Local">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate block">5th Gen Potter &amp; Tea Scholar • Higashiyama resident for 42 yrs</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold shrink-0">Host Joined</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow p-space-md md:p-space-lg flex flex-col md:flex-row gap-space-md">
+<div class="md:w-36 shrink-0 flex md:flex-col justify-between items-start">
+<div>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">01:00 PM</span>
+<span class="block font-body-sm text-body-sm text-outline mt-0.5">1.5 hours duration</span>
+</div>
+<div class="mt-2 md:mt-auto inline-flex items-center gap-1 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">storefront</span>
+<span>Gojō-zaka Lane</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs mb-1 flex-wrap">
+<span class="font-label-caps text-label-caps text-tertiary bg-tertiary-fixed/60 px-2 py-0.5 rounded-full">Slow Gastronomy</span>
+<span class="font-body-sm text-body-sm text-outline">• Hidden Alleyway</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">
+              Traditional Seasonal Obanzai Feast at Hidden Courtyard Machiya
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-sm">
+              Satoshi’s personal culinary haven tucked away behind unbranded noren curtains. Taste heirloom Kamo eggplants, yuba tofu skins, and mountain burdock prepared following centuries-old temple household recipes.
+            </p>
+<div class="flex items-center gap-space-md text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">restaurant</span> No English menu barrier</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary">check_circle</span> Table reserved via Satoshi</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 3 (Highlight Activity) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md border-l-4 border-primary p-space-md md:p-space-lg flex flex-col md:flex-row gap-space-md relative overflow-hidden">
+<div class="md:w-36 shrink-0 flex md:flex-col justify-between items-start">
+<div>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">03:00 PM</span>
+<span class="block font-body-sm text-body-sm text-outline mt-0.5">2.5 hours duration</span>
+</div>
+<div class="mt-2 md:mt-auto inline-flex items-center gap-1 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">home_repair_service</span>
+<span>Mori Kiln Studio</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs mb-1 flex-wrap">
+<span class="font-label-caps text-label-caps text-on-primary bg-primary px-2 py-0.5 rounded-full">Private Hands-on Workshop</span>
+<span class="font-body-sm text-body-sm text-outline">• Exclusive Mebing Access</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">
+              Hands-on Raku Ceramic Wheel Session &amp; Custom Teacup Glazing
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
+              Work alongside Host Satoshi at his private family wheel. Throw authentic Kyoto clay, discover the wabi-sabi philosophy of asymmetric rim creation, and apply iron slip glaze. Your fired, boxed teacup will be safely air-shipped to your home residence.
+            </p>
+<div class="grid grid-cols-2 gap-space-sm mb-space-md">
+<img class="w-full h-32 object-cover rounded-lg" data-alt="Earthy aesthetic photograph of artisan potter hands shaping dark textured clay on a traditional wheel inside a sunlit wooden studio with ceramic drying racks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmhsA5QIw4YK7mLWP9k9LFCYwH38ABz-M8J4ycxy9JgaDyK2EdQKmdj_9byOexQEw9XnZu6-yao1AHVvlTNtCKKFRzqV4ANW-zhhcdlNfFxMhvpnGwXL--jEIF-oH8W1L-_vew_A92bIzs7Ow8IzESHsTkzyLCKUmRU53I4qUrlIobkA4MgAAGDoHFhPsFfalPFIT05yUtMEoNOwK9SiVBvT_nzEoeVObnR4a2lw99pCPKTrEB_n-52Q"/>
+<img class="w-full h-32 object-cover rounded-lg" data-alt="Editorial close up shot of glazed Japanese ceramic teacups and chawan bowls resting on an antique wooden bench with warm autumnal sunlight in Kyoto." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIf_Mrm3je_4aA6NdvcKm_YyF77TwDSw5wQbbFK6IiLVgytAFnIuSIgDq1gBjlXPNXV1gfrYpfsztAYH_w0rIgrofjgEQ4zJA6OmBAIoxL4nLwGXUPy6o4VS1JFU3ZRzifktcXz_gaifycNQSEycmvqPqHduCaT0hlYt3GkGtYD1K-VckwVweccagbazbsJv2jILN8cqDwp21duWirjKVN94BYlc7GwEXWgWULDZa07a0vOAS4AsQxAA"/>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-label-md text-label-md text-on-surface">Includes: Raw clay, tool usage, kiln firing &amp; global shipping</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">$85 / person</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 4 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow p-space-md md:p-space-lg flex flex-col md:flex-row gap-space-md">
+<div class="md:w-36 shrink-0 flex md:flex-col justify-between items-start">
+<div>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">07:00 PM</span>
+<span class="block font-body-sm text-body-sm text-outline mt-0.5">2 hours duration</span>
+</div>
+<div class="mt-2 md:mt-auto inline-flex items-center gap-1 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">liquor</span>
+<span>Pontocho Alley</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs mb-1 flex-wrap">
+<span class="font-label-caps text-label-caps text-secondary bg-secondary-container/40 px-2 py-0.5 rounded-full">Nightlife &amp; Micro-distillery</span>
+<span class="font-body-sm text-body-sm text-outline">• Verified Host Guide</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">
+              Craft Sake &amp; Charcoal Yakitori Tasting in Pontocho Lantern Alleys
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
+              Meet secondary host Kenji (Natural Wine &amp; Sake Sommelier) at the Kamogawa riverbank. Weave through narrow wooden corridors to sample 4 unpasteurized junmai sakes paired with binchotan-grilled skewers and local seasonal bites.
+            </p>
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of Kenji, a smiling young Japanese sommelier holding a natural sake bottle in a cozy wood-crafted izakaya with warm amber lanterns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6QyowLl4vg1KOx8ILNNUGLLLfy7OMMJyO0WaiT7pbLQsm-LWcuUP_dVCCoZUG3gQN9hcAEOks2Li1lq97uCbcrFHLqRILUwMoXheNs-MxnBEg_SF3His3O7ly_zxqvMZ4-g6P774FL7G1Hn1XShCGk4Z1thsahwyqSoYe3_a2vlYYarayRMPeZ952ouVsx_Vq6I5rCF2gvUDuTw3JoJlPjW-JN4KImmi9IlOcfdujq7ZPWwOKM2F58w"/>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">Kenji Takahashi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Kyoto Sommelier Guild Member • 98 Hosted Tastings</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">$40 / person</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Host Co-Creation Panel & Itinerary Map Preview (4 cols) -->
+<div class="lg:col-span-4 space-y-space-md sticky top-24">
+<!-- Host Live Connection Panel -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md md:p-space-lg">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-high mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl">handshake</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Local Host Co-Creation</span>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500" title="Host is online right now"></span>
+</div>
+<!-- Main Matched Host Profile -->
+<div class="text-center pb-space-md">
+<div class="relative inline-block mx-auto mb-space-sm">
+<img class="w-20 h-20 rounded-full object-cover mx-auto shadow-sm" data-alt="Editorial portrait photograph of Satoshi Mori, Japanese master potter standing in front of traditional pottery racks in Kyoto." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk8eK-dRBBHvleOJ9gKHFub9NC-A_175QrboDci38sHvELdK113OydFWaFj3YX-wLzoztznW6k6kh1oURHRQ6Tn7yG7I8YS0hAD8ZTzo-9V3F8-6eWJOQKvn_deNJx8I96nnZ4GC1LHIik0i8lxlJXcytENfvvSEl3unGkdLUFGluZNpx4BphsWo-3h98-m0_SCAWHvk4lypYPn18ESNnX8o3VDz0glTkop0pRWItUpLeOJ9xhinc1lQ"/>
+<span class="absolute bottom-0 right-0 bg-secondary text-on-secondary p-1 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">verified</span>
+</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Satoshi Mori</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Matched Lead Host for Day 2</p>
+<div class="mt-space-sm inline-flex items-center gap-1 px-space-sm py-1 bg-surface-container-low rounded-full text-xs font-label-md text-secondary">
+<span class="material-symbols-outlined text-xs">chat_bubble</span>
+<span>Reviewed itinerary &amp; suggested 2 secret spots</span>
+</div>
+</div>
+<!-- Host Comment Note Box -->
+<div class="bg-surface-container-low rounded-lg p-space-md mb-space-md text-on-surface">
+<div class="flex items-center gap-1 text-primary font-label-md text-label-md mb-1">
+<span class="material-symbols-outlined text-sm">lightbulb</span>
+<span>Satoshi's Personal Recommendation:</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic leading-relaxed">
+              "Since you love unglazed yakishime pottery, let's walk through the back garden of Kennin-ji temple on our way to the kiln — the autumn moss is at its peak this week."
+            </p>
+</div>
+<!-- CTA Actions -->
+<div class="space-y-space-sm">
+<button class="w-full py-3 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-colors flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-lg text-primary">send</span>
+<span>Message Satoshi to Customize</span>
+</button>
+<button class="w-full py-3 px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md transition-all flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span>Book Day 2 Experiences ($125 Total)</span>
+</button>
+</div>
+<p class="text-center font-body-sm text-body-sm text-outline mt-space-sm">
+            Free cancellation up to 48 hours prior. Funds held safely in escrow.
+          </p>
+</div>
+<!-- Geographic Map Preview Widget -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md overflow-hidden">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-1 font-label-lg text-label-lg text-on-surface">
+<span class="material-symbols-outlined text-primary text-base">map</span>
+<span>Day 2 Route Path</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">3.4 km walking total</span>
+</div>
+<div class="w-full h-44 bg-cover bg-center rounded-lg relative overflow-hidden shadow-inner flex items-end p-space-sm" data-location="Higashiyama Ward, Kyoto, Japan" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-5cN64ajQcjcZ3Mvia2ug8ZBL5LCc7qLUKPwnUclQs75oHHfEizGLvqcTaDNpBmueQz1o_W5jxXi-VkoT2OA5pXTGjYL43NRUCtO9ErB6ABFUrjfbEhZLtTfDCucZaKgfDruHZDmnddDKycYfgfts7rIY90GwRvuBrQgpac1Y4mepWMCYwYKcKK1NBFQQk3gUiOba_s7v-Aeq79uaGm9FC2LRSi_fGZNjM6IrumRDjsy7v04Vyr9ReQ')">
+<div class="bg-surface-container-lowest/90 backdrop-blur-md px-space-sm py-1 rounded-md text-xs font-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">directions_walk</span>
+<span>Higashiyama • Kennin-ji • Kiyomizu</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Planner Pillars Section -->
+<section class="w-full bg-surface-container-low py-space-xl mt-space-xl">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-space-xl">
+<span class="font-label-caps text-label-caps uppercase text-primary tracking-widest block mb-space-xs">The MebingLocal Difference</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">
+          Why Intelligent Co-Creation Beats Standard Travel Guides
+        </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Pillar 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-2xl">bus_alert</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">
+            Zero Generic Tour Buses
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Our AI ignores commercial tourist traps and sponsored venues. Every stop is verified for authentic cultural integrity, small-batch artistry, and local respect.
+          </p>
+</div>
+<!-- Pillar 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-2xl">sync</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">
+            Real-Time Host Sync
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Live availability from verified neighborhood hosts is dynamically integrated into your schedule, ensuring you never plan an activity when an artisan's studio is closed.
+          </p>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-2xl">lock_clock</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">
+            Instant Escrow Guarantee
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Reserve multiple custom workshop sessions with one tap. Host compensations are held in protected escrow until the experience completes smoothly.
+          </p>
+</div>
+<!-- Pillar 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-primary-container/20 text-primary-container flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-2xl">chat</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">
+            Offline App &amp; WhatsApp
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Take your AI concierge on the ground without roaming stress. Receive instant bilingual navigation help, route adjustments, and rain alternatives on your phone.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Narrative Close & Call to Action -->
+<section class="max-w-7xl mx-auto px-6 py-space-xl">
+<div class="bg-surface-container-highest rounded-xl p-space-lg md:p-space-xl flex flex-col md:flex-row items-center justify-between gap-space-lg relative overflow-hidden">
+<div class="max-w-xl z-10">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider block mb-space-xs">Ready for Kyoto &amp; Beyond?</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-space-xs">
+          Plan Your Next Authentic Journey with Real Locals.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Join 24,000+ conscious travelers exploring Japan, France, Italy, and Mexico with resident hosts.
+        </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-sm w-full md:w-auto z-10">
+<button class="w-full sm:w-auto px-space-lg py-3 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md transition-all flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-lg">edit_note</span>
+<span>Start a New AI Plan</span>
+</button>
+<button class="w-full sm:w-auto px-space-lg py-3 rounded-lg bg-surface-container-lowest hover:bg-surface-bright text-on-surface font-label-lg text-label-lg transition-colors flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-lg text-secondary">explore</span>
+<span>Explore Featured Journeys</span>
+</button>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl shadow-[0_-1px_8px_rgba(0,0,0,0.03)]"><div class="max-w-7xl mx-auto px-6 py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-lg mb-space-xl"><div class="lg:col-span-1"><div class="flex items-center gap-space-xs mb-space-sm"><img alt="MebingLocal Wordmark Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wt2CZaen_XHwiN4LhFo5P_d4YqOcxyVoIfwqBhFlAChP502EqtZCSP_6XiGudVk6cfBSS3TT4LmQjcyHz5vlfvVRWXD7I9ZsSNETXPJsaXdbEYbjPEUN913bgnIa7QH3d2sdKB8Dq4ZECQ9wuM6YrEK9GaBFX516saY4eMkiHzGbbdTB2xIS_j0bGUf5Z4EY-FqRE2QSnGiWMosvXMcaEene43DBiJkCWli5qTCVZCB6z47RJOi4ZUBoU9"/><span class="font-headline-sm text-headline-sm text-on-surface">MebingLocal</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Human-to-human cultural journeys guided by verified local residents.</p><div class="flex items-center gap-space-sm text-on-surface-variant"><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">share</span></a><a class="p-space-xs rounded-full hover:bg-surface-container hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-lg">alternate_email</span></a></div></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Explore</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Tokyo</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Kyoto</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Paris</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Mexico City</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Local Friends in Florence</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Host with MebingLocal</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Host Guidelines</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Trust &amp; Safety</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Host Insurance</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Community Stories</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">AI Concierge</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Personalized Trips</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Smart Local Match</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Real-time Translation</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Neighborhood Radar</a></li></ul></div><div><h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-sm">Support &amp; Trust</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" href="#">Safety Center</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Cancellation Policies</a></li><li><a class="hover:text-on-surface transition-colors" href="#">Identity Verification</a></li><li><a class="hover:text-on-surface transition-colors" href="#">24/7 Concierge Support</a></li></ul></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><span>© 2025 MebingLocal Inc. All rights reserved.</span><a class="hover:text-on-surface transition-colors" href="#">Privacy</a><a class="hover:text-on-surface transition-colors" href="#">Terms</a><a class="hover:text-on-surface transition-colors" href="#">Sitemap</a></div><div class="flex items-center gap-space-sm"><span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-sm">language</span> English (US)</span><span>·</span><span>$ USD</span></div></div></div></footer></body></html>
