@@ -314,154 +314,363 @@ export default function HomePage() {
 
       {/* SECTION 5: AI TRAVEL CONCIERGE SPOTLIGHT */}
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16 w-full">
-        <div className="bg-surface-container-lowest rounded-3xl p-8 lg:p-12 shadow-xl relative overflow-hidden flex flex-col lg:flex-row items-center gap-12">
-          {/* Ambient Glows */}
-          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/40 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none" />
+        {(() => {
+          const florenceHost = featuredLocals.find((l) => l.city?.toLowerCase().includes('florence')) || {
+            name: 'Elena Rossi',
+            avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC01zPXzIKGzm7sn1XNsHYDkjcrHeiVpfUxzqP1t2LXby_oTTPaTYekLjOi0Ojqd-jIA6C530l_wi73snHfrA39XYourpLv_XJRBfSsjTkSw6sfxybFf2_w38498jBl6Tp0Dpy23aemyAQv6g-tQ0JeCDFLZAvaRhDz90rNFfO8_dchE3JPvJQ0iT6rWQqQGRkww0ePLFNXIzpPOjxHIrUcNFKCNB0d6uE7nQEugjV76TRqoQfmZ2qG5Q',
+            tagline: 'Architect & Wine Enthusiast',
+            id: '',
+          };
 
-          {/* Left Column: Story & Narrative */}
-          <div className="lg:w-1/2 flex flex-col relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container w-fit mb-4">
-              <span className="material-symbols-outlined text-sm">auto_awesome</span>
-              <span className="font-label-caps text-label-caps uppercase">MebingLocal AI Concierge</span>
-            </div>
-            <h2 className="font-headline-xl text-3xl sm:text-4xl text-on-surface tracking-tight font-bold">
-              Your trip, planned around you. Co-created with real locals.
-            </h2>
-            <p className="font-body-lg text-body-lg text-on-surface-variant mt-3 mb-6">
-              Describe your dream trip in plain language. Our AI concierge combines deep real-time local knowledge with verified resident hosts to craft a seamless, bespoke itinerary.
-            </p>
+          const cdmxHost = featuredLocals.find((l) => l.city?.toLowerCase().includes('mexico')) || {
+            name: 'Camila Morales',
+            avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuABhSmY-Q8fI-jv7P4Dpk390MsFHFMBDGbXNqiARlGOuX8-XSXEyt_F3cC9qMOWr2WfCQTwfvR02hvZEn7jUeYDLKqK3jMapjuKerRHVFEZHtRYm0y3M1omKRVrUFYKRSXbL5pUe3Tuikmg26Jfq_UAWe-gdbbqTsRSdhnYwWLwdPqGxArF6eexHi0_scipFqJHf3qK9dEX2NxJc2r61zwDWl5JahXVec4r75KGUBpeiaxfyMQQSseBBw',
+            tagline: 'Contemporary Curator & Street Food Historian',
+            id: '',
+          };
 
-            {/* Prompt input card preview */}
-            <div className="bg-surface-container-low rounded-2xl p-4 mb-6 border border-outline-variant/30">
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">Interactive Prompt</span>
-                <span className="text-xs text-primary font-medium flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" /> Live Console
-                </span>
-              </div>
-              <textarea
-                value={samplePrompt}
-                onChange={(e) => setSamplePrompt(e.target.value)}
-                rows={2}
-                className="w-full bg-transparent font-body-md text-body-md text-on-surface font-medium italic focus:outline-none resize-none"
-              />
-            </div>
+          const kyotoHost = featuredLocals.find((l) => l.city?.toLowerCase().includes('kyoto')) || {
+            name: 'Satoshi Mori',
+            avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBFMerRDbJLDV-wwGfj9QOAY0wKJmAzIgFWn46UioYG5vmkw_KWEE9Yhv8aSO4kTFfbb67kq4xZemlwCshbhLNaFxXYlNSNgXnwTm8TtPnffaAse2tYjPrvmX-T1rz5ZHzw4QLReZ2M-YIGjbYnWUd4yxpTRz-Oquh1aZMTk9yVWlcki2J6TZawP_LJ7HaxubsVVi8zi1iiLE6KRHMiJYZYdBt3JeuD8_br0vvujeqiLe1umKGs58GceQ',
+            tagline: '5th Generation Kiyomizu Potter',
+            id: '',
+          };
 
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href={`/planner?prompt=${encodeURIComponent(samplePrompt)}`}
-                className="bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-7 py-3.5 rounded-full shadow-md transition-all flex items-center gap-2"
-              >
-                <span className="material-symbols-outlined text-lg">auto_awesome</span>
-                <span>Customize with AI</span>
-              </Link>
-              <span className="font-body-sm text-body-sm text-on-surface-variant">Instant matches · Zero booking friction</span>
-            </div>
-          </div>
+          const tokyoHost = featuredLocals.find((l) => l.city?.toLowerCase().includes('tokyo')) || {
+            name: 'Kenji Tanaka',
+            avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBqfU5FIabnja1SwcN3cXbWR69mESaI9Zgpe-PrdyVDRQhyTvlR0JMuxEHnU34s-537bZnr1RV-YqqlMqgLIPWYt_vrF6IlDuMP3pmCaLIoPp-iICBrXe4A9fB_DCO0U8fuuc8MW9xPLkOmoJICvUFSOMbtEfrAUS5qwHzCNPTzvs8_RakwWALP2D51pBEItW6QHo2rSiIsr4yGvYQdJDpm0ub-kZUQCh-ccn6_LBzvlWwLKBqOVkOxCw',
+            tagline: 'Photographer & Culinary Storyteller',
+            id: '',
+          };
 
-          {/* Right Column: Interactive Itinerary & Match Preview Card */}
-          <div className="lg:w-1/2 w-full relative z-10">
-            <div className="bg-surface rounded-2xl p-6 shadow-md border border-surface-container-high">
-              <div className="flex items-center justify-between pb-4 border-b border-surface-container-highest">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-secondary">
-                    <span className="material-symbols-outlined text-xl">map</span>
+          // Determine current itinerary preview based on prompt contents
+          let preview = {
+            title: 'Kyoto Creator Odyssey',
+            daysInfo: '4 Days · 3 Verified Local Guides',
+            matchScore: 98,
+            host: kyotoHost,
+            matchedDay: 'Matched for Day 2',
+            destination: 'Kyoto, Japan',
+            timeline: [
+              {
+                time: '09:30 AM',
+                title: 'Morning Tea Ceremony',
+                desc: 'Private matcha session at a 180-year-old wooden teahouse off the tourist trail.',
+                location: 'Uji Suburb',
+                badge: '',
+                dotColor: 'bg-secondary',
+              },
+              {
+                time: '02:00 PM',
+                title: 'Hands-on Ceramic Wheel Session',
+                desc: 'Throwing local clay and glazing your own chawan bowl.',
+                location: 'Kiyomizu Slope',
+                badge: `With Host ${kyotoHost.name.split(' ')[0]}`,
+                dotColor: 'bg-primary',
+              },
+              {
+                time: '06:00 PM',
+                title: 'Obanzai Dinner & Microbrew Tasting',
+                desc: 'Seasonal heirloom vegetables and rare Kyoto craft beers.',
+                location: 'Gion Alley',
+                badge: '',
+                dotColor: 'bg-tertiary',
+              },
+            ],
+          };
+
+          const lowerPrompt = samplePrompt.toLowerCase();
+          if (lowerPrompt.includes('florence') || lowerPrompt.includes('chianti') || lowerPrompt.includes('italy')) {
+            preview = {
+              title: 'Florence Renaissance & Wine Odyssey',
+              daysInfo: '3 Days · 2 Verified Local Guides',
+              matchScore: 99,
+              host: florenceHost,
+              matchedDay: 'Matched for Day 1',
+              destination: 'Florence, Italy',
+              timeline: [
+                {
+                  time: '10:00 AM',
+                  title: 'Oltrarno Marbled Paper & Leather Botteghe',
+                  desc: 'Exclusive private studio walkthrough in centuries-old artisan craft quarters.',
+                  location: 'Oltrarno Quarter',
+                  badge: `With Host ${florenceHost.name.split(' ')[0]}`,
+                  dotColor: 'bg-primary',
+                },
+                {
+                  time: '01:30 PM',
+                  title: 'Historic Porchetta & Pecorino Tasting',
+                  desc: 'Hand-sliced Tuscan cured meats and rustic warm focaccia at a neighborhood alimentari.',
+                  location: 'Piazza Santo Spirito',
+                  badge: '',
+                  dotColor: 'bg-secondary',
+                },
+                {
+                  time: '05:30 PM',
+                  title: 'Twilight Natural Wine Window & Small Plates',
+                  desc: 'Sip organic biodynamic Chianti poured through an authentic medieval buchetta del vino.',
+                  location: 'Arno Riverbank',
+                  badge: '',
+                  dotColor: 'bg-tertiary',
+                },
+              ],
+            };
+          } else if (lowerPrompt.includes('mexico') || lowerPrompt.includes('cdmx') || lowerPrompt.includes('mezcal') || lowerPrompt.includes('coyoacán') || lowerPrompt.includes('coyoacan')) {
+            preview = {
+              title: 'Mexico City Culinary & Cantina Trail',
+              daysInfo: '4 Days · 2 Verified Local Guides',
+              matchScore: 97,
+              host: cdmxHost,
+              matchedDay: 'Matched for Day 2',
+              destination: 'Mexico City, Mexico',
+              timeline: [
+                {
+                  time: '09:30 AM',
+                  title: 'Historic Coyoacán Mercado & Hot Churros',
+                  desc: 'Taste slow-simmered carnitas, heirloom blue corn tostadas, and fresh roasted Oaxacan coffee.',
+                  location: 'Coyoacán Center',
+                  badge: '',
+                  dotColor: 'bg-secondary',
+                },
+                {
+                  time: '02:00 PM',
+                  title: 'Secret Cantinas & Single-Origin Mezcal Pairing',
+                  desc: 'Clay copitas of wild agave mezcal and Frida Kahlo neighborhood lore.',
+                  location: 'Jardín Hidalgo',
+                  badge: `With Host ${cdmxHost.name.split(' ')[0]}`,
+                  dotColor: 'bg-primary',
+                },
+                {
+                  time: '07:00 PM',
+                  title: 'Roma Norte Contemporary Art & Tacos',
+                  desc: 'Explore independent artist studios followed by late-night al pastor tacos.',
+                  location: 'Roma Norte',
+                  badge: '',
+                  dotColor: 'bg-tertiary',
+                },
+              ],
+            };
+          } else if (lowerPrompt.includes('tokyo') || lowerPrompt.includes('yanaka') || lowerPrompt.includes('tsukiji') || lowerPrompt.includes('japan')) {
+            preview = {
+              title: 'Tokyo Yanaka & Tsukiji Blacksmith Trail',
+              daysInfo: '3 Days · 3 Verified Local Guides',
+              matchScore: 98,
+              host: tokyoHost,
+              matchedDay: 'Matched for Day 1',
+              destination: 'Tokyo, Japan',
+              timeline: [
+                {
+                  time: '08:30 AM',
+                  title: 'Dawn Tsukiji Market Tasting & Knife Artisans',
+                  desc: 'Fresh seasonal sashimi and meeting master blacksmiths forging Sakai culinary knives.',
+                  location: 'Tsukiji Outer Market',
+                  badge: `With Host ${tokyoHost.name.split(' ')[0]}`,
+                  dotColor: 'bg-primary',
+                },
+                {
+                  time: '02:00 PM',
+                  title: 'Yanaka 35mm Street Photo Walk & Kissaten',
+                  desc: 'Wander preserved Edo low-city alleys and sip drip coffee on tatami mats at Kayaba.',
+                  location: 'Yanaka Ginza',
+                  badge: '',
+                  dotColor: 'bg-secondary',
+                },
+                {
+                  time: '06:30 PM',
+                  title: 'Hidden Counter Yakitori & Local Craft Beer',
+                  desc: 'Intimate counter dining with local regulars in Sendagi backstreets.',
+                  location: 'Sendagi Crossway',
+                  badge: '',
+                  dotColor: 'bg-tertiary',
+                },
+              ],
+            };
+          }
+
+          return (
+            <div className="bg-surface-container-lowest rounded-3xl p-8 lg:p-12 shadow-xl relative overflow-hidden flex flex-col lg:flex-row items-center gap-12">
+              {/* Ambient Glows */}
+              <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/40 blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none" />
+
+              {/* Left Column: Story & Narrative */}
+              <div className="lg:w-1/2 flex flex-col relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container w-fit mb-4">
+                  <span className="material-symbols-outlined text-sm">auto_awesome</span>
+                  <span className="font-label-caps text-label-caps uppercase">MebingLocal AI Concierge</span>
+                </div>
+                <h2 className="font-headline-xl text-3xl sm:text-4xl text-on-surface tracking-tight font-bold">
+                  Your trip, planned around you. Co-created with real locals.
+                </h2>
+                <p className="font-body-lg text-body-lg text-on-surface-variant mt-3 mb-6">
+                  Describe your dream trip in plain language. Our AI concierge combines deep real-time local knowledge with verified resident hosts to craft a seamless, bespoke itinerary.
+                </p>
+
+                {/* Prompt input card preview */}
+                <div className="bg-surface-container-low rounded-2xl p-4 mb-6 border border-outline-variant/30">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">Interactive Prompt</span>
+                    <span className="text-xs text-primary font-medium flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" /> Live Console
+                    </span>
                   </div>
-                  <div>
-                    <h4 className="font-headline-sm text-headline-sm text-on-surface font-semibold">Kyoto Creator Odyssey</h4>
-                    <p className="font-body-sm text-body-sm text-on-surface-variant">4 Days · 3 Verified Local Guides</p>
+                  <textarea
+                    value={samplePrompt}
+                    onChange={(e) => setSamplePrompt(e.target.value)}
+                    rows={2}
+                    className="w-full bg-transparent font-body-md text-body-md text-on-surface font-medium italic focus:outline-none resize-none"
+                  />
+                  <div className="flex items-center gap-2 flex-wrap pt-2 mt-2 border-t border-surface-container-high">
+                    <span className="text-[10px] uppercase font-bold text-outline">TRY:</span>
+                    <button
+                      type="button"
+                      onClick={() => setSamplePrompt('3 days in Florence hunting hidden terracotta workshops, natural Chianti basements, and riverside fresco painting.')}
+                      className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium transition-all ${
+                        lowerPrompt.includes('florence')
+                          ? 'bg-secondary text-on-secondary shadow-xs'
+                          : 'bg-surface-container text-on-surface-variant hover:text-on-surface'
+                      }`}
+                    >
+                      Florence Artisans
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSamplePrompt('4 days slow trail around Mexico City culinary markets, quiet brutalist courtyards, and Mezcal master distilleries.')}
+                      className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium transition-all ${
+                        lowerPrompt.includes('mexico') || lowerPrompt.includes('cdmx')
+                          ? 'bg-secondary text-on-secondary shadow-xs'
+                          : 'bg-surface-container text-on-surface-variant hover:text-on-surface'
+                      }`}
+                    >
+                      CDMX Flavors
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSamplePrompt('4 tranquil days in Kyoto Arashiyama tea forests, morning Zen meditation, and private pottery workshops.')}
+                      className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium transition-all ${
+                        lowerPrompt.includes('kyoto')
+                          ? 'bg-secondary text-on-secondary shadow-xs'
+                          : 'bg-surface-container text-on-surface-variant hover:text-on-surface'
+                      }`}
+                    >
+                      Kyoto Zen
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSamplePrompt('3 days in Tokyo exploring Tsukiji knife blacksmiths, vintage 35mm photo walks in Yanaka, and quiet kissaten cafes.')}
+                      className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium transition-all ${
+                        lowerPrompt.includes('tokyo')
+                          ? 'bg-secondary text-on-secondary shadow-xs'
+                          : 'bg-surface-container text-on-surface-variant hover:text-on-surface'
+                      }`}
+                    >
+                      Tokyo Alleys
+                    </button>
                   </div>
                 </div>
-                <span className="font-label-caps text-label-caps uppercase bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full font-bold">
-                  98% Match
-                </span>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link
+                    href={`/planner?prompt=${encodeURIComponent(samplePrompt)}&destination=${encodeURIComponent(preview.destination)}`}
+                    className="bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-7 py-3.5 rounded-full shadow-md transition-all flex items-center gap-2 transform active:scale-95"
+                  >
+                    <span className="material-symbols-outlined text-lg">auto_awesome</span>
+                    <span>Customize with AI</span>
+                  </Link>
+                  <span className="font-body-sm text-body-sm text-on-surface-variant">Instant matches · Zero booking friction</span>
+                </div>
               </div>
 
-              {/* Matched Local Host Snapshot */}
-              <div className="mt-4 p-3 bg-surface-container-lowest rounded-xl flex items-center justify-between shadow-sm">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
-                    <img
-                      className="w-full h-full object-cover"
-                      alt="Satoshi Mori"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFMerRDbJLDV-wwGfj9QOAY0wKJmAzIgFWn46UioYG5vmkw_KWEE9Yhv8aSO4kTFfbb67kq4xZemlwCshbhLNaFxXYlNSNgXnwTm8TtPnffaAse2tYjPrvmX-T1rz5ZHzw4QLReZ2M-YIGjbYnWUd4yxpTRz-Oquh1aZMTk9yVWlcki2J6TZawP_LJ7HaxubsVVi8zi1iiLE6KRHMiJYZYdBt3JeuD8_br0vvujeqiLe1umKGs58GceQ"
-                    />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-label-lg text-label-lg text-on-surface font-semibold">Satoshi Mori</span>
-                      <span className="material-symbols-outlined text-xs text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
-                        verified
-                      </span>
+              {/* Right Column: Interactive Itinerary & Match Preview Card */}
+              <div className="lg:w-1/2 w-full relative z-10 transition-all duration-300">
+                <div className="bg-surface rounded-2xl p-6 shadow-md border border-surface-container-high transition-all">
+                  <div className="flex items-center justify-between pb-4 border-b border-surface-container-highest">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-secondary">
+                        <span className="material-symbols-outlined text-xl">map</span>
+                      </div>
+                      <div>
+                        <h4 className="font-headline-sm text-headline-sm text-on-surface font-semibold">{preview.title}</h4>
+                        <p className="font-body-sm text-body-sm text-on-surface-variant">{preview.daysInfo}</p>
+                      </div>
                     </div>
-                    <span className="font-body-sm text-body-sm text-on-surface-variant">5th Generation Kiyomizu Potter</span>
+                    <span className="font-label-caps text-label-caps uppercase bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full font-bold">
+                      {preview.matchScore}% Match
+                    </span>
                   </div>
-                </div>
-                <span className="text-xs font-semibold text-primary">Matched for Day 2</span>
-              </div>
 
-              {/* Timeline Mockup */}
-              <div className="mt-4 space-y-3">
-                <div className="flex gap-3 items-start">
-                  <div className="flex flex-col items-center">
-                    <div className="w-2.5 h-2.5 rounded-full bg-secondary mt-1" />
-                    <div className="w-0.5 h-10 bg-surface-container-highest" />
-                  </div>
-                  <div className="flex-1 pb-2">
-                    <div className="flex justify-between items-baseline">
-                      <span className="font-label-md text-label-md text-on-surface font-semibold">09:30 AM · Morning Tea Ceremony</span>
-                      <span className="font-body-sm text-body-sm text-outline">Uji Suburb</span>
+                  {/* Matched Local Host Snapshot */}
+                  <Link
+                    href={preview.host.id ? `/local-friends/${preview.host.id}` : '/local-friends'}
+                    className="mt-4 p-3 bg-surface-container-lowest rounded-xl flex items-center justify-between shadow-sm hover:shadow-md transition-all group cursor-pointer block border border-surface-container-high"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full overflow-hidden bg-surface-container shrink-0">
+                        <img
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                          alt={preview.host.name}
+                          src={preview.host.avatar}
+                        />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-label-lg text-label-lg text-on-surface font-semibold group-hover:text-primary transition-colors">
+                            {preview.host.name}
+                          </span>
+                          <span className="material-symbols-outlined text-xs text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
+                            verified
+                          </span>
+                        </div>
+                        <span className="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">{preview.host.tagline}</span>
+                      </div>
                     </div>
-                    <p className="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-                      Private matcha session at a 180-year-old wooden teahouse off the tourist trail.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-3 items-start">
-                  <div className="flex flex-col items-center">
-                    <div className="w-2.5 h-2.5 rounded-full bg-primary mt-1" />
-                    <div className="w-0.5 h-10 bg-surface-container-highest" />
-                  </div>
-                  <div className="flex-1 pb-2">
-                    <div className="flex justify-between items-baseline">
-                      <span className="font-label-md text-label-md text-on-surface font-semibold">02:00 PM · Hands-on Ceramic Wheel Session</span>
-                      <span className="font-body-sm text-body-sm text-primary font-medium">With Host Satoshi</span>
-                    </div>
-                    <p className="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-                      Throwing local clay and glazing your own chawan bowl.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-3 items-start">
-                  <div className="flex flex-col items-center">
-                    <div className="w-2.5 h-2.5 rounded-full bg-tertiary mt-1" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-baseline">
-                      <span className="font-label-md text-label-md text-on-surface font-semibold">06:00 PM · Obanzai Dinner & Microbrew Tasting</span>
-                      <span className="font-body-sm text-body-sm text-outline">Gion Alley</span>
-                    </div>
-                    <p className="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-                      Seasonal heirloom vegetables and rare Kyoto craft beers.
-                    </p>
-                  </div>
-                </div>
-              </div>
+                    <span className="text-xs font-semibold text-primary shrink-0 ml-2">{preview.matchedDay}</span>
+                  </Link>
 
-              {/* Bottom Action Bar */}
-              <div className="mt-5 pt-3 border-t border-surface-container-highest flex items-center justify-between text-xs text-on-surface-variant">
-                <span className="flex items-center gap-1">
-                  <span className="material-symbols-outlined text-sm text-secondary">tune</span>
-                  Adjust rhythm or budget anytime
-                </span>
-                <Link href="/planner" className="text-primary font-semibold hover:underline">
-                  Launch interactive planner →
-                </Link>
+                  {/* Timeline */}
+                  <div className="mt-4 space-y-3">
+                    {preview.timeline.map((item, idx) => (
+                      <div key={idx} className="flex gap-3 items-start">
+                        <div className="flex flex-col items-center">
+                          <div className={`w-2.5 h-2.5 rounded-full ${item.dotColor} mt-1`} />
+                          {idx < preview.timeline.length - 1 && <div className="w-0.5 h-10 bg-surface-container-highest" />}
+                        </div>
+                        <div className="flex-1 pb-2">
+                          <div className="flex justify-between items-baseline gap-2">
+                            <span className="font-label-md text-label-md text-on-surface font-semibold">{item.time} · {item.title}</span>
+                            {item.badge ? (
+                              <span className="font-body-sm text-body-sm text-primary font-medium shrink-0">{item.badge}</span>
+                            ) : (
+                              <span className="font-body-sm text-body-sm text-outline shrink-0">{item.location}</span>
+                            )}
+                          </div>
+                          <p className="font-body-sm text-body-sm text-on-surface-variant mt-0.5 leading-relaxed">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Bottom Action Bar */}
+                  <div className="mt-5 pt-3 border-t border-surface-container-highest flex items-center justify-between text-xs text-on-surface-variant">
+                    <span className="flex items-center gap-1">
+                      <span className="material-symbols-outlined text-sm text-secondary">tune</span>
+                      Adjust rhythm or budget anytime
+                    </span>
+                    <Link
+                      href={`/planner?prompt=${encodeURIComponent(samplePrompt)}&destination=${encodeURIComponent(preview.destination)}`}
+                      className="text-primary font-semibold hover:underline flex items-center gap-1"
+                    >
+                      <span>Launch interactive planner</span>
+                      <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          );
+        })()}
       </section>
 
       {/* SECTION 6: TRUST & SAFETY SPOTLIGHT */}

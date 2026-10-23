@@ -136,15 +136,33 @@ function AIPlannerContent() {
         budgetRange: budget,
         durationDays: 3,
       });
-      if (res && res.itinerary && Array.isArray(res.itinerary.days) && res.itinerary.days.length > 0) {
+      if (res && Array.isArray(res.days) && res.days.length > 0) {
         setDays(
-          res.itinerary.days.map((d: any, idx: number) => ({
-            dayNumber: d.dayNumber || idx + 1,
-            title: d.title || `Day ${idx + 1}`,
-            subtitle: d.summary || '',
-            matchedHost: d.matchedHost || SAMPLE_DAYS[idx % SAMPLE_DAYS.length]?.matchedHost,
-            activities: d.activities || SAMPLE_DAYS[idx % SAMPLE_DAYS.length]?.activities,
-          })),
+          res.days.map((d: any, idx: number) => {
+            const matchedLocal = res.matchingLocals?.find((l: any) => l.id === d.activities?.[0]?.matchedLocalId) || res.matchingLocals?.[idx % (res.matchingLocals?.length || 1)];
+            return {
+              dayNumber: d.dayNumber || idx + 1,
+              title: d.themeTitle || d.title || `Day ${idx + 1}`,
+              subtitle: d.summary || `Personalized curated journey for day ${idx + 1}`,
+              matchedHost: matchedLocal
+                ? {
+                    id: matchedLocal.id,
+                    name: matchedLocal.user?.name || 'Local Guide',
+                    avatar: matchedLocal.user?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80',
+                    role: matchedLocal.tagline || 'Verified Resident Host',
+                    badgeLevel: matchedLocal.isSuperhost ? ('SUPERHOST' as const) : ('VERIFIED' as const),
+                  }
+                : SAMPLE_DAYS[idx % SAMPLE_DAYS.length]?.matchedHost,
+              activities: (d.activities || []).map((act: any) => ({
+                time: act.timeSlot || act.time || '10:00 AM',
+                title: act.title || 'Local Discovery',
+                desc: act.description || act.desc || '',
+                location: act.neighborhood || act.location || destination,
+                type: act.matchedLocalId ? 'Host Experience' : 'Cultural Activity',
+                hostJoined: Boolean(act.matchedLocalId),
+              })),
+            };
+          }),
         );
       }
     } catch (err) {
